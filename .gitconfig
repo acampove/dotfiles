@@ -1,0 +1,23 @@
+[user]
+    email  = angel.campoverde@cern.ch
+    name   = Angel Campoverde
+[pull]
+    rebase = false
+
+#[url "git@github.com:"]
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[alias]
+    ac=add .
+    br=branch
+    cl=clone
+    cm=commit
+    co=checkout
+    po=push origin
+    rs=reset
+    st=status
+
+    pom=push    origin master
+    poh=push -u origin HEAD 
+    cob=checkout -b
+
