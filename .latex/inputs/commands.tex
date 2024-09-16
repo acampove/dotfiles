@@ -1,0 +1,353 @@
+%-------------------------------------
+\newcommand{\thesistitle}{Search For Gravitons Decaying To Vector Bosons in Hadronic Final States in $pp$ Collisions at $\sqrt{s}=8TeV$ Collected With the ATLAS Detector}
+%-------------------------------------
+%Functions that take text to write it with a given color, e.g.
+%
+%roses are \textblue{blue}, something else that rhymes here.
+%-------------------------------------
+\newcommand{\cincludegraphics}[2][width=\linewidth]
+{
+    \IfFileExists{images/"#2".png}
+    {   
+        \includegraphics[#1]{#2}
+    }   
+    {   
+        \includegraphics[#1]{missing}
+    }   
+}
+%-------------------------------------
+\newcommand{\textblue}[1]{\color{blue}#1 \color{black}}
+\newcommand{\textred}[1]{\color{red}#1 \color{black}}
+\newcommand{\textgreen}[1]{\color{Green}#1 \color{black}}
+\newcommand{\textgray}[1]{\color{gray}#1 \color{black}}
+%\newcommand{\textorange}[1]{\color{BurntOrange}#1 \color{black}}
+\newcommand{\textorange}[1]{\color{orange}#1 \color{black}}
+%-------------------------------------
+%Statistics
+%-------------------------------------
+\newcommand{\Cov}{\mathrm{Cov}}
+%-------------------------------------
+%LFU
+%-------------------------------------
+\newcommand{\ckrt}[1][black]{\color{#1}c_K^{rt}\color{black}}
+\newcommand{\Nkmumu}[1][black]{\color{#1}N_{K\mu\mu}^r\color{black}}
+\newcommand{\Nkee}[1][black]{\color{#1}N_{Kee}^{rt}\color{black}}
+\newcommand{\rk}[1][black]{\color{#1}R_K\color{black}}
+\newcommand{\rkstr}[1][black]{\color{#1}R_{K^*}\color{black}}
+
+\newcommand{\cmu}[1][black]{\color{#1}\boldsymbol\mu\color{black}}
+\newcommand{\csg}[1][black]{\color{#1}\boldsymbol\sigma\color{black}}
+
+%----------------------------------
+%q2
+%----------------------------------
+\newcommand{\qsq}[1][black]{\color{#1} $q^2$ \color{black}}
+\newcommand{\lowqsq}[1][black]{\color{#1}low $q^2$ \color{black}}
+\newcommand{\centralqsq}[1][black]{\color{#1}central $q^2$ \color{black}}
+\newcommand{\highqsq}[1][black]{\color{#1}high $q^2$ \color{black}}
+%----------------------------------
+%q2 ranges
+%----------------------------------
+\newcommand{\lowqrng}[1][black]{\color{#1}4m(\ell)^2-1\GeV^2\color{black}}
+\newcommand{\cenqrng}[1][black]{\color{#1}1.1\GeV^2-6\GeV^2\color{black}}
+\newcommand{\higqrng}[1][black]{\color{#1}15.5\GeV^2-20\GeV^2\color{black}}
+%----------------------------------
+\newcommand{\bpkstpigamma}[1][black]{\color{#1}B^+\to K^{*+}\pi^0\gamma\color{black}}
+\newcommand{\bdkstpigamma}[1][black]{\color{#1}B^0\to K^*\pi^0\gamma\color{black}}
+\newcommand{\bpkstpsi}[1][black]{\color{#1}B^+\to K^{*+}\psi(2S)(\to ee)\color{black}}
+\newcommand{\bdkstee}[1][black]{\color{#1}B^0\to K^*ee\color{black}}
+\newcommand{\bpkstee}[1][black]{\color{#1}B^+\to K^{*+}ee\color{black}}
+\newcommand{\bpkpipi}[1][black]{\color{#1}B^+\to K^+\pi^+\pi^-\color{black}}
+\newcommand{\bpkpmm}[1][black]{\color{#1}B^+\to K^+\mu^{+}\mu^{-}\color{black}}
+
+\newcommand{\bppijpsimm}[1][black]{\color{#1}B^+\to \pi^+J/\psi(\to \mu^{+} \mu^{-})\color{black}}
+\newcommand{\bpkpjpsimm}[1][black]{\color{#1}B^+\to K^+J/\psi(\to \mu^{+} \mu^{-})\color{black}}
+
+\newcommand{\bpkppsiTmm}[1][black]{\color{#1}B^+\to K^+\psi(2S)(\to \mu^{+} \mu^{-})\color{black}}
+
+\newcommand{\bppijpsiee}[1][black]{\color{#1}B^+\to \pi^+J/\psi(\to e^{+} e^{-})\color{black}}
+\newcommand{\bpkpjpsiee}[1][black]{\color{#1}B^+\to K^+J/\psi(\to e^{+} e^{-})\color{black}}
+\newcommand{\bpkppsiTee}[1][black]{\color{#1}B^+\to K^+\psi(2S)(\to e^{+} e^{-})\color{black}}
+
+\newcommand{\bpkppsiTll}[1][black]{\color{#1}B^+\to K^+\psi(2S)(\to \ell \ell)\color{black}}
+
+\newcommand{\bpkpjpsi}[1][black]{\color{#1}B^+\to K^+J/\psi\color{black}}
+\newcommand{\bpkppsiT}[1][black]{\color{#1}B^+\to K^+\psi(2S)\color{black}}
+
+%Combinatorial
+\newcommand{\bpemu}[1][black]{\color{#1}B^+\to K^+J/\psi(\to e^+\mu^-)\color{black}}
+\newcommand{\bpss}[1][black]{\color{#1}B^+\to K^+J/\psi(\to e^+e^+)\color{black}}
+%-------------------------------------
+%Physics related stuff
+%-------------------------------------
+\newcommand{\m}{\text{m}}
+\newcommand{\cm}{\text{cm}}
+\newcommand{\mm}{\text{mm}}
+\newcommand{\nm}{\text{nm}}
+%-------------------------------------
+%ENERGY
+%-------------------------------------
+\newcommand{\eV}{\text{eV}}
+\newcommand{\KeV}{\text{KeV}}
+\newcommand{\MeV}{\text{MeV}}
+\newcommand{\GeV}{\text{GeV}}
+\newcommand{\TeV}{\text{TeV}}
+%-------------------------------------
+%TIME
+%-------------------------------------
+\newcommand{\s}{\text{s}}
+\newcommand{\ms}{\text{ms}}
+\newcommand{\ns}{\text{ns}}
+\newcommand{\fs}{\text{fs}}
+%-------------------------------------
+%FREQUENCY
+%-------------------------------------
+\newcommand{\Hz}{\text{Hz}}
+\newcommand{\KHz}{\text{KHz}}
+\newcommand{\MHz}{\text{MHz}}
+\newcommand{\GHz}{\text{GHz}}
+%-------------------------------------
+%DIBOSON ANALYSIS
+%-------------------------------------
+\newcommand{\GWW}{G\rightarrow WW}
+\newcommand{\GZZ}{G\rightarrow ZZ}
+\newcommand{\WPR}{W^{\prime}\rightarrow WZ}
+\newcommand{\DY}{|\Delta y_{12}| < 1.2}
+\newcommand{\fb}{\text{fb}}
+%-------------------------------------
+%B RARE DECAYS
+%-------------------------------------
+\newcommand{\bhll}{B \to H \ell \bar{\ell}}
+\newcommand{\bhmumu}{B \to H \mu^+ \mu^-}
+\newcommand{\bhee}{B \to H e^+ e^-}
+
+\newcommand{\bshh}{B_{s(d)}^{0}\to hh'}
+\newcommand{\bdmumu}{B_{d}^{0}\to \mu^+\mu^-}
+\newcommand{\bsmumu}{B_{s(d)}^{0}\to \mu^+ \mu^-}
+%---------------------
+\newcommand{\bpjpsik}{B^{+}\to J/\psi K^+}
+\newcommand{\bpjpsieek}{B^{+}\to J/\psi(\to e^+e^-) K^+}
+\newcommand{\bpjpsipi}{B^{+}\to J/\psi \pi^+}
+\newcommand{\bsjpsiphi}{B_{s}^{0}\to J/\psi \phi}
+%---------------------
+\newcommand{\bppsiTk}{B^{+}\to \psi(2S) K^+}
+\newcommand{\bppsiTeek}{B^{+}\to \psi(2S)(\to e^+e^-) K^+}
+\newcommand{\bppsiTpi}{B^{+}\to \psi(2S) \pi^+}
+\newcommand{\bspsiTphi}{B_{s}^{0}\to \psi(2S) \phi}
+%---------------------
+\newcommand{\bdksll}{B_d \to K^{0*}\ell\bar{\ell}}
+\newcommand{\bdksmumu}{B_d \to K^*\mu^+\mu^-}
+\newcommand{\bdksee}{B_d \to K^* e^+e^-}
+
+\newcommand{\bdkll}{B_d \to K^0_S \ell \bar{\ell}}
+\newcommand{\bdkmumu}{B_d \to K^0_S \mu^+ \mu^-}
+\newcommand{\bdkee}{B_d \to K^0_S e^+ e^-}
+
+\newcommand{\bXll}{B_d \to X_s \ell \bar{\ell}}
+\newcommand{\bXmumu}{B_d \to X_s \mu^+\mu^-}
+\newcommand{\bXee}{B_d \to X_s e^+ e^-}
+
+\newcommand{\bsphill}{B_s \to \phi \ell \bar{\ell}}
+\newcommand{\bsphimumu}{B_s \to \phi \mu^+\mu^-}
+\newcommand{\bsphiee}{B_s \to \phi e^+ e^-}
+
+\newcommand{\bpkpsll}{B^+\to K^{+*}\ell \bar{\ell}}
+\newcommand{\bpkpsmumu}{B^+\to K^{+*} \mu^{+}\mu^{-} }
+\newcommand{\bpkpsee}{B^+\to K^{+*} e^+ e^-}
+
+\newcommand{\bpkpll}{B^+\to K^+\ell \bar{\ell}}
+\newcommand{\bpkpmumu}{B^+\to K^+ \mu^{+}\mu^{-} }
+\newcommand{\bpkpee}{B^+\to K^+ e^+ e^-}
+
+\newcommand{\LbLll}{\Lambda_b \to \Lambda \ell \bar{\ell}}
+\newcommand{\LbLmumu}{\Lambda_b \to \Lambda \mu^+\mu^-}
+\newcommand{\LbLee}{\Lambda_b \to \Lambda e^+e^-}
+
+\newcommand{\bppijpsi}{B^+\to J/\psi \pi^+}
+\newcommand{\jpsimumu}{J/\psi \to \mu^+\mu^-}
+
+\newcommand{\rks}{R_{K^*}}
+\newcommand{\rkp}{R_{K}}
+
+\newcommand{\rjpsi}{r_{J/\psi}}
+\newcommand{\rpsiT}{r_{\psi(2S)}}
+\newcommand{\RpsiT}{R_{\psi(2S)}}
+%-------------------------------------
+%Useful when including code in your slides
+%-------------------------------------
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{tikz}
+
+\definecolor{mygreen}{rgb}{0,0.6,0}
+\definecolor{mygray}{rgb}{0.5,0.5,0.5}
+\definecolor{mymauve}{rgb}{0.58,0,0.82}
+
+\lstset
+{
+    backgroundcolor=\color{white},   % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}
+    basicstyle=\tiny\ttfamily,       % the size of the fonts that are used for the code
+    breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                 % sets automatic line breaking
+    captionpos=b,                    % sets the caption-position to bottom
+    commentstyle=\color{mygreen},    % comment style
+    deletekeywords={...},            % if you want to delete keywords from the given language
+    escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+    frame=single,	                   % adds a frame around the code
+    keepspaces=true,                 % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+    keywordstyle=\color{blue},       % keyword style
+    language=C++,                    % the language of the code
+    otherkeywords={*,...},           % if you want to add more keywords to the set
+    numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+    numbersep=5pt,                   % how far the line-numbers are from the code
+    numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    stepnumber=2,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    stringstyle=\color{mymauve},     % string literal style
+    frame=none,
+    tabsize=2,	                   % sets default tabsize to 2 spaces
+    %title=\lstname                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+}
+%-------------------------------------
+%Useful to make diagrams
+%-------------------------------------
+\newcommand\tikzwidth{2}
+\newcommand\tikzwidthwide{4}
+\newcommand\tikzheight{0.25}
+\newcommand\tikzdec{0.9}
+
+\usetikzlibrary{shapes.geometric, arrows}
+\tikzstyle{Round-rectangle-trans} = [rectangle, rounded corners, minimum width=\tikzwidth cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidth cm, draw=white, fill=white!30]
+\tikzstyle{Round-rectangle-white} = [rectangle, rounded corners, minimum width=\tikzwidth cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidth cm, draw=black, fill=white!30]
+\tikzstyle{Round-rectangle-blue} = [rectangle, rounded corners, minimum width=\tikzwidth cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidth cm, draw=black, fill=blue!30]
+\tikzstyle{Round-rectangle-green} = [rectangle, rounded corners, minimum width=\tikzwidth cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidth cm, draw=black, fill=green!50]
+\tikzstyle{Round-rectangle-red} = [rectangle, rounded corners, minimum width=\tikzwidth cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidth cm, draw=black, fill=red!50]
+
+\tikzstyle{Round-rectangle-blue-wide} = [rectangle, rounded corners, minimum width=\tikzwidthwide cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidthwide cm, draw=black, fill=blue!30]
+\tikzstyle{Round-rectangle-green-wide} = [rectangle, rounded corners, minimum width=\tikzwidthwide cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidthwide cm, draw=black, fill=green!50]
+\tikzstyle{Round-rectangle-red-wide} = [rectangle, rounded corners, minimum width=\tikzwidthwide cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidthwide cm, draw=black, fill=red!50]
+
+
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=\tikzwidth cm, minimum height=\tikzheight cm,text centered, text width=\tikzwidth cm, draw=black, fill=red!30]
+\tikzstyle{io} = [trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=\tikzwidth cm, minimum height=\tikzheight cm, text centered, draw=black, fill=blue!30]
+\tikzstyle{process} = [rectangle, minimum width=\tikzwidth cm, minimum height=\tikzheight cm, text centered, text width=\tikzwidth cm, draw=black, fill=orange!30]
+\tikzstyle{decision} = [circle, minimum width=\tikzdec cm, minimum height=\tikzdec cm, text centered, text width=\tikzdec cm, draw=black, fill=green!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+%-------------------------------------
+%Adds a grid so you know where to draw your objects.
+%-------------------------------------
+\newcommand{\coordinates}[2]{
+    \draw[very thin,color=gray] (0,0) grid (#1, #2);
+    \draw[->] (0,0) -- (#1,0) coordinate (x axis);
+    \draw[->] (0,0) -- (0,#2) coordinate (y axis);
+\foreach \x/\xtext in {0,...,#1}
+    \draw (\x cm,1pt) -- (\x cm,-1pt) node[anchor=north,fill=white] {$\xtext$};
+\foreach \y/\ytext in {0,...,#2}
+    \draw (1pt,\y cm) -- (-1pt,\y cm) node[anchor=east,fill=white] {$\ytext$};
+}
+%-------------------------------------
+%This fixes problem in:
+%https://tex.stackexchange.com/questions/426088/texlive-pretest-2018-beamer-and-subfig-collide
+\makeatletter
+\let\@@magyar@captionfix\relax
+\makeatother
+%-------------------------------------
+\newcommand{\cmark}{\textcolor{blue}{\ding{51}}}
+\newcommand{\xmark}{\textcolor{red} {\ding{55}}}
+\newcommand{\umark}{\tikz[y=0.80pt,x=0.80pt,yscale=-0.02,xscale=0.02, inner sep=0pt, outer sep=0pt]
+{
+    \path[fill=red,nonzero rule] (635.8833,600.0000) .. controls
+    (651.0771,599.6647) and (665.7558,591.6224) .. (673.9783,577.5525) .. controls
+    (682.1001,563.3625) and (681.7384,546.6500) .. (674.5074,533.1862) --
+    (378.4699,21.6487) .. controls (370.6590,8.7662) and (356.3424,0.0975) ..
+    (340.1099,-0.0063) .. controls (323.6499,0.0972) and (309.3362,8.7657) ..
+    (301.4862,21.6487) -- (5.4612,533.1862) .. controls (-1.7257,546.6500) and
+    (-2.0877,563.3625) .. (5.9903,577.5525) .. controls (14.2570,591.6225) and
+    (28.9353,599.6650) .. (44.0853,600.0000) -- (635.8853,600.0000);
+    \path[fill=yellow,nonzero rule] (340.1208,75.7875) -- (71.0683,540.8450) --
+    (608.8933,540.8450) -- (340.1058,75.7950);
+    \path[fill=black,nonzero rule] (303.5900,225.7800) .. controls
+    (280.4500,225.7300) and (276.9200,248.1400) .. (276.8800,250.6200) .. controls
+    (276.9200,262.4400) and (285.4000,277.1700) .. (309.1600,279.4100) .. controls
+    (309.1600,279.4100) and (313.7700,280.0900) .. (313.6600,283.0900) .. controls
+    (313.7700,285.9400) and (313.7800,284.9700) .. (312.3400,286.5300) .. controls
+    (310.8500,288.2300) and (298.5500,299.6400) .. (298.3100,302.6600) .. controls
+    (296.9800,316.8800) and (300.1800,335.2800) .. (303.0900,345.9400) .. controls
+    (303.0900,345.9400) and (306.6000,354.7800) .. (303.8800,361.0000) .. controls
+    (301.0600,367.4700) and (289.0000,397.7400) .. (288.0000,399.5600) .. controls
+    (285.1300,404.8200) and (284.0000,409.1400) .. (285.8800,415.4100) .. controls
+    (284.6600,416.1100) and (264.4700,428.8800) .. (264.4700,428.8800) .. controls
+    (264.4700,428.8800) and (261.3500,421.5100) .. (253.5900,419.3800) .. controls
+    (245.7000,417.1100) and (239.1800,418.1800) .. (232.7200,405.9100) --
+    (226.8800,396.4100) .. controls (226.8800,396.4100) and (225.6700,392.9300) ..
+    (219.7500,391.6200) .. controls (213.9300,390.4900) and (206.1000,388.3000) ..
+    (202.8100,388.4700) .. controls (198.6100,388.8800) and (195.2200,387.7300) ..
+    (189.5900,394.2800) .. controls (185.0800,399.5300) and (112.8800,524.4700) ..
+    (112.8800,524.4700) -- (286.4100,524.4700) .. controls (286.4100,524.4700) and
+    (290.7100,524.0000) .. (289.5900,519.9700) .. controls (288.2700,516.1900) and
+    (267.3800,441.8100) .. (267.3800,441.8100) -- (291.4400,426.7500) .. controls
+    (291.4400,426.7500) and (293.3600,429.9900) .. (300.4400,426.7500) .. controls
+    (307.3800,423.4800) and (309.9700,421.7500) .. (309.9700,421.7500) .. controls
+    (309.9700,421.7500) and (313.9200,421.4900) .. (313.4100,413.0300) .. controls
+    (316.1700,411.3100) and (341.9700,395.0600) .. (341.9700,395.0600) .. controls
+    (341.9700,395.0600) and (332.8400,417.6000) .. (331.9100,427.5600) .. controls
+    (331.2100,437.4600) and (327.6900,504.1200) .. (327.6900,504.1200) .. controls
+    (327.6900,504.1200) and (328.1300,509.2200) .. (324.7800,510.2200) .. controls
+    (321.2800,511.1700) and (305.7200,515.5000) .. (305.7200,515.5000) .. controls
+    (305.7200,515.5000) and (301.3900,516.2100) .. (301.5000,519.7200) .. controls
+    (301.3900,523.0400) and (303.0200,524.3400) .. (304.9400,524.4700) .. controls
+    (306.9300,524.3400) and (355.7200,524.4700) .. (355.7200,524.4700) .. controls
+    (355.7200,524.4700) and (360.7100,525.0000) .. (361.5300,518.4100) .. controls
+    (362.3400,511.9900) and (371.5900,445.5000) .. (371.5900,445.5000) .. controls
+    (371.5900,445.5000) and (367.5700,444.4500) .. (367.6200,440.5000) .. controls
+    (367.5700,436.3200) and (367.5600,433.2000) .. (368.9400,431.5000) .. controls
+    (370.1600,429.9500) and (384.8300,413.0400) .. (394.8800,389.5300) .. controls
+    (396.4200,386.0300) and (397.5600,389.1300) .. (397.7800,390.0600) .. controls
+    (398.2100,390.7500) and (417.2800,442.6600) .. (419.4700,444.7200) .. controls
+    (421.8400,446.5600) and (473.3600,488.2300) .. (474.5000,489.0900) .. controls
+    (475.6400,489.8600) and (478.9100,492.1100) .. (479.0000,499.3800) .. controls
+    (478.9100,506.7600) and (475.9700,512.6300) .. (473.9700,514.9700) .. controls
+    (472.0500,517.1900) and (468.8000,520.4500) .. (468.6900,521.8400) .. controls
+    (468.8000,523.3800) and (470.2800,524.3400) .. (471.3400,524.4700) .. controls
+    (472.5600,524.3400) and (479.2500,524.3400) .. (479.8100,524.4700) .. controls
+    (480.5500,524.3400) and (489.3400,525.0100) .. (495.4100,514.1900) .. controls
+    (501.7300,503.5300) and (513.1200,484.3400) .. (513.1200,484.3400) .. controls
+    (513.1200,484.3400) and (515.5800,480.5600) .. (512.0600,478.2500) .. controls
+    (508.4000,476.0100) and (502.7100,474.7100) .. (499.3800,471.1200) .. controls
+    (495.8600,467.5500) and (462.9400,429.6400) .. (462.3400,428.8800) .. controls
+    (461.9600,428.3400) and (457.7100,423.7600) .. (452.2800,426.2200) .. controls
+    (450.7000,424.0900) and (448.8400,421.2200) .. (448.8400,421.2200) .. controls
+    (448.8400,421.2200) and (439.4600,364.4600) .. (429.5300,340.4100) .. controls
+    (431.8000,339.0000) and (434.8100,336.7200) .. (434.8100,336.7200) .. controls
+    (434.8100,336.7200) and (442.7200,343.5500) .. (449.3800,336.4400) .. controls
+    (456.0900,329.2300) and (455.6000,329.4100) .. (454.4100,326.1600) .. controls
+    (453.3200,322.9000) and (452.8300,321.9100) .. (450.4400,320.5900) .. controls
+    (448.2700,319.3000) and (444.5200,315.5500) .. (444.6200,308.9700) .. controls
+    (444.5200,302.5400) and (441.7400,284.8000) .. (438.5300,277.2800) .. controls
+    (435.5500,269.8300) and (434.5600,261.5500) .. (422.9100,256.4400) .. controls
+    (404.4800,248.2100) and (379.8000,243.3100) .. (361.8100,247.9700) .. controls
+    (356.8300,249.3000) and (340.8200,261.0500) .. (339.3100,261.9700) .. controls
+    (337.8900,262.6800) and (331.6400,265.2600) .. (332.1900,259.8400) .. controls
+    (333.4500,247.4700) and (322.7500,225.7300) .. (303.5900,225.7800) --
+    cycle(394.8800,275.9700) .. controls (394.8800,275.9700) and
+    (408.4700,275.8400) .. (411.5300,276.2200) .. controls (414.3400,276.5000) and
+    (416.0300,280.1900) .. (416.0300,280.1900) -- (429.0000,325.8800) --
+    (424.2500,328.7800) .. controls (421.5800,323.2700) and (397.9000,287.2600) ..
+    (393.0300,280.4700) .. controls (389.9100,276.1000) and (394.8800,275.9700) ..
+    (394.8800,275.9700) -- cycle(331.0000,332.8100) .. controls
+    (331.5700,332.7900) and (332.2200,332.9700) .. (332.7200,333.2800) .. controls
+    (337.8300,336.2000) and (347.5100,344.5400) .. (355.7200,356.0000) .. controls
+    (356.7000,357.3200) and (355.7200,361.2800) .. (355.7200,361.2800) --
+    (348.5900,376.0600) .. controls (348.5900,376.0600) and (317.8500,395.3700) ..
+    (315.5000,396.9100) .. controls (312.9600,398.3000) and (311.5500,396.9300) ..
+    (313.9400,393.7500) .. controls (327.6400,375.1200) and (332.7200,353.0000) ..
+    (329.5300,335.1200) .. controls (329.2600,333.4800) and (330.0500,332.8500) ..
+    (331.0000,332.8100) -- cycle;
+    }
+    }
+%-------------------------------------
+

@@ -1,0 +1,30 @@
+hardstatus      on  
+hardstatus      alwayslastline
+hardstatus      string '%{= kG}[%{R}%S%{G}][%{R}%H%{G}] %-Lw%{= kG}%50>%n%f* [%{R}%t%{G}]%{-}%+Lw%<'
+defscrollback   1000
+startup_message off 
+
+attrcolor b ".I"
+termcapinfo xterm-256color 'Co#256:AB=\E[48;5;%dm:AF=\E[38;5;%dm'
+
+# huge scrollback buffer
+defscrollback 5000
+
+# no welcome message
+startup_message off 
+
+chdir '/home/acampove/Packages/RK'
+
+screen  -t code    1 bash 
+screen  -t test    2 bash 
+screen  -t run     3 bash 
+screen  -t install 4 bash 
+screen  -t ranger  5 ranger 
+
+# layouts
+layout autosave on
+layout new one 
+select 1
+layout attach one 
+layout select one 
+
