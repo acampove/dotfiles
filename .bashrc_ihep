@@ -1,101 +1,103 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-#unset PROMPT_COMMAND
-#PROMPT_COMMAND='printf "\033]0;%s@%s:%s\033\\" "${USER}" "${HOSTNAME%%.*}" "${PWD/#$HOME/~}"'
-#--------------------
-export _CONDOR_IHEP_JOB_ID=local_job
-export ZFIT_DISABLE_TF_WARNINGS=1
-
-export SFTDIR=/publicfs/ucas/user/campoverde/Packages/RK
-export EFFDIR=/publicfs/lhcb/user/campoverde/checks/Efficiencies/output/efficiencies
-export PFSDIR=/publicfs/ucas/user/campoverde
-export PKGDIR=$PFSDIR/Packages
-export GANDIR=$PFSDIR/gangadir_new/workspace/campoverde/LocalXML
-export OLDGAN=$PFSDIR/gangadir/workspace/campoverde/LocalXML
-export DECDIR=$PFSDIR/DecFiles/
-export CALDIR=$PFSDIR/calibration
-export YLDDIR=$PFSDIR/yields
-export MODDIR=$PFSDIR/models
-export SELDIR=$PFSDIR/selection
-export DATDIR=$PFSDIR/Data/RK
-export MVADIR=$PFSDIR/Data/RK/MVA
-export MONDIR=$PFSDIR/monitor
-export CERNBOX=$PFSDIR/.cernbox/
-export JOBSDB=$PFSDIR/dataset_manager/data/jobs.json
-export SHARED=$PFSDIR/Shared
-export DAVINCI=$PFSDIR/DaVinci
-export FINDIR=$PFSDIR/Test/sample_finder
-export SAMFIND=$FINDIR/py
-
-export TCKDB=$PFSDIR/Data/RK/TCK/
-export TRASH=$PFSDIR/.trash/
-export MPLCONFIGDIR=$PFSDIR/.matplotlib
-export KRBDIR=$PFSDIR/.krbdir/
-
-export LHCB_PFSDIR=/publicfs/lhcb/user/campoverde
-export HQMDIR=/publicfs/ucas/user/qi/public/RK/high_q2_yield_study
-export CASDIR=$LHCB_PFSDIR/Data/cache
-export ASLDIR=$CASDIR/tools/apply_selection
-export GANDIR=$LHCB_PFSDIR/Data/ganga
-export PRCDIR=$LHCB_PFSDIR/Data/model/prec
-export FITDIR=$LHCB_PFSDIR/Data/model/fits
-export DBBDIR=$LHCB_PFSDIR/Data/databases
-#--------------------
-export ROOTSYS=/cvmfs/sft.cern.ch/lcg/releases/ROOT/v6.22.06-1d426/x86_64-centos7-gcc8-opt/bin/root
-export JULIA_DEPOT_PATH=/publicfs/ucas/user/campoverde
-export JOBDIR=/publicfs/ucas/user/campoverde/Test/Jobdir
-export LOCKPRG='/bin/true'
-export PATH=/cvmfs/common.ihep.ac.cn/software/hepjob/bin:$PATH
-export HISTTIMEFORMAT="%d/%m/%y %T "
-
-alias condormont='watch hep_q -u campoverde'
-alias condor_rm='hep_rm'
-#alias screen='screen -T xterm-256color'
-alias less='less -r'
-alias ls='ls --color=auto'
-alias refresh='cd $HOME; cd -'
-alias pwd='pwd -P'
-alias venv='source $PFSDIR/.venv/bin/activate'
-alias sdiff='sdiff -bBWs -w 250'
-alias python=python3
-alias cpython='lb-conda default/2021-02-03 python'
-alias cbash='lb-conda default/2021-02-03 bash'
-alias clean='exec env -i /bin/bash'
-
-export VIMRUNTIME=$HOME/.local/usr/local/share/vim/vim82/
-export VISUAL=vim
-export EDITOR=$VISUAL
-export KRB5_CONFIG="/etc/krb5.conf:/afs/ihep.ac.cn/users/c/campoverde/.kerberos/krb5.conf"
-export TERM=xterm-256color
-
-export LCG_REL=LCG_100
-export ARCH=x86_64-centos7-gcc10-opt
-
-#Same as default but broken links do not flash
-export LS_COLORS="rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:"
-#-----------------------------------------------------
 #screen freezes with CRL-s, this fixes it:
 #https://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
 stty -ixon
 #-----------------------------------------------------
+export_vars()
+{
+    export _CONDOR_IHEP_JOB_ID=local_job
+    export ZFIT_DISABLE_TF_WARNINGS=1
+    export SFTDIR=/publicfs/ucas/user/campoverde/Packages/RK
+    export EFFDIR=/publicfs/lhcb/user/campoverde/checks/Efficiencies/output/efficiencies
+    export PFSDIR=/publicfs/ucas/user/campoverde
+    export PKGDIR=$PFSDIR/Packages
+    export GANDIR=$PFSDIR/gangadir_new/workspace/campoverde/LocalXML
+    export OLDGAN=$PFSDIR/gangadir/workspace/campoverde/LocalXML
+    export DECDIR=$PFSDIR/DecFiles/
+    export CALDIR=$PFSDIR/calibration
+    export YLDDIR=$PFSDIR/yields
+    export MODDIR=$PFSDIR/models
+    export SELDIR=$PFSDIR/selection
+    export DATDIR=$PFSDIR/Data/RK
+    export MVADIR=$PFSDIR/Data/RK/MVA
+    export MONDIR=$PFSDIR/monitor
+    export CERNBOX=$PFSDIR/.cernbox/
+    export JOBSDB=$PFSDIR/dataset_manager/data/jobs.json
+    export SHARED=$PFSDIR/Shared
+    export DAVINCI=$PFSDIR/DaVinci
+    export FINDIR=$PFSDIR/Test/sample_finder
+    export SAMFIND=$FINDIR/py
+
+    export TCKDB=$PFSDIR/Data/RK/TCK/
+    export TRASH=$PFSDIR/.trash/
+    export MPLCONFIGDIR=$PFSDIR/.matplotlib
+    export KRBDIR=$PFSDIR/.krbdir/
+
+    export LHCB_PFSDIR=/publicfs/lhcb/user/campoverde
+    export HQMDIR=/publicfs/ucas/user/qi/public/RK/high_q2_yield_study
+    export CASDIR=$LHCB_PFSDIR/Data/cache
+    export ASLDIR=$CASDIR/tools/apply_selection
+    export GANDIR=$LHCB_PFSDIR/Data/ganga
+    export PRCDIR=$LHCB_PFSDIR/Data/model/prec
+    export FITDIR=$LHCB_PFSDIR/Data/model/fits
+    export DBBDIR=$LHCB_PFSDIR/Data/databases
+    #--------------------
+    export ROOTSYS=/cvmfs/sft.cern.ch/lcg/releases/ROOT/v6.22.06-1d426/x86_64-centos7-gcc8-opt/bin/root
+    export JULIA_DEPOT_PATH=/publicfs/ucas/user/campoverde
+    export JOBDIR=/publicfs/ucas/user/campoverde/Test/Jobdir
+    export LOCKPRG='/bin/true'
+    export PATH=/cvmfs/common.ihep.ac.cn/software/hepjob/bin:$PATH
+    export HISTTIMEFORMAT="%d/%m/%y %T "
+
+    export VIMRUNTIME=$HOME/.local/usr/local/share/vim/vim82/
+    export VISUAL=vim
+    export EDITOR=$VISUAL
+    export KRB5_CONFIG="/etc/krb5.conf:/afs/ihep.ac.cn/users/c/campoverde/.kerberos/krb5.conf"
+    export TERM=xterm-256color
+
+    export LCG_REL=LCG_100
+    export ARCH=x86_64-centos7-gcc10-opt
+
+    # Same as default but broken links do not flash
+    export LS_COLORS="rs=0:di=38;5;27:ln=38;5;51:mh=44;38;5;15:pi=40;38;5;11:so=38;5;13:do=38;5;5:bd=48;5;232;38;5;11:cd=48;5;232;38;5;3:or=48;5;232;38;5;9:mi=01;48;5;232;38;5;15:su=48;5;196;38;5;15:sg=48;5;11;38;5;16:ca=48;5;196;38;5;226:tw=48;5;10;38;5;16:ow=48;5;10;38;5;21:st=48;5;21;38;5;15:ex=38;5;34:*.tar=38;5;9:*.tgz=38;5;9:*.arc=38;5;9:*.arj=38;5;9:*.taz=38;5;9:*.lha=38;5;9:*.lz4=38;5;9:*.lzh=38;5;9:*.lzma=38;5;9:*.tlz=38;5;9:*.txz=38;5;9:*.tzo=38;5;9:*.t7z=38;5;9:*.zip=38;5;9:*.z=38;5;9:*.Z=38;5;9:*.dz=38;5;9:*.gz=38;5;9:*.lrz=38;5;9:*.lz=38;5;9:*.lzo=38;5;9:*.xz=38;5;9:*.bz2=38;5;9:*.bz=38;5;9:*.tbz=38;5;9:*.tbz2=38;5;9:*.tz=38;5;9:*.deb=38;5;9:*.rpm=38;5;9:*.jar=38;5;9:*.war=38;5;9:*.ear=38;5;9:*.sar=38;5;9:*.rar=38;5;9:*.alz=38;5;9:*.ace=38;5;9:*.zoo=38;5;9:*.cpio=38;5;9:*.7z=38;5;9:*.rz=38;5;9:*.cab=38;5;9:*.jpg=38;5;13:*.jpeg=38;5;13:*.gif=38;5;13:*.bmp=38;5;13:*.pbm=38;5;13:*.pgm=38;5;13:*.ppm=38;5;13:*.tga=38;5;13:*.xbm=38;5;13:*.xpm=38;5;13:*.tif=38;5;13:*.tiff=38;5;13:*.png=38;5;13:*.svg=38;5;13:*.svgz=38;5;13:*.mng=38;5;13:*.pcx=38;5;13:*.mov=38;5;13:*.mpg=38;5;13:*.mpeg=38;5;13:*.m2v=38;5;13:*.mkv=38;5;13:*.webm=38;5;13:*.ogm=38;5;13:*.mp4=38;5;13:*.m4v=38;5;13:*.mp4v=38;5;13:*.vob=38;5;13:*.qt=38;5;13:*.nuv=38;5;13:*.wmv=38;5;13:*.asf=38;5;13:*.rm=38;5;13:*.rmvb=38;5;13:*.flc=38;5;13:*.avi=38;5;13:*.fli=38;5;13:*.flv=38;5;13:*.gl=38;5;13:*.dl=38;5;13:*.xcf=38;5;13:*.xwd=38;5;13:*.yuv=38;5;13:*.cgm=38;5;13:*.emf=38;5;13:*.axv=38;5;13:*.anx=38;5;13:*.ogv=38;5;13:*.ogx=38;5;13:*.aac=38;5;45:*.au=38;5;45:*.flac=38;5;45:*.mid=38;5;45:*.midi=38;5;45:*.mka=38;5;45:*.mp3=38;5;45:*.mpc=38;5;45:*.ogg=38;5;45:*.ra=38;5;45:*.wav=38;5;45:*.axa=38;5;45:*.oga=38;5;45:*.spx=38;5;45:*.xspf=38;5;45:"
+}
+#-----------------------------------------------------
+set_alias()
+{
+    alias condormont='watch hep_q -u campoverde'
+    alias condor_rm='hep_rm'
+    #alias screen='screen -T xterm-256color'
+    alias less='less -r'
+    alias ls='ls --color=auto'
+    alias refresh='cd $HOME; cd -'
+    alias pwd='pwd -P'
+    alias venv='source $PFSDIR/.venv/bin/activate'
+    alias sdiff='sdiff -bBWs -w 250'
+    alias python=python3
+    alias cpython='lb-conda default/2021-02-03 python'
+    alias cbash='lb-conda default/2021-02-03 bash'
+    alias clean='exec env -i /bin/bash'
+}
+#-----------------------------------------------------
 trash()
 {
     if [[ -z $TRASH ]];then
-	echo "Undefined variable TRASH"
-	kill -INT $$
+        echo "Undefined variable TRASH"
+        kill -INT $$
     fi
 
     DATEDIR=$(date | sed 's|\s|_|g' | sed 's|:|_|g')
     TARGETDIR=$TRASH/$DATEDIR
     mkdir -p $TARGETDIR
     if [[ ! -d $TARGETDIR ]];then
-	echo "Cannot create $TARGETDIR"
-	kill -INT $$
+        echo "Cannot create $TARGETDIR"
+        kill -INT $$
     fi
 
     for OBJ in ${@};do
-	echo "Removing $OBJ"
-	mv $OBJ $TARGETDIR
+        echo "Removing $OBJ"
+        mv $OBJ $TARGETDIR
     done
 }
 #-----------------------------------------------------
@@ -126,7 +128,7 @@ setLbEnv()
     SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
 
     if [ -f $SCRIPT ]; then
-	. $SCRIPT 
+        . $SCRIPT 
     fi
 }
 #-----------------------------------------------------
@@ -160,8 +162,8 @@ mountCERNBOX()
     TGT_DIR=/publicfs/ucas/user/campoverde/cernbox/
 
     if [[ ! -d $TGT_DIR ]];then
-	echo "Cannot find $MNT_DIR"
-	kill -INT $$
+        echo "Cannot find $MNT_DIR"
+        kill -INT $$
     fi
 
     sshfs -o idmap=user acampove@lxplus.cern.ch:$SRC_DIR $TGT_DIR
@@ -182,8 +184,8 @@ setView()
         source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh $ex_LCG_REL $ex_ARCH 
         return
     elif [[ ! -z $ex_LCG_REL ]] || [[ ! -z $ex_ARCH ]];then
-	echo "Both release and architecture are needed"
-	return
+        echo "Both release and architecture are needed"
+        return
     else
         source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh $LCG_REL $ARCH 
 
@@ -233,10 +235,10 @@ git_ac()
     FILES="$1"
     for FILE in ${FILES[@]};do
         if [[ ! -e $FILE ]];then
-	    echo "File/Directory $FILE not found"
-    	    kill -INT $$
-	else
-	    echo "Adding $FILE"
+            echo "File/Directory $FILE not found"
+            kill -INT $$
+        else
+            echo "Adding $FILE"
         fi
         git add $FILE
     done
@@ -254,16 +256,16 @@ get_job_list()
 {
 
     if [[ -z $1 ]];then
-	echo "Job ID argument needed"
-	return [1]
+        echo "Job ID argument needed"
+        return [1]
     else
-	JOBID=$1
+        JOBID=$1
     fi
 
     INDIR=$GANDIR/$JOBID
     if [[ ! -d $INDIR ]];then
-	echo "$INDIR not found"
-	return [1]
+        echo "$INDIR not found"
+        return [1]
     fi
 
     OFILE=${2:-"job_$JOBID.txt"}
@@ -276,23 +278,23 @@ conda_init()
     echo "~/.bashrc: Initializing conda"
     __conda_setup="$('/publicfs/ucas/user/campoverde/Packages/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
-	eval "$__conda_setup"
+        eval "$__conda_setup"
     else
-	if [ -f "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/conda.sh" ]; then
-	    . "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/conda.sh"  # commented out by conda initialize  # commented out by conda initialize
-	else
-	    export PATH="/publicfs/ucas/user/campoverde/Packages/mambaforge/bin:$PATH"
-	fi
+        if [ -f "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/conda.sh" ]; then
+            . "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/conda.sh"  # commented out by conda initialize  # commented out by conda initialize
+        else
+            export PATH="/publicfs/ucas/user/campoverde/Packages/mambaforge/bin:$PATH"
+        fi
     fi
     unset __conda_setup
 
     if [ -f "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/mamba.sh" ]; then
-	. "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/mamba.sh"
+        . "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/mamba.sh"
     fi
 }
 #-----------------------------------------------------
+export_vars
+set_alias
 setPrompt
 conda_init
-
-source ~/.bashrc_ext
 
