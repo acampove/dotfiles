@@ -10,3 +10,4 @@ elif [[ "$(hostname)" == "lxlogin"* ]];then
 else
     echo "Unrecognized host $(hostname), not using .bashrc file"
 fi
+
