@@ -12,10 +12,10 @@ km.set("n", "-", "ddp")
 km.set("n", "<leader>c", ":noh<cr>")
 
 -- Remove trailing spaces
-km.set("n", "<leader>s", ":%s/\\s\\+$//<cr>")
+km.set("n", "<leader>ss", ":%s/\\s\\+$//<cr>")
 
 -- Go to last file
-km.set("n", "<leader>l", ":e #<cr>")
+km.set("n", "<leader>ll", ":e #<cr>")
 
 km.set("n", "<leader>p", "<c-w>p ")
 km.set("n", "<leader>q", ":q<cr>")
