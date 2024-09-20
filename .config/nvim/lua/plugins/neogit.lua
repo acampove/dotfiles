@@ -9,5 +9,7 @@ return {
 		"ibhagwan/fzf-lua", -- optional
 		"echasnovski/mini.pick", -- optional
 	},
-	config = true,
+	config = function ()
+        require("neogit").setup({commit_editor={kind="split"}})
+	end,
 }
