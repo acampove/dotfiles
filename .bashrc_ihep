@@ -50,8 +50,7 @@ export_vars()
     export PATH=/cvmfs/common.ihep.ac.cn/software/hepjob/bin:$PATH
     export HISTTIMEFORMAT="%d/%m/%y %T "
 
-    export VIMRUNTIME=$HOME/.local/usr/local/share/vim/vim82/
-    export VISUAL=vim
+    export VISUAL=nvim
     export EDITOR=$VISUAL
     export KRB5_CONFIG="/etc/krb5.conf:/afs/ihep.ac.cn/users/c/campoverde/.kerberos/krb5.conf"
     export TERM=xterm-256color
@@ -65,9 +64,12 @@ export_vars()
 #-----------------------------------------------------
 set_alias()
 {
+    alias vim='nvim'
     alias condormont='watch hep_q -u campoverde'
     alias condor_rm='hep_rm'
-    #alias screen='screen -T xterm-256color'
+    alias mma='mamba activate'
+    alias mmd='mamba deactivate'
+    alias mmi='conda install'
     alias less='less -r'
     alias ls='ls --color=auto'
     alias refresh='cd $HOME; cd -'
