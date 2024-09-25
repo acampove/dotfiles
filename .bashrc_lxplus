@@ -1,0 +1,281 @@
+# .bashrc
+
+# Source global definitions
+if [ -f /etc/bashrc ]; then
+	. /etc/bashrc
+fi
+#--------------------------------------USEFUL STUFF---------------------
+export STKDIR=/afs/cern.ch/work/a/acampove/stack
+export RUCIO_ACCOUNT=acampove
+export JOBDIR=/afs/cern.ch/user/a/acampove/.grid_jobs/
+export ALRB_TutorialData=/afs/cern.ch/atlas/project/PAT/tutorial/cern-jan2018/
+export ATLAS_LOCAL_ROOT_BASE=/cvmfs/atlas.cern.ch/repo/ATLASLocalRootBase
+export EOSHOME=/eos/user/a/acampove/
+export EDITOR=vim
+#export KRBDIR=$EOSHOME/.krbdir/
+#export KRB5CCNAME=$KRBDIR/krb5cc
+export TERM=xterm-256color
+export DAVINCI=/afs/cern.ch/work/a/acampove/RK/DaVinci/
+export SAMFIND=/afs/cern.ch/work/a/acampove/RK/samplefinder/py/
+export PRIDIR=/afs/cern.ch/work/a/acampove/private
+
+export LCG_REL=LCG_97python3
+export ARCH=x86_64-centos7-gcc9-dbg
+
+alias vim=/afs/cern.ch/work/a/acampove/Packages/nvim/bin/nvim
+alias setupATLAS='source ${ATLAS_LOCAL_ROOT_BASE}/user/atlasLocalSetup.sh'
+alias setupViews="source /cvmfs/sft.cern.ch/lcg/views/setupViews.sh"
+alias getsize='du -h --max-depth=0'
+alias geos='cd /afs/cern.ch/work/a/acampove/EOS/atlas/user/a/acampove/'
+alias gbsm='cd /eos/atlas/atlascerngroupdisk/phys-beauty/BsMuMuRun2/'
+alias work='cd /afs/cern.ch/work/a/acampove'
+alias mma='conda activate'
+alias mmd='conda deactivate'
+alias mml='conda env list'
+alias mmr='conda env remove -n '
+#alias ganga='ganga --no-mon'
+alias ls='ls --color=auto'
+alias sdiff='sdiff -bBWs -w 250'
+#------------------------Condor--------------------
+alias condormont='watch condor_q'
+#------------------------TMUX----------------------
+alias tmuxn="tmux new -s"
+alias tmuxa="tmux attach -t"
+alias tmuxl="tmux list-sessions"
+#----------------#ZENITY NOTIFICATIONS--------------
+alias proc_end_msg='zenity --info --title="Notifier" --text="Process Finished"'
+#--------------------Utility------------------
+disk_usage()
+{
+    PATTERN=$1
+    du -s *$PATTERN* | awk -F " " '{printf("%s %s\n",$1,$2)}'
+}
+#--------------------AMI FUNCTIONS------------------
+ami_find_file()
+{
+ ami command GetInputFiles -lfn=$1
+}
+
+ami_provenance()
+{
+ ami command GetDatasetProv -logicalDatasetName=$1
+}
+
+ami_list_files()
+{
+ ami list files -LHC $1
+}
+
+ami_list_datasets()
+{
+  ami list datasets $1
+}
+#---------------------LHCb specific----------------
+setLHCb()
+{
+    if [ -f /cvmfs/lhcb.cern.ch/group_login.sh ]; then
+        . /cvmfs/lhcb.cern.ch/group_login.sh
+    fi  
+}
+#---------------------------------------------------
+setLbEnv()
+{
+    SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
+
+    if [ -f $SCRIPT ]; then
+        . $SCRIPT 
+    fi  
+}
+
+mountCERNBOX()
+{
+    SRC_DIR=/eos/home-a/acampove/
+    TGT_DIR=
+
+    if [[ ! -d $MNT_DIR ]];then
+        echo "Cannot find $MNT_DIR"
+        kill -INT $$
+    fi
+
+    sshfs -o idmap=user acampove@lxplus.cern.ch:$MNT_DIR $MNT_DIR
+}
+#---------------------------------------------------
+setView()
+{
+    if [[ ! -z $1 ]] && [[ ! -z $2 ]];then
+        LCG_REL=$1
+        ARCH=$2
+    fi
+
+    setupViews $LCG_REL $ARCH 
+
+    echo "Set:"
+    echo "LCG:$LCG_REL"
+    echo "ARCH:$ARCH"
+}
+#--------------------------------------------------
+listBKFiles()
+{
+    BKPATH=$1
+
+    if [[ -z $BKPATH ]];then
+        echo "Path needed"
+        kill -INT $$
+    fi
+
+    (
+    setLbEnv
+    lb-run LHCbDirac/prod bash -c "dirac-bookkeeping-get-files -B \"$BKPATH\"" 
+    )
+}
+#---------------------------------------------------
+mountPFS()
+{
+    if [[ ! -z $1 ]];then
+        MACHINE=$1
+    else
+        MACHINE=701
+    fi  
+
+    TM=10
+    SRC_DIR=/publicfs
+    TRG_DIR=/afs/cern.ch/work/a/acampove/pfs_ucas
+
+    if [[ ! -d $TRG_DIR ]];then
+        echo "Cannot find $TRG_DIR"
+        kill -INT $$
+    fi
+    
+    echo "Caching every $TM seconds in $MACHINE"
+    sshfs  -o cache_timeout=115200 -o attr_timeout=115200 -o cache_stat_timeout=$TM -o cache_dir_timeout=$TM -o cache_link_timeout=$TM -o auto_cache -o idmap=user  campoverde@lxslc$MACHINE.ihep.ac.cn:$SRC_DIR $TRG_DIR
+}
+
+unmountPFS()
+{
+    MNT_DIR=/afs/cern.ch/work/a/acampove/pfs_ucas
+    fusermount -u $MNT_DIR
+}
+#------------------------------
+getLFNFiles()
+{
+    LIST=$1
+    if [[ -z $LIST ]];then
+        echo "List of LFNs needed"
+        kill -INT $$
+    fi
+
+    if [[ ! -f $LIST ]];then
+        echo "File list $LIST not found"
+        kill -INT $$
+    fi
+
+    (
+    setLbEnv
+    while read FILE;do
+        echo "$FILE"
+        lb-run LHCbDirac/prod bash -c "dirac-dms-get-file \"$FILE\"" 
+    done < $LIST
+    )
+}
+#------------------GHOSTSCRIPT FUNCTIONS------------
+gs_merge()
+{
+    if [[ -z $1 ]] || [[ -z $2 ]];then
+        echo "Usage:"
+        echo "   gs_merge output.pdf *.pdf"
+        kill -INT $$
+    fi
+
+    gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite -sOutputFile="$1" $2 
+}
+#--------------------------------------------------
+conda_init()
+{
+    # >>> conda initialize >>>
+    # !! Contents within this block are managed by 'conda init' !!
+    __conda_setup="$('/afs/cern.ch/work/a/acampove/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
+    else
+        if [ -f "/afs/cern.ch/work/a/acampove/miniforge3/etc/profile.d/conda.sh" ]; then
+            . "/afs/cern.ch/work/a/acampove/miniforge3/etc/profile.d/conda.sh"
+        else
+            export PATH="/afs/cern.ch/work/a/acampove/miniforge3/bin:$PATH"
+        fi
+    fi
+    unset __conda_setup
+
+    if [ -f "/afs/cern.ch/work/a/acampove/miniforge3/etc/profile.d/mamba.sh" ]; then
+        . "/afs/cern.ch/work/a/acampove/miniforge3/etc/profile.d/mamba.sh"
+    fi
+    # <<< conda initialize <<<
+}
+#--------------------------------
+git_rc()
+{
+    FILES="$1"
+    for FILE in ${FILES[@]};do
+        git add -A $FILE
+    done
+
+    git commit -m "$2"
+}   
+
+git_ac()
+{
+    FILES="$1" 
+    for FILE in ${FILES[@]};do
+        if [[ ! -e $FILE ]];then
+            echo "File/Directory $FILE not found"
+            kill -INT $$
+        else
+            echo "Adding $FILE"
+        fi
+        git add $FILE
+    done
+    
+    git commit -m "$2"
+}
+
+git_acp()
+{      
+    git_ac "$1" "$2"
+    git push origin master
+}
+
+git_pull()
+{
+    BRANCH=$(git branch | grep "*" | awk -F " " '{print$2}')
+
+    git pull origin $BRANCH
+}
+#------------------#INSTALLED SOFTWARE--------------
+#export LD_LIBRARY_PATH+=/afs/cern.ch/user/a/acampove/Programs/lib
+#export LIBRARY_PATH+=/afs/cern.ch/user/a/acampove/Programs/lib
+
+#export CPLUS_INCLUDE_PATH+=$LLVM_DIR/include
+#export C_INCLUDE_PATH+=$LLVM_DIR/include
+export CERNBOX="/eos/user/a/acampove/"
+export INSTALL_DIR="/afs/cern.ch/work/a/acampove/Packages/"
+export KRB5_CONFIG="/etc/krb5.conf:/afs/cern.ch/user/a/acampove/.kerberos/krb5.conf"
+export KRBDIR="/tmp/"
+export CONDIR=/afs/cern.ch/work/a/acampove/condir
+
+#export GANGA_CONFIG_PATH=GangaLHCb/LHCb.ini
+#export GANGA_SITE_CONFIG_AREA=/cvmfs/lhcb.cern.ch/lib/GangaConfig/config
+#export PYTHONPATH=$PYTHONPATH:/cvmfs/ganga.cern.ch/Ganga/install/LATEST/lib/python3.6/site-packages/
+#PATH+=":/afs/cern.ch/user/a/acampove/Programs/usr/local/bin/:/afs/cern.ch/user/a/acampove/.local/bin/"
+#--------------------------------------------------
+export SKDR=/afs/cern.ch/work/a/acampove/stack
+export EFOP=$SKDR/DaVinci/HltEfficiencyChecker/options
+export EFSC=$SKDR/DaVinci/HltEfficiencyChecker/scripts
+export RXDR=/afs/cern.ch/work/a/acampove/Packages/RK/rx_hlt_mva
+#--------------------------------------------------
+shopt -s direxpand
+
+export PROMPT_COMMAND=''
+
+conda_init
+
+export PATH+=:$HOME/.local/bin
+
