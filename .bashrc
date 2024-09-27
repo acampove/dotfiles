@@ -30,6 +30,9 @@ if   [[ "$(hostname)" == "ubuntu"*  ]];then
 elif [[ "$(hostname)" == "lxlogin"* ]];then
     echo "Running .bashrc for IHEP"
     source ~/.bashrc_ihep
+elif [[ "$(hostname)" == "lxplus"* ]];then
+    echo "Running .bashrc for LXPLUS"
+    source ~/.bashrc_lxplus
 else
     echo "Unrecognized host $(hostname), not using .bashrc file"
 fi
