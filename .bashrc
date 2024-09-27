@@ -18,7 +18,7 @@ set_alias()
     #------------------------------------------------------------------
     alias tmuxn="tmux new -s"
     alias tmuxa="tmux attach -t"
-    alias tmuxl="tmux list-sessions"
+    alias tmuxl="tmux list-sessions | column -t"
 }
 #------------------------------------------------------------------
 set_alias
