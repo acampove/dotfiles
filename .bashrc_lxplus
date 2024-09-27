@@ -29,13 +29,21 @@ alias getsize='du -h --max-depth=0'
 alias geos='cd /afs/cern.ch/work/a/acampove/EOS/atlas/user/a/acampove/'
 alias gbsm='cd /eos/atlas/atlascerngroupdisk/phys-beauty/BsMuMuRun2/'
 alias work='cd /afs/cern.ch/work/a/acampove'
-alias mma='conda activate'
 alias mmd='conda deactivate'
 alias mml='conda env list'
 alias mmr='conda env remove -n '
 #alias ganga='ganga --no-mon'
 alias ls='ls --color=auto'
 alias sdiff='sdiff -bBWs -w 250'
+#--------------------------------------------
+mma()
+{
+    VENV=$1
+    conda activate $VENV
+    if [[ "$VENV" == "rk" ]];then
+        eval "$(fzf --bash)"
+    fi
+}
 #------------------------Condor--------------------
 alias condormont='watch condor_q'
 #------------------------TMUX----------------------
