@@ -10,6 +10,18 @@ setLbEnv()
     fi
 }
 #------------------------------------------------------------------
+env_to_clipboard()
+{
+    # Function used to put argument in clipboard
+    EVAR=$1
+
+    if [[ -z $EVAR ]];then
+        echo "No variable passed as arg"
+        exit 1
+    fi
+
+}
+#------------------------------------------------------------------
 set_alias()
 {
     echo "Setting common aliases"
