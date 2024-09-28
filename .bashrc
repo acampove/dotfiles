@@ -10,16 +10,25 @@ setLbEnv()
     fi
 }
 #------------------------------------------------------------------
-env_to_clipboard()
+to_clipboard()
 {
     # Function used to put argument in clipboard
-    EVAR=$1
+    DATA=$1
 
-    if [[ -z $EVAR ]];then
+    if [[ -z $DATA ]];then
         echo "No variable passed as arg"
         exit 1
     fi
 
+    which xclip > /dev/null
+    if [[ $? -ne 0 ]];then
+        echo "xclip not found"
+        exit 1
+    fi
+
+    echo $DATA | xclip -selection clipboard
+
+    echo "Copied \"$DATA\" to clipboard"
 }
 #------------------------------------------------------------------
 set_alias()
