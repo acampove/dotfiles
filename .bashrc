@@ -46,6 +46,12 @@ set_alias()
     alias vim="nvim"
 }
 #------------------------------------------------------------------
+lxplus()
+{
+    MACHINE=$1
+    ssh -4 -D 8080 acampove@lxplus$MACHINE.cern.ch
+}
+#------------------------------------------------------------------
 set_alias
 
 if   [[ "$(hostname)" == "almalinux"*  ]];then
