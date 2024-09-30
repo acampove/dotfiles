@@ -51,6 +51,17 @@ lxplus()
     MACHINE=$1
     ssh -4 -D 8080 acampove@lxplus$MACHINE.cern.ch
 }
+#-----------------------------------------------------
+ihep()
+{
+    if [[ -z $1 ]];then
+        ssh -X campoverde@lxlogin.ihep.ac.cn
+    elif [[ $1 =~ "^7[0-9]{2}$:" ]];then
+        ssh -X campoverde@lxslc$1.ihep.ac.cn
+    else
+        ssh -X campoverde@lxlogin$1.ihep.ac.cn
+    fi
+}
 #------------------------------------------------------------------
 set_alias
 

@@ -116,17 +116,6 @@ set_vars()
     export ZFIT_DISABLE_TF_WARNINGS=1
 }
 #-----------------------------------------------------
-ihep()
-{
-    if [[ -z $1 ]];then
-        ssh -X campoverde@lxlogin.ihep.ac.cn
-    elif [[ $1 =~ "^7[0-9]{2}$:" ]];then
-        ssh -X campoverde@lxslc$1.ihep.ac.cn
-    else
-        ssh -X campoverde@lxlogin$1.ihep.ac.cn
-    fi
-}
-#-----------------------------------------------------
 pip_publish()
 {
     rm -rf dist bdist_wheel
