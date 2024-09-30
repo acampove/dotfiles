@@ -40,11 +40,18 @@ set_alias()
     alias tmuxn="tmux new -s"
     alias tmuxa="tmux attach -t"
     alias tmuxl="tmux list-sessions | column -t"
+    #------------------------------------------------------------------
+    #VIM
+    #------------------------------------------------------------------
+    alias vim="nvim"
 }
 #------------------------------------------------------------------
 set_alias
 
-if   [[ "$(hostname)" == "ubuntu"*  ]];then
+if   [[ "$(hostname)" == "almalinux"*  ]];then
+    echo "Running .bashrc for almalinux"
+    source ~/.bashrc_almalinux
+elif [[ "$(hostname)" == "ubuntu"*  ]];then
     echo "Running .bashrc for laptop"
     source ~/.bashrc_laptop
     source ~/.bashrc_laptop_ext
