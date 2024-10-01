@@ -42,6 +42,17 @@ set_alias()
     alias tmuxl="tmux list-sessions | column -t"
 }
 #------------------------------------------------------------------
+set_fzf()
+{
+    which fzf > /dev/null
+
+    if [[ $? -ne 0 ]];then
+        return
+    fi
+
+    eval "$(fzf --bash)"
+}
+#------------------------------------------------------------------
 set_alias
 
 if   [[ "$(hostname)" == "ubuntu"*  ]];then
