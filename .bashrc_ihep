@@ -47,7 +47,7 @@ export_vars()
     export JULIA_DEPOT_PATH=/publicfs/ucas/user/campoverde
     export JOBDIR=/publicfs/ucas/user/campoverde/Test/Jobdir
     export LOCKPRG='/bin/true'
-    export PATH=/cvmfs/common.ihep.ac.cn/software/hepjob/bin:$PATH
+    export PATH=/cvmfs/common.ihep.ac.cn/software/hepjob/bin:$HOME/.local/bin:$PATH
     export HISTTIMEFORMAT="%d/%m/%y %T "
 
     export VISUAL=nvim
@@ -67,7 +67,6 @@ set_alias()
     alias vim='nvim'
     alias condormont='watch hep_q -u campoverde'
     alias condor_rm='hep_rm'
-    alias mma='mamba activate'
     alias mmd='mamba deactivate'
     alias mmi='conda install'
     alias less='less -r'
@@ -80,6 +79,15 @@ set_alias()
     alias cpython='lb-conda default/2021-02-03 python'
     alias cbash='lb-conda default/2021-02-03 bash'
     alias clean='exec env -i /bin/bash'
+}
+#-----------------------------------------------------
+mma()
+{
+    VENV=$1
+
+    mamba activate $VENV
+
+    set_fzf
 }
 #-----------------------------------------------------
 trash()
