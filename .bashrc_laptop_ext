@@ -38,12 +38,6 @@ set_alias()
     #------------------------------------------------------------------
 }
 #------------------------------------------------------------------
-lxplus()
-{
-    MACHINE=$1
-    ssh -4 -D 8080 acampove@lxplus$MACHINE.cern.ch
-}
-#------------------------------------------------------------------
 set_home()
 {
     HOSTNAME=$(hostname)
@@ -120,17 +114,6 @@ set_vars()
     export YLDDIR=$PFSDIR/yields
 
     export ZFIT_DISABLE_TF_WARNINGS=1
-}
-#-----------------------------------------------------
-ihep()
-{
-    if [[ -z $1 ]];then
-        ssh -X campoverde@lxlogin.ihep.ac.cn
-    elif [[ $1 =~ "^7[0-9]{2}$:" ]];then
-        ssh -X campoverde@lxslc$1.ihep.ac.cn
-    else
-        ssh -X campoverde@lxlogin$1.ihep.ac.cn
-    fi
 }
 #-----------------------------------------------------
 pip_publish()

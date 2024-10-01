@@ -40,6 +40,27 @@ set_alias()
     alias tmuxn="tmux new -s"
     alias tmuxa="tmux attach -t"
     alias tmuxl="tmux list-sessions | column -t"
+    #------------------------------------------------------------------
+    #VIM
+    #------------------------------------------------------------------
+    alias vim="nvim"
+}
+#------------------------------------------------------------------
+lxplus()
+{
+    MACHINE=$1
+    ssh -4 -D 8080 acampove@lxplus$MACHINE.cern.ch
+}
+#-----------------------------------------------------
+ihep()
+{
+    if [[ -z $1 ]];then
+        ssh -X campoverde@lxlogin.ihep.ac.cn
+    elif [[ $1 =~ "^7[0-9]{2}$:" ]];then
+        ssh -X campoverde@lxslc$1.ihep.ac.cn
+    else
+        ssh -X campoverde@lxlogin$1.ihep.ac.cn
+    fi
 }
 #------------------------------------------------------------------
 set_fzf()
@@ -55,7 +76,10 @@ set_fzf()
 #------------------------------------------------------------------
 set_alias
 
-if   [[ "$(hostname)" == "ubuntu"*  ]];then
+if   [[ "$(hostname)" == "almalinux"*  ]];then
+    echo "Running .bashrc for almalinux"
+    source ~/.bashrc_almalinux
+elif [[ "$(hostname)" == "ubuntu"*  ]];then
     echo "Running .bashrc for laptop"
     source ~/.bashrc_laptop
     source ~/.bashrc_laptop_ext
