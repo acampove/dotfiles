@@ -92,3 +92,5 @@ elif [[ "$(hostname)" == "lxplus"* ]];then
 else
     echo "Unrecognized host $(hostname), not using .bashrc file"
 fi
+
+shopt -s direxpand
