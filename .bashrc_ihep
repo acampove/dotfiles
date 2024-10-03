@@ -8,6 +8,7 @@ export_vars()
 {
     export _CONDOR_IHEP_JOB_ID=local_job
     export ZFIT_DISABLE_TF_WARNINGS=1
+    export VENVS=/publicfs/ucas/user/campoverde/venvs
     export SFTDIR=/publicfs/ucas/user/campoverde/Packages/RK
     export EFFDIR=/publicfs/lhcb/user/campoverde/checks/Efficiencies/output/efficiencies
     export PFSDIR=/publicfs/ucas/user/campoverde
