@@ -66,8 +66,6 @@ set_alias()
     alias vim='nvim'
     alias condormont='watch hep_q -u campoverde'
     alias condor_rm='hep_rm'
-    alias mmd='mamba deactivate'
-    alias mmi='conda install'
     alias less='less -r'
     alias ls='ls --color=auto'
     alias refresh='cd $HOME; cd -'
@@ -78,6 +76,11 @@ set_alias()
     alias cpython='lb-conda default/2021-02-03 python'
     alias cbash='lb-conda default/2021-02-03 bash'
     alias clean='exec env -i /bin/bash'
+    #Mamba
+    alias mmc='mamba create -n'
+    alias mmd='mamba deactivate'
+    alias mmi='mamba install'
+    alias mml='mamba env list'
 }
 #-----------------------------------------------------
 mma()
