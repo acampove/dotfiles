@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 
-#screen freezes with CRL-s, this fixes it:
-#https://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
-stty -ixon
 #-----------------------------------------------------
 export_vars()
 {
@@ -53,7 +50,7 @@ export_vars()
     export HISTTIMEFORMAT="%d/%m/%y %T "
 
     export VISUAL=nvim
-    export EDITOR=$VISUAL
+    export EDITOR=/usr/bin/vim
     export KRB5_CONFIG="/etc/krb5.conf:/afs/ihep.ac.cn/users/c/campoverde/.kerberos/krb5.conf"
     export TERM=xterm-256color
 
