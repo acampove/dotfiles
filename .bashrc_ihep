@@ -34,6 +34,7 @@ export_vars()
     export TRASH=$PFSDIR/.trash/
     export MPLCONFIGDIR=$PFSDIR/.matplotlib
     export KRBDIR=$PFSDIR/.krbdir/
+    export KRB5CCNAME=$KRBDIR/krb5cc_IHEP
 
     export LHCB_PFSDIR=/publicfs/lhcb/user/campoverde
     export HQMDIR=/publicfs/ucas/user/qi/public/RK/high_q2_yield_study
