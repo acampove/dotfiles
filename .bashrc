@@ -81,6 +81,9 @@ customize()
 
     #screen freezes with CRL-s, this fixes it:
     #https://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
+
+    #Remove inappropiate ioctl...
+    #https://stackoverflow.com/a/25391867/5483727
     [[ $- == *i* ]] && stty -ixon
 }
 #------------------------------------------------------------------
