@@ -76,20 +76,6 @@ set_alias()
     alias cpython='lb-conda default/2021-02-03 python'
     alias cbash='lb-conda default/2021-02-03 bash'
     alias clean='exec env -i /bin/bash'
-    #Mamba
-    alias mmc='mamba create -n'
-    alias mmd='mamba deactivate'
-    alias mmi='mamba install'
-    alias mml='mamba env list'
-}
-#-----------------------------------------------------
-mma()
-{
-    VENV=$1
-
-    mamba activate $VENV
-
-    set_fzf
 }
 #-----------------------------------------------------
 trash()

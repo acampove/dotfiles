@@ -44,6 +44,23 @@ set_alias()
     #VIM
     #------------------------------------------------------------------
     alias vim="nvim"
+    #------------------------------------------------------------------
+    #Mamba
+    #------------------------------------------------------------------
+    alias mmc='mamba create -n'
+    alias mmd='mamba deactivate'
+    alias mmi='mamba install'
+    alias mml='mamba env list'
+    alias mmr='mamba env remove -n'
+}
+#-----------------------------------------------------
+mma()
+{
+    VENV=$1
+
+    mamba activate $VENV
+
+    set_fzf
 }
 #------------------------------------------------------------------
 lxplus()
