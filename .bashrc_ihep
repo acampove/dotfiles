@@ -227,6 +227,17 @@ grantPermissions()
     setfacl -R -m u:$PERSON:rwX $DIRECTORY
 }
 #-----------------------------------------------------
+# Authenticate
+#-----------------------------------------------------
+authenticate()
+{
+    aklog
+
+    if [[ $? -ne 0 ]];then
+        echo "Could not authenticate!!!"
+    fi
+}
+#-----------------------------------------------------
 #Git
 #-----------------------------------------------------
 git_rc()
@@ -306,4 +317,5 @@ export_vars
 set_alias
 setPrompt
 conda_init
+authenticate
 
