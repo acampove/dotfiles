@@ -65,7 +65,7 @@ ihep()
 #------------------------------------------------------------------
 set_fzf()
 {
-    which fzf > /dev/null
+    which fzf > /dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
         return
@@ -81,7 +81,7 @@ customize()
 
     #screen freezes with CRL-s, this fixes it:
     #https://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
-    stty -ixon
+    [[ $- == *i* ]] && stty -ixon
 }
 #------------------------------------------------------------------
 call_machine_bash()
