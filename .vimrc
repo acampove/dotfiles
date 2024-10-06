@@ -1,18 +1,5 @@
 
 "------------------------------------
-"Plugins
-"------------------------------------
-call plug#begin()
-Plug 'joshdick/onedark.vim'
-Plug 'pacokwon/onedarkhc.vim'
-Plug 'sainnhe/everforest'
-Plug 'rafi/awesome-vim-colorschemes'
-Plug 'dense-analysis/ale'
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-call plug#end()
-"------------------------------------
 "vim fugitive
 "------------------------------------
 
@@ -63,7 +50,6 @@ let g:ale_linters = { 'python': ['flake8']}
 "------------------------------------
 "Colorsheme
 "------------------------------------
-colorscheme challenger_deep 
 set background=dark
 let g:everforest_background   = 'soft'
 "------------------------------------

@@ -44,6 +44,23 @@ set_alias()
     #VIM
     #------------------------------------------------------------------
     alias vim="nvim"
+    #------------------------------------------------------------------
+    #Mamba
+    #------------------------------------------------------------------
+    alias mmc='mamba create -n'
+    alias mmd='mamba deactivate'
+    alias mmi='mamba install'
+    alias mml='mamba env list'
+    alias mmr='mamba env remove -n'
+}
+#-----------------------------------------------------
+mma()
+{
+    VENV=$1
+
+    mamba activate $VENV
+
+    set_fzf
 }
 #------------------------------------------------------------------
 lxplus()
@@ -65,7 +82,7 @@ ihep()
 #------------------------------------------------------------------
 set_fzf()
 {
-    which fzf > /dev/null
+    which fzf > /dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
         return
@@ -74,23 +91,39 @@ set_fzf()
     eval "$(fzf --bash)"
 }
 #------------------------------------------------------------------
+customize()
+{
+    # Prevent tab from escaping the $ to \$
+    shopt -s direxpand
+
+    #screen freezes with CRL-s, this fixes it:
+    #https://unix.stackexchange.com/questions/12107/how-to-unfreeze-after-accidentally-pressing-ctrl-s-in-a-terminal
+
+    #Remove inappropiate ioctl...
+    #https://stackoverflow.com/a/25391867/5483727
+    [[ $- == *i* ]] && stty -ixon
+}
+#------------------------------------------------------------------
+call_machine_bash()
+{
+    if   [[ "$(hostname)" == "almalinux"*  ]];then
+        echo "Running .bashrc for almalinux"
+        source ~/.bashrc_almalinux
+    elif [[ "$(hostname)" == "ubuntu"*  ]];then
+        echo "Running .bashrc for laptop"
+        source ~/.bashrc_laptop
+        source ~/.bashrc_laptop_ext
+    elif [[ "$(hostname)" == "lxlogin"* ]];then
+        echo "Running .bashrc for IHEP"
+        source ~/.bashrc_ihep
+    elif [[ "$(hostname)" == "lxplus"* ]];then
+        echo "Running .bashrc for LXPLUS"
+        source ~/.bashrc_lxplus
+    else
+        echo "Unrecognized host $(hostname), not using .bashrc file"
+    fi
+}
+#------------------------------------------------------------------
 set_alias
-
-if   [[ "$(hostname)" == "almalinux"*  ]];then
-    echo "Running .bashrc for almalinux"
-    source ~/.bashrc_almalinux
-elif [[ "$(hostname)" == "ubuntu"*  ]];then
-    echo "Running .bashrc for laptop"
-    source ~/.bashrc_laptop
-    source ~/.bashrc_laptop_ext
-elif [[ "$(hostname)" == "lxlogin"* ]];then
-    echo "Running .bashrc for IHEP"
-    source ~/.bashrc_ihep
-elif [[ "$(hostname)" == "lxplus"* ]];then
-    echo "Running .bashrc for LXPLUS"
-    source ~/.bashrc_lxplus
-else
-    echo "Unrecognized host $(hostname), not using .bashrc file"
-fi
-
-shopt -s direxpand
+customize
+call_machine_bash
