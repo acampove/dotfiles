@@ -26,7 +26,11 @@ to_clipboard()
         exit 1
     fi
 
-    echo $DATA | xclip -selection clipboard
+    if [[ -f $DATA ]];then
+        cat  $DATA | xclip -selection clipboard
+    else
+        echo $DATA | xclip -selection clipboard
+    fi
 
     echo "Copied \"$DATA\" to clipboard"
 }
