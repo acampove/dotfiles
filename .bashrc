@@ -47,11 +47,31 @@ set_alias()
     #------------------------------------------------------------------
     #Mamba
     #------------------------------------------------------------------
-    alias mmc='mamba create -n'
-    alias mmd='mamba deactivate'
-    alias mmi='mamba install'
-    alias mml='mamba env list'
-    alias mmr='mamba env remove -n'
+    set_mamba_name
+
+    alias mmc='$MAMBA create -n'
+    alias mmd='$MAMBA deactivate'
+    alias mmi='$MAMBA install'
+    alias mml='$MAMBA env list'
+    alias mmr='$MAMBA env remove -n'
+}
+#-----------------------------------------------------
+set_mamba_name()
+{
+    which mamba > /dev/null
+    if [[ $? -eq 0 ]];then
+        export MAMBA=mamba
+        return
+    fi
+
+    which micromamba > /dev/null
+    if [[ $? -eq 0 ]];then
+        export MAMBA=micromamba
+        return
+    fi
+
+    echo "Neither mamba nor micromamba found"
+    exit 1
 }
 #-----------------------------------------------------
 mma()
