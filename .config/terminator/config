@@ -10,6 +10,7 @@
     show_titlebar = False
     scrollbar_position = hidden
     scrollback_lines = 50000
+    use_system_font = False
   [[Dark]]
     cursor_color = "#aaaaaa"
     foreground_color = "#ffffff"
