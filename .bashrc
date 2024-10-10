@@ -75,7 +75,6 @@ set_mamba_name()
     fi
 
     echo "Neither mamba nor micromamba found"
-    exit 1
 }
 #-----------------------------------------------------
 mma()
