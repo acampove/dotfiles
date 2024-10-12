@@ -137,6 +137,9 @@ call_machine_bash()
     if   [[ "$(hostname)" == "almalinux"*  ]];then
         echo "Running .bashrc for almalinux"
         source ~/.bashrc_almalinux
+    elif [[ "$(hostname)" == "thinkpad"*   ]];then
+        echo "Running .bashrc for almalinux"
+        source ~/.bashrc_almalinux
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
         source ~/.bashrc_laptop
