@@ -102,13 +102,8 @@ lxplus()
 #-----------------------------------------------------
 ihep()
 {
-    if [[ -z $1 ]];then
-        ssh -X campoverde@lxlogin.ihep.ac.cn
-    elif [[ $1 =~ "^7[0-9]{2}$:" ]];then
-        ssh -X campoverde@lxslc$1.ihep.ac.cn
-    else
-        ssh -X campoverde@lxlogin$1.ihep.ac.cn
-    fi
+    MACHNE=$1
+    ssh -4 -X campoverde@lxlogin$MACHNE.ihep.ac.cn
 }
 #------------------------------------------------------------------
 set_fzf()
