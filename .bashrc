@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+set_env()
+{
+    export EDITOR=nvim
+    export VISUAL=nvim
+}
+#------------------------------------------------------------------
 setLbEnv()
 {
     SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
@@ -155,6 +161,7 @@ call_machine_bash()
     fi
 }
 #------------------------------------------------------------------
+set_env
 set_alias
 customize
 call_machine_bash
