@@ -83,7 +83,7 @@ mma()
 {
     VENV=$1
 
-    mamba activate $VENV
+    $MAMBA activate $VENV
 
     set_fzf
 }
