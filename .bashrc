@@ -62,15 +62,17 @@ set_alias()
 #-----------------------------------------------------
 set_mamba_name()
 {
-    which mamba > /dev/null
+    which mamba > /dev/null 2>&1
     if [[ $? -eq 0 ]];then
         export MAMBA=mamba
+        echo "Using $MAMBA"
         return
     fi
 
-    which micromamba > /dev/null
+    which micromamba > /dev/null 2>&1
     if [[ $? -eq 0 ]];then
         export MAMBA=micromamba
+        echo "Using $MAMBA"
         return
     fi
 
