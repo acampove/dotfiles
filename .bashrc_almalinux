@@ -1,14 +1,5 @@
 # .bashrc
 
-eval $(fzf --bash)
-
-#----------------------------
-#Mamba
-#----------------------------
-alias mma="micromamba activate"
-alias mmd="micromamba deactivate"
-#----------------------------
-
 # Source global definitions
 if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
