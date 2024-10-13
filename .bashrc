@@ -120,6 +120,19 @@ set_fzf()
     eval "$(fzf --bash)"
 }
 #------------------------------------------------------------------
+set_java()
+{
+    which java > /dev/null 2>&1
+
+    if [[ $? -ne 0 ]];then
+        echo "Java not found"
+        return
+    fi
+
+    export JAVA_HOME=$(readlink -f $(which java) | sed 's|/bin/java||g')
+    echo "JAVA run time found, JAVA_HOME=$JAVA_HOME"
+}
+#------------------------------------------------------------------
 customize()
 {
     # Prevent tab from escaping the $ to \$
@@ -157,6 +170,7 @@ call_machine_bash()
 }
 #------------------------------------------------------------------
 set_env
+set_java
 set_alias
 customize
 call_machine_bash
