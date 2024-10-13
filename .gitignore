@@ -1,3 +1,4 @@
 .idea/
 bashrc_ext.sh
 .config/nvim/lazy-lock.json
+.config/nvim/en.utf-8*
