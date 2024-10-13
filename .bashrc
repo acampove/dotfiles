@@ -111,7 +111,7 @@ set_fzf()
     which fzf > /dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
-	echo "fzf not found, not initializing it"
+	    echo "fzf not found, not initializing it"
         return
     fi
 
