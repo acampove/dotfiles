@@ -1,6 +1,12 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+set_env()
+{
+    export EDITOR=nvim
+    export VISUAL=nvim
+}
+#------------------------------------------------------------------
 setLbEnv()
 {
     SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
@@ -26,7 +32,11 @@ to_clipboard()
         exit 1
     fi
 
-    echo $DATA | xclip -selection clipboard
+    if [[ -f $DATA ]];then
+        cat  $DATA | xclip -selection clipboard
+    else
+        echo $DATA | xclip -selection clipboard
+    fi
 
     echo "Copied \"$DATA\" to clipboard"
 }
@@ -47,18 +57,39 @@ set_alias()
     #------------------------------------------------------------------
     #Mamba
     #------------------------------------------------------------------
-    alias mmc='mamba create -n'
-    alias mmd='mamba deactivate'
-    alias mmi='mamba install'
-    alias mml='mamba env list'
-    alias mmr='mamba env remove -n'
+    set_mamba_name
+
+    alias mmc='$MAMBA create -n'
+    alias mmd='$MAMBA deactivate'
+    alias mmi='$MAMBA install'
+    alias mml='$MAMBA env list'
+    alias mmr='$MAMBA env remove -n'
+}
+#-----------------------------------------------------
+set_mamba_name()
+{
+    which mamba > /dev/null 2>&1
+    if [[ $? -eq 0 ]];then
+        export MAMBA=mamba
+        echo "Using $MAMBA"
+        return
+    fi
+
+    which micromamba > /dev/null 2>&1
+    if [[ $? -eq 0 ]];then
+        export MAMBA=micromamba
+        echo "Using $MAMBA"
+        return
+    fi
+
+    echo "Neither mamba nor micromamba found"
 }
 #-----------------------------------------------------
 mma()
 {
     VENV=$1
 
-    mamba activate $VENV
+    $MAMBA activate $VENV
 
     set_fzf
 }
@@ -71,13 +102,8 @@ lxplus()
 #-----------------------------------------------------
 ihep()
 {
-    if [[ -z $1 ]];then
-        ssh -X campoverde@lxlogin.ihep.ac.cn
-    elif [[ $1 =~ "^7[0-9]{2}$:" ]];then
-        ssh -X campoverde@lxslc$1.ihep.ac.cn
-    else
-        ssh -X campoverde@lxlogin$1.ihep.ac.cn
-    fi
+    MACHNE=$1
+    ssh -4 -X campoverde@lxlogin$MACHNE.ihep.ac.cn
 }
 #------------------------------------------------------------------
 set_fzf()
@@ -85,10 +111,26 @@ set_fzf()
     which fzf > /dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
+	    echo "fzf not found, not initializing it"
         return
     fi
 
+    echo "Initialing environment with fzf"
+
     eval "$(fzf --bash)"
+}
+#------------------------------------------------------------------
+set_java()
+{
+    which java > /dev/null 2>&1
+
+    if [[ $? -ne 0 ]];then
+        echo "Java not found"
+        return
+    fi
+
+    export JAVA_HOME=$(readlink -f $(which java) | sed 's|/bin/java||g')
+    echo "JAVA run time found, JAVA_HOME=$JAVA_HOME"
 }
 #------------------------------------------------------------------
 customize()
@@ -109,6 +151,9 @@ call_machine_bash()
     if   [[ "$(hostname)" == "almalinux"*  ]];then
         echo "Running .bashrc for almalinux"
         source ~/.bashrc_almalinux
+    elif [[ "$(hostname)" == "thinkpad"*   ]];then
+        echo "Running .bashrc for almalinux"
+        source ~/.bashrc_almalinux
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
         source ~/.bashrc_laptop
@@ -124,6 +169,8 @@ call_machine_bash()
     fi
 }
 #------------------------------------------------------------------
+set_env
+set_java
 set_alias
 customize
 call_machine_bash
