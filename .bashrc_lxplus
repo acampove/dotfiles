@@ -39,6 +39,7 @@ set_alias()
     alias tmuxa="tmux attach -t"
     alias tmuxl="tmux list-sessions"
     alias condormont='watch condor_q'
+    alias tmux_check='systemctl --user status tmux.service'
 }
 #--------------------------------------------
 mma()
@@ -238,6 +239,7 @@ if [ -f /etc/bashrc ]; then
 fi
 
 shopt -s direxpand
+systemctl --user enable --now tmux.service
 set_vars
 set_alias
 conda_init
