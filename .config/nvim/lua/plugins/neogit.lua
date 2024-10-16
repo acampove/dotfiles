@@ -10,6 +10,11 @@ return {
 		"echasnovski/mini.pick", -- optional
 	},
 	config = function ()
-        require("neogit").setup({commit_editor={kind="split"}})
+        require("neogit").setup(
+            {
+                commit_editor={
+                    kind="replace"
+                }
+            })
 	end,
 }
