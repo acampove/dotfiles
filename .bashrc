@@ -151,13 +151,15 @@ call_machine_bash()
     if   [[ "$(hostname)" == "almalinux"*  ]];then
         echo "Running .bashrc for almalinux"
         source ~/.bashrc_almalinux
+        source ~/.bashrc_local
     elif [[ "$(hostname)" == "thinkpad"*   ]];then
         echo "Running .bashrc for almalinux"
         source ~/.bashrc_almalinux
+        source ~/.bashrc_local
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
         source ~/.bashrc_laptop
-        source ~/.bashrc_laptop_ext
+        source ~/.bashrc_local
     elif [[ "$(hostname)" == "lxlogin"* ]];then
         echo "Running .bashrc for IHEP"
         source ~/.bashrc_ihep
