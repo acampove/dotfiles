@@ -132,20 +132,6 @@ pip_publish()
     python -m twine upload dist/*
 }
 #-----------------------------------------------------
-adbConnect()
-{
-    IP=10.3.123.40
-    DEFIP=10.171.215.17
-
-    if [[ -z $IP ]];then
-	echo "Need IP as argument, using default $DEFIP"
-	IP=$DEFIP
-    fi
-
-    adb tcpip 5555
-    adb connect $IP:5555
-}
-#-----------------------------------------------------
 mountPFS()
 {
     if [[ ! -z $1 ]];then
