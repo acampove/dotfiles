@@ -3,6 +3,7 @@
 #--------------------------------------------
 set_vars()
 {
+    export SFTDIR=/afs/cern.ch/work/a/acampove/Packages/RK
     export PATH+=:$HOME/.local/bin
     export STKDIR=/afs/cern.ch/work/a/acampove/stack
     export PROMPT_COMMAND=''
