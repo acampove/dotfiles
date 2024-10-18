@@ -61,6 +61,7 @@ set_vars()
 
     export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
     export DISPLAY=:0
+    export PATH+=:/usr/local/texlive/2024/bin/x86_64-linux
 
     export PFS_LHCB=/publicfs/lhcb/user/campoverde
     export PFSPATH=/publicfs/ucas/user/campoverde
@@ -130,20 +131,6 @@ pip_publish()
     fi
 
     python -m twine upload dist/*
-}
-#-----------------------------------------------------
-adbConnect()
-{
-    IP=10.3.123.40
-    DEFIP=10.171.215.17
-
-    if [[ -z $IP ]];then
-	echo "Need IP as argument, using default $DEFIP"
-	IP=$DEFIP
-    fi
-
-    adb tcpip 5555
-    adb connect $IP:5555
 }
 #-----------------------------------------------------
 mountPFS()
