@@ -61,6 +61,7 @@ set_vars()
 
     export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
     export DISPLAY=:0
+    export PATH+=:/usr/local/texlive/2024/bin/x86_64-linux
 
     export PFS_LHCB=/publicfs/lhcb/user/campoverde
     export PFSPATH=/publicfs/ucas/user/campoverde
