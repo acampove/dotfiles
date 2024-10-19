@@ -35,7 +35,6 @@ set_alias()
     #Git
     #------------------------------------------------------------------
     alias git_update='git add . && git commit -m "updating"'
-    #------------------------------------------------------------------
 }
 #------------------------------------------------------------------
 set_home()
@@ -308,5 +307,5 @@ set_alias
 set_vars
 set_micromamba
 
-dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 eval "$(fzf --bash)"
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
