@@ -5,7 +5,7 @@ set_env()
 {
     export EDITOR=nvim
     export VISUAL=nvim
-    export BAKDIR=/run/media/acampove/backup/${HOSTNAME}
+    export BAKDIR=/run/media/acampove/backup/$HOSTNAME
 }
 #------------------------------------------------------------------
 setLbEnv()
@@ -150,12 +150,12 @@ customize()
 call_machine_bash()
 {
     if   [[ "$(hostname)" == "thinkpad-x1carbon" ]];then
-        echo "Running .bashrc for ${HOSTNAME}"
-        source ~/.bashrc_${HOSTNAME}
+        echo "Running .bashrc for $HOSTNAME"
+        source ~/.bashrc_$HOSTNAME
         source ~/.bashrc_local
     elif [[ "$(hostname)" == "thinkpad-t430"     ]];then
-        echo "Running .bashrc for ${HOSTNAME}"
-        source ~/.bashrc_${HOSTNAME}
+        echo "Running .bashrc for $HOSTNAME"
+        source ~/.bashrc_$HOSTNAME
         source ~/.bashrc_local
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
