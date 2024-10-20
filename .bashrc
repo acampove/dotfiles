@@ -149,11 +149,11 @@ customize()
 #------------------------------------------------------------------
 call_machine_bash()
 {
-    if   [[ "$(hostname)" == "thinkpad_x1carbon" ]];then
+    if   [[ "$(hostname)" == "thinkpad-x1carbon" ]];then
         echo "Running .bashrc for ${HOSTNAME}"
         source ~/.bashrc_${HOSTNAME}
         source ~/.bashrc_local
-    elif [[ "$(hostname)" == "thinkpad_t430"     ]];then
+    elif [[ "$(hostname)" == "thinkpad-t430"     ]];then
         echo "Running .bashrc for ${HOSTNAME}"
         source ~/.bashrc_${HOSTNAME}
         source ~/.bashrc_local
