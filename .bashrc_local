@@ -38,7 +38,6 @@ set_alias()
 #------------------------------------------------------------------
 set_home()
 {
-    HOSTNAME=$(hostname)
     if [[ "$HOSTNAME" == *".ihep.ac.cn" ]];then
         export ALT_HOME=/publicfs/ucas/user/$USER
     else
