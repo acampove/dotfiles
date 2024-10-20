@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 #-----------------------------------------------------
-export_vars()
+set_env()
 {
     export _CONDOR_IHEP_JOB_ID=local_job
     export ZFIT_DISABLE_TF_WARNINGS=1
@@ -121,15 +121,6 @@ setPrompt()
     PS1=" \D{%H:%M:%S} \u@\h "
 }
 #-----------------------------------------------------
-setLbEnv()
-{
-    SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
-
-    if [ -f $SCRIPT ]; then
-        . $SCRIPT 
-    fi
-}
-#-----------------------------------------------------
 viewArchs()
 {
     ARCH=$1
@@ -152,25 +143,6 @@ diraclfnmetadata()
 {
     LFN=$1
     lb-run LHCbDIRAC dirac-dms-lfn-metadata $LFN
-}
-#-----------------------------------------------------
-mountCERNBOX()
-{
-    SRC_DIR=/eos/home-a/acampove/
-    TGT_DIR=/publicfs/ucas/user/campoverde/cernbox/
-
-    if [[ ! -d $TGT_DIR ]];then
-        echo "Cannot find $MNT_DIR"
-        kill -INT $$
-    fi
-
-    sshfs -o idmap=user acampove@lxplus.cern.ch:$SRC_DIR $TGT_DIR
-}
-#-----------------------------------------------------
-unmountPFS()
-{
-    TGT_DIR=/publicfs/ucas/user/campoverde/cernbox/
-    fusermount -u $TGT_DIR
 }
 #-----------------------------------------------------
 setView()
@@ -227,43 +199,8 @@ authenticate()
     fi
 }
 #-----------------------------------------------------
-#Git
-#-----------------------------------------------------
-git_rc()
-{
-    FILES="$1"
-    for FILE in ${FILES[@]};do
-        git add -A $FILE
-    done
-
-    git commit -m "$2"
-}
-
-git_ac()
-{
-    FILES="$1"
-    for FILE in ${FILES[@]};do
-        if [[ ! -e $FILE ]];then
-            echo "File/Directory $FILE not found"
-            kill -INT $$
-        else
-            echo "Adding $FILE"
-        fi
-        git add $FILE
-    done
-
-    git commit -m "$2"
-}
-
-git_acp()
-{
-    git_ac "$1" "$2"
-    git push origin master
-}
-#-----------------------------------------------------
 get_job_list()
 {
-
     if [[ -z $1 ]];then
         echo "Job ID argument needed"
         return [1]
@@ -302,7 +239,7 @@ conda_init()
     fi
 }
 #-----------------------------------------------------
-export_vars
+set_env
 set_alias
 setPrompt
 conda_init
