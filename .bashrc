@@ -149,18 +149,19 @@ customize()
 #------------------------------------------------------------------
 call_machine_bash()
 {
-    if   [[ "$(hostname)" == "almalinux"*  ]];then
-        echo "Running .bashrc for almalinux"
-        source ~/.bashrc_almalinux
+    if   [[ "$(hostname)" == "thinkpad_x1carbon" ]];then
+        echo "Running .bashrc for ${HOSTNAME}"
+        source ~/.bashrc_${HOSTNAME}
         source ~/.bashrc_local
-    elif [[ "$(hostname)" == "thinkpad"*   ]];then
-        echo "Running .bashrc for almalinux"
-        source ~/.bashrc_almalinux
+    elif [[ "$(hostname)" == "thinkpad_t430"     ]];then
+        echo "Running .bashrc for ${HOSTNAME}"
+        source ~/.bashrc_${HOSTNAME}
         source ~/.bashrc_local
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
-        source ~/.bashrc_laptop
+        source ~/.bashrc_thinkbook
         source ~/.bashrc_local
+    # --------------------------------------------------------------
     elif [[ "$(hostname)" == "lxlogin"* ]];then
         echo "Running .bashrc for IHEP"
         source ~/.bashrc_ihep
