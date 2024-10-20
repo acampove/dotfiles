@@ -27,7 +27,8 @@ to_clipboard()
         exit 1
     fi
 
-    which xclip > /dev/null
+    which xclip > /dev/null 2>&1
+
     if [[ $? -ne 0 ]];then
         echo "xclip not found"
         exit 1
