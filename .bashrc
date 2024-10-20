@@ -17,6 +17,28 @@ setLbEnv()
     fi
 }
 #------------------------------------------------------------------
+backup()
+{
+    EXCLUDE=$HOME/.config/restic/excluded_files
+    if [[ ! -f $EXCLUDE ]];then
+        echo "No exclude files found: $EXCLUDE"
+        return
+    fi
+
+    which restic /dev/null 2>&1
+    if [[ $? -ne 0 ]];then
+        echo "restic not found"
+        return
+    fi
+
+    if [[ ! -d $BAKDIR ]];then
+        echo "Backup directory not found: $BAKDIR"
+        return
+    fi
+
+    restic -r $BAKDIR backup $HOME --exclude-file $EXCLUDE
+}
+#------------------------------------------------------------------
 to_clipboard()
 {
     # Function used to put argument in clipboard
