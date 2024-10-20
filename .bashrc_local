@@ -38,13 +38,13 @@ set_alias()
 #------------------------------------------------------------------
 set_home()
 {
-    if [[ "$HOSTNAME" == *".ihep.ac.cn" ]];then
+    if [[ "$(hostname)" == *".ihep.ac.cn" ]];then
         export ALT_HOME=/publicfs/ucas/user/$USER
     else
         export ALT_HOME=$HOME
     fi
 
-    echo "Setting HOME=$ALT_HOME, for host $HOSTNAME"
+    echo "Setting HOME=$ALT_HOME, for host $(hostname)"
 
     if [[ ! -d $ALT_HOME ]];then
         echo "Directory ALT_HOME=\"$ALT_HOME\" not found"
