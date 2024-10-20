@@ -5,6 +5,7 @@ set_env()
 {
     export EDITOR=nvim
     export VISUAL=nvim
+    export BAKDIR=/run/media/acampove/backup/${HOSTNAME}
 }
 #------------------------------------------------------------------
 setLbEnv()
