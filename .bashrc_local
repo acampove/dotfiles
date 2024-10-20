@@ -21,7 +21,6 @@ set_alias()
     #------------------------------------------------------------------
     #Micromamba
     #------------------------------------------------------------------
-    alias mma='micromamba activate'
     alias mml='micromamba env list'
     alias mmd='micromamba deactivate'
     alias mmc='micromamba create --name'
