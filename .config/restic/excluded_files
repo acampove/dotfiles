@@ -1,0 +1,138 @@
+$HOME/Downloads/*
+$HOME/Pictures/*
+$HOME/Dropbox/*
+
+# Maven target
+target/*
+
+$HOME/.Private
+$HOME/.cache
+$HOME/.gvfs
+$HOME/.local/share/gvfs-metadata
+$HOME/.dbus
+$HOME/.local/share/Trash
+$HOME/.cddb
+$HOME/.aptitude
+$HOME/.bash_history
+
+###############################################
+# Directories, probably not worth a backup    #
+# (uncomment the files you don't need)        #
+###############################################
+
+$HOME/.android
+$HOME/.AndroidStudio*/
+$HOME/Android/Sdk
+$HOME/.gradle
+$HOME/.gvm
+$HOME/.grails/
+$HOME/.grails_history
+$HOME/.kde/share/apps/nepomuk
+$HOME/.local/share/notbit
+$HOME/.local/libvirt
+$HOME/.vagrant
+$HOME/.vagrant.d
+$HOME/.wine
+$HOME/.twister
+$HOME/twister
+*Popcorntime*
+/Scribus
+/VirtualBox*
+
+# Adobe and Flash
+$HOME/.adobe
+$HOME/.macromedia
+
+# Files
+$HOME/.xsession-errors
+$HOME/.recently-used
+$HOME/.recently-used.xbel
+$HOME/.thumbnails
+$HOME/.Xauthority
+$HOME/.ICEauthority
+$HOME/.gksu.lock
+$HOME/.pulse
+$HOME/.pulse-cookie
+$HOME/.esd_auth
+
+# Local repositories (added by errantlinguist on 2015-04-13):
+$HOME/.gradle/caches
+$HOME/.m2/repository
+
+# Node Package Manager cache
+$HOME/.npm
+
+# Thunderbird Cache in your profile folder
+$HOME/.thunderbird/*/Cache
+
+# KDE specific
+$HOME/.kde/share/apps/RecentDocuments
+$HOME/.kde/share/apps/klipper
+$HOME/.kde/share/apps/okular/docdata
+$HOME/.kde/share/apps/gwenview/recentfolders
+$HOME/.kde/share/apps/kmess/displaypics
+$HOME/.kde/share/apps/kmess/customemoticons
+
+# Firefox
+$HOME/.mozilla/firefox/*/Cache
+# in case Fx crashes dumps will be stored in this
+$HOME/.mozilla/firefox/*/minidumps
+# session-specific
+$HOME/.mozilla/firefox/*/.parentlock
+# phishing database, recreated
+$HOME/.mozilla/firefox/*/urlclassifier3.sqlite
+# blacklisted extensions
+$HOME/.mozilla/firefox/*/blocklist.xml
+# extension database, recreated on startup
+$HOME/.mozilla/firefox/*/extensions.sqlite
+$HOME/.mozilla/firefox/*/extensions.sqlite-journal
+$HOME/.mozilla/firefox/*/extensions.rdf
+$HOME/.mozilla/firefox/*/extensions.ini
+$HOME/.mozilla/firefox/*/extensions.cache
+# cached UI data, recreated
+$HOME/.mozilla/firefox/*/XUL.mfasl
+$HOME/.mozilla/firefox/*/XPC.mfasl
+$HOME/.mozilla/firefox/*/xpti.dat
+$HOME/.mozilla/firefox/*/compreg.dat
+# cached plugin data, recreated
+$HOME/.mozilla/firefox/*/pluginreg.dat
+
+# Opera
+$HOME/.opera/temporary_downloads
+$HOME/.opera/cache
+$HOME/.opera/thumbnails
+$HOME/.opera/opcache
+$HOME/.opera/icons
+$HOME/.opera/application_cache
+$HOME/.opera/widgets/*/cache
+$HOME/.opera/lock
+
+# GnuPG
+$HOME/.gnupg/rnd
+$HOME/.gnupg/random_seed
+$HOME/.gnupg/.#*
+$HOME/.gnupg/*.lock
+$HOME/.gnupg/gpg-agent-info-*
+
+# Chromium
+$HOME/.config/chromium/Default/Local Storage
+$HOME/.config/chromium/Default/Session Storage
+$HOME/.config/chromium/Default/Application Cache
+$HOME/.config/chromium/Default/Archived History
+$HOME/.config/chromium/Default/History
+$HOME/.config/chromium/Default/Favicons
+
+# Indexer
+$HOME/.local/share/baloo
+$HOME/.local/share/zeitgeist
+$HOME/.local/share/akonadi
+
+# pidgin
+$HOME/.pulse/icons
+$HOME/.java/deployment/cache
+$HOME/.icedteaplugin
+$HOME/.icedtea
+$HOME/.gnome2/epiphany/favicon_cache
+# to avoid problems, let Dropbox re-create these
+$HOME/.dropbox
+$HOME/.dropbox-dist
