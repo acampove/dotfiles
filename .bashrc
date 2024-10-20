@@ -26,7 +26,7 @@ backup()
         return
     fi
 
-    which restic /dev/null 2>&1
+    which restic > /dev/null 2>&1
     if [[ $? -ne 0 ]];then
         echo "restic not found"
         return
