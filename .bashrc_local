@@ -3,37 +3,17 @@
 #------------------------------------------------------------------
 set_alias()
 {
-    alias rbash='source ~/.bashrc'
     alias fzf='fzf -m --preview="batcat --color=always  {}"'
-    alias cop='xclip -selection "clipboard"'
-    alias markdown='ghostwriter'
     alias sdiff='sdiff -bBWs'
-    #------------------------------------------------------------------
-    #Python
-    #------------------------------------------------------------------
-    alias python='python3'
-    alias ipython='ipython3'
     #------------------------------------------------------------------
     #Vim
     #------------------------------------------------------------------
-    alias vim='/home/acampove/Packages/nvim/bin/nvim'
     alias vimfzf='vim $(fzf)'
-    #------------------------------------------------------------------
-    #Micromamba
-    #------------------------------------------------------------------
-    alias mml='micromamba env list'
-    alias mmd='micromamba deactivate'
-    alias mmc='micromamba create --name'
-    alias mmi='micromamba install -c conda-forge'
     #------------------------------------------------------------------
     #Browsers
     #------------------------------------------------------------------
     alias chrome='chromium --proxy-server="socks://localhost:8080"'
     alias opera='opera     --proxy-server="socks://localhost:8080"'
-    #------------------------------------------------------------------
-    #Git
-    #------------------------------------------------------------------
-    alias git_update='git add . && git commit -m "updating"'
 }
 #------------------------------------------------------------------
 set_home()
@@ -62,7 +42,6 @@ set_vars()
 
     export PFS_LHCB=/publicfs/lhcb/user/campoverde
     export PFSPATH=/publicfs/ucas/user/campoverde
-    export SFTDIR=/home/acampove/Packages/RK
     export PRIDIR=/publicfs/ucas/user/campoverde/private
 
     export DATLOC=/home/acampove/data
