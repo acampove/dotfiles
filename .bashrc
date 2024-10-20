@@ -184,7 +184,7 @@ call_machine_bash()
 }
 #------------------------------------------------------------------
 call_machine_bash
-set_gobal_env
+set_global_env
 set_global_alias
 set_java
 customize
