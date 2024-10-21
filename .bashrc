@@ -84,6 +84,7 @@ set_global_alias()
     alias tmuxn="tmux new -s"
     alias tmuxa="tmux attach -t"
     alias tmuxd="tmux detach-client"
+    alias tmuxc="tmux new-window"
     alias tmuxl="tmux list-sessions | column -t"
     #------------------------------------------------------------------
     #VIM
