@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
-'''
+
+: '
 This script is used to convert p12 grid certificate files into PEM files
 
 Usage:
 
-source convert_certificate cert.p12
-'''
+./convert_certificate cert.p12
+'
 
 CERTIFICATE=$1
 

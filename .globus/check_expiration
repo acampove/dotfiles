@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
-'''
+: '
 This script is meant to check the expiration date of a grid certificate
 
 Usage:
 
-source check_expiration
-'''
+./check_expiration
+'
 
 check()
 {
