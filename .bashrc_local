@@ -14,6 +14,8 @@ set_alias()
     #------------------------------------------------------------------
     alias chrome='chromium --proxy-server="socks://localhost:8080"'
     alias opera='opera     --proxy-server="socks://localhost:8080"'
+
+    alias vim=/home/acampove/Packages/nvim/bin/nvim
 }
 #------------------------------------------------------------------
 set_home()
