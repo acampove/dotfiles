@@ -182,6 +182,18 @@ mountEOS()
     sshfs -o idmap=user acampove@lxplus.cern.ch:$MNT_DIR $MNT_DIR
 }
 #-----------------------------------------------------
+mountAPDIR()
+{
+    MNT_DIR=/eos/lhcb/wg/dpa/wp2/ci/
+
+    if [[ ! -d $MNT_DIR ]];then
+	echo "Cannot find $MNT_DIR"
+	kill -INT $$
+    fi
+
+    sshfs -o idmap=user acampove@lxplus.cern.ch:$MNT_DIR $MNT_DIR
+}
+#-----------------------------------------------------
 unmountPFS()
 {
     MNT_DIR=/publicfs/
