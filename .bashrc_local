@@ -88,6 +88,7 @@ set_vars()
     export TRASH=$PFSDIR/.trash/
     export WGTDIR=/publicfs/lhcb/user/campoverde/weights
     export YLDDIR=$PFSDIR/yields
+    export LXNAME=acampove
 
     export ZFIT_DISABLE_TF_WARNINGS=1
 }
