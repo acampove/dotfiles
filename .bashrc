@@ -1,6 +1,25 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+lb_dirac()
+{
+    # Will create a shell with dirac and some basic environment specified by .bashrc_dirac
+    
+    which lb-dirac
+
+    if [[ $? -ne 0 ]];then
+        echo "Cannot find lb-dirac, LHCb software not set"
+        exit 1 
+    fi
+
+    if [[ ! -f $HOME/.bashrc_dirac ]];then
+        echo "Cannnot find ~/.bashrc_dirac"
+        exit 1
+    fi
+
+    lb-dirac bash -c "source ~/.bashrc_dirac && exec bash --norc"
+}
+#------------------------------------------------------------------
 set_global_env()
 {
     export EDITOR=nvim
