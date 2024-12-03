@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 export PS1='\u@\h\$ '
 export PATH+=:$HOME/.local/bin
 export LXNAME=acampove
