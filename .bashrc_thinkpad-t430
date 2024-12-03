@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 export SFTDIR=/home/acampove/Packages
+export CONFPATH=/home/acampove/Packages/config_files
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
