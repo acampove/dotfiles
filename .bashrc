@@ -20,6 +20,18 @@ lb_dirac()
     lb-dirac bash -c "source ~/.bashrc_dirac && exec bash --norc"
 }
 #------------------------------------------------------------------
+setLbEnv()
+{
+    LBENV_PATH=/cvmfs/lhcb.cern.ch/lib/LbEnv
+
+    if [[ ! -f $LBENV_PATH ]]; then
+        echo "Cannot find $LBENV_PATH"
+        kill INT $$
+    fi
+
+    . $LBENV_PATH
+}
+#------------------------------------------------------------------
 set_global_env()
 {
     export EDITOR=nvim
@@ -27,15 +39,6 @@ set_global_env()
     export VISUAL=nvim
     export PYTHONWARNINGS=ignore
     export BAKDIR=/run/media/acampove/backup/$(hostname)
-}
-#------------------------------------------------------------------
-setLbEnv()
-{
-    SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
-
-    if [ -f $SCRIPT ]; then
-        . $SCRIPT
-    fi
 }
 #------------------------------------------------------------------
 backup()
