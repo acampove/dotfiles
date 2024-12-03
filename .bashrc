@@ -5,11 +5,11 @@ lb_dirac()
 {
     # Will create a shell with dirac and some basic environment specified by .bashrc_dirac
     
-    which lb-dirac
+    which lb-dirac > /dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
-        echo "Cannot find lb-dirac, LHCb software not set"
-        exit 1 
+        echo "Cannot find lb-dirac, LHCb software not set, setting it"
+        setLbEnv
     fi
 
     if [[ ! -f $HOME/.bashrc_dirac ]];then
