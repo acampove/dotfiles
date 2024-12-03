@@ -2,5 +2,6 @@
 
 export PS1='\u@\h\$ '
 export PATH+=:$HOME/.local/bin
+export VENVS=/home/acampove/VENVS
 export LXNAME=acampove
 export CONFPATH=/home/acampove/Packages/config_files/
