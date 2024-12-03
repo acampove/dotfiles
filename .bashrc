@@ -22,6 +22,8 @@ lb_dirac()
 #------------------------------------------------------------------
 setLbEnv()
 {
+    # This function will setup the LHCb environment
+
     LBENV_PATH=/cvmfs/lhcb.cern.ch/lib/LbEnv
 
     if [[ ! -f $LBENV_PATH ]]; then
