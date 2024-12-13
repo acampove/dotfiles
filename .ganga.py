@@ -178,7 +178,7 @@ def _save_xfns(d_xfn : dict[str,list[str]], kind : str, prefix : str, dirpath : 
     for jobid, l_xfn in d_xfn.items():
         filename=f'{dirpath}/{prefix}_{jobid}.{kind}'
 
-        log.info('Sending xFNs to: {filename}')
+        log.info(f'Sending xFNs to: {filename}')
         if len(l_xfn) == 0:
             log.warning(f'Could not find {kind}s for job {jobid}')
             continue
