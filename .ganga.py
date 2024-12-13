@@ -119,7 +119,7 @@ def _id_from_job(job) -> int:
 # ----------------------------------
 def _xfns_from_subjobs(l_sj : list, kind : str, job) -> list[str]:
     l_xfn = []
-    for sj in tqdm.tqdm(l_sj):
+    for sj in tqdm.tqdm(l_sj, ascii=' -'):
         l_file = _files_from_subjob(sj)
         if l_file is None:
             continue
