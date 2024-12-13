@@ -38,7 +38,7 @@ set_env()
     export HQMDIR=/publicfs/ucas/user/qi/public/RK/high_q2_yield_study
     export CASDIR=$LHCB_PFSDIR/Data/cache
     export ASLDIR=$CASDIR/tools/apply_selection
-    export GANDIR=$LHCB_PFSDIR/Data/ganga
+    export GANDBS=$LHCB_PFSDIR/Data/ganga
     export PRCDIR=$LHCB_PFSDIR/Data/model/prec
     export FITDIR=$LHCB_PFSDIR/Data/model/fits
     export DBBDIR=$LHCB_PFSDIR/Data/databases
