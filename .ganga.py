@@ -1,16 +1,19 @@
 '''
 File used to define code that needs to be ran before ganga starts
 '''
-
+# pylint: disable=line-too-long
 
 import sys
 import os
 import re
 import glob
 import json
-
 from dataclasses import dataclass
 from typing      import Union
+
+home_dir = os.environ['HOME']
+sys.path.append(f'{home_dir}/.local/lib/python3.12/site-packages')
+sys.path.append('/cvmfs/lhcb.cern.ch/lib/var/lib/LbEnv/3386/stable/linux-64/lib/python3.12/site-packages')
 
 import tqdm
 from dmu.logging.log_store import LogStore
@@ -18,7 +21,6 @@ from dmu.logging.log_store import LogStore
 from GangaCore.GPI             import Job, Executable, DiracFile, LocalFile, Interactive, GenericSplitter, Dirac, Local, File
 from GangaCore.GPIDev.Lib.Registry.JobRegistry import JobRegistrySliceProxy as JRSP
 
-# pylint: disable=line-too-long
 
 log = LogStore.add_logger('_ganga_py')
 # ----------------------------------
