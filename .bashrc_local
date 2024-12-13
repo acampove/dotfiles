@@ -69,7 +69,6 @@ set_vars()
     export EXTDIR=/publicfs/lhcb/user/campoverde/Data/rx_extractor
     export FINDIR=$PFSDIR/Test/sample_finder
     export FITDIR=$LHCB_PFSDIR/Data/model/fits
-    export GANDIR=$LHCB_PFSDIR/Data/ganga
     export HLTDIR=$HOME/local_tests/hlt
     export HQMDIR=/publicfs/ucas/user/qi/public/RK/high_q2_yield_study
     export JOBDIR=/publicfs/ucas/user/campoverde/Test/Jobdir
