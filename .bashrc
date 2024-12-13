@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+gng()
+{
+    # Start ganga, setup first the LHCb environment if not setup
+    which ganga > /dev/null 2>&1
+
+    if [[ $? -ne 0 ]];then
+        . cvmfs/lhcb.cern.ch/lib/LbEnv
+    fi
+
+    ganga --quiet --no-mon
+}
+#------------------------------------------------------------------
 lb_dirac()
 {
     # Will create a shell with dirac and some basic environment specified by .bashrc_dirac
