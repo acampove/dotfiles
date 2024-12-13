@@ -200,26 +200,6 @@ authenticate()
     fi
 }
 #-----------------------------------------------------
-get_job_list()
-{
-    if [[ -z $1 ]];then
-        echo "Job ID argument needed"
-        return [1]
-    else
-        JOBID=$1
-    fi
-
-    INDIR=$GANDIR/$JOBID
-    if [[ ! -d $INDIR ]];then
-        echo "$INDIR not found"
-        return [1]
-    fi
-
-    OFILE=${2:-"job_$JOBID.txt"}
-
-    find $GANDIR/$JOBID -name "*.root" -type f | sort > $OFILE
-}
-#-----------------------------------------------------
 conda_init()
 {
     echo "~/.bashrc: Initializing conda"
