@@ -48,23 +48,6 @@ def _load_slices(force=False):
 
         Data.d_grid_slc[slcname] = l_job
 # ----------------------------------
-def _get_job_status(job):
-    if len(job.subjobs) == 0:
-        return {job.status : 1}
-
-    d_status={}
-    for sj in job.subjobs:
-        status = sj.status
-        #if status == "failed":
-        #    print("{}.{}".format(job.id, sj.id))
-
-        if status not in d_status:
-            d_status[status] = 1
-        else:
-            d_status[status]+= 1
-
-    return d_status
-# ----------------------------------
 # ----------------------------------
 def write_xfns(l_job : Union[str,list], kind : str, dirpath : str = '.', prefix : str ='job'):
     '''
@@ -206,12 +189,8 @@ def _save_xfns(d_xfn : dict[str,list[str]], kind : str, prefix : str, dirpath : 
 # ----------------------------------
 # ----------------------------------
 def _initialize():
-    home_dir = os.environ['HOME']
-    sys.path.append(f'{home_dir}/.local/lib/python3.12/site-packages')
-    sys.path.append('/cvmfs/lhcb.cern.ch/lib/var/lib/LbEnv/3386/stable/linux-64/lib/python3.12/site-packages')
 
     Data.gan_dir = os.environ['GANDBS']
     Data.jbm     = jobs
 # ----------------------------------
 _initialize()
-
