@@ -7,7 +7,10 @@ gng()
     which ganga > /dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
-        . cvmfs/lhcb.cern.ch/lib/LbEnv
+        echo "Setting up LHCb environment"
+        . /cvmfs/lhcb.cern.ch/lib/LbEnv
+    else
+        echo "Not setting up LHCb environment"
     fi
 
     ganga --quiet --no-mon
