@@ -48,12 +48,28 @@ def _load_slices(force=False):
 
         Data.d_grid_slc[slcname] = l_job
 # ----------------------------------
+def monitor(identifier) -> JRSP:
+    '''
+    Function taking a slice name (str) or a job number (int)
+    and running monitoring loop for it
+    '''
+    if   isinstance(identifier, str):
+        sl_job= _get_slice(identifier)
+    elif isinstance(identifier, int):
+        sl_job=Data.jbm.select(identifier, identifier)
+    else:
+        raise ValueError(f'Argument not a slice name or job ID: {identifier}')
+
+    runMonitoring(sl_job)
+
+    return sl_job
 # ----------------------------------
-def write_xfns(l_job : Union[str,list], kind : str, dirpath : str = '.', prefix : str ='job'):
+# ----------------------------------
+def write_xfns(arg : Union[int,str,JRSP], kind : str, dirpath : str = '.', prefix : str ='job'):
     '''
     Will take:
 
-    l_job: A list of jobs or the name of a slice
+    l_job: A list of jobs, name of a slice, or the index of a job
     kind : lfn or pfn, defines what to save in text files
 
     Will write a file with list of PFNs or LFNs
