@@ -61,25 +61,36 @@ def write_xfns(l_job : Union[str,list], kind : str, dirpath : str = '.', prefix 
     if kind not in ['lfn', 'pfn']:
         raise ValueError(f'Invalid kind: {kind}')
 
-    if isinstance(l_job, str):
-        val = _get_slice(l_job)
-        if val is None:
-            return
-
-        l_job = val
+    l_job = _jobs_from_arg(arg)
+    if l_job is None:
+        return
 
     d_xfn={}
     for job in l_job:
         jobid= _id_from_job(job)
         log.info(f'Job: {jobid:05}')
 
-        l_sj = Data.jbm.subjobs
+        l_sj = job.subjobs
         if len(l_sj) == 0:
             l_sj = [job]
 
         d_xfn[jobid] = _xfns_from_subjobs(l_sj, kind, job)
 
     _save_xfns(d_xfn, kind, prefix, dirpath)
+# ----------------------------------
+def _jobs_from_arg(arg : Union[int, str, JRSP]) -> Union[JRSP,None]:
+    if isinstance(arg, str):
+        return _get_slice(arg)
+
+    if isinstance(arg, JRSP):
+        return arg
+
+    if isinstance(arg, int):
+        return Data.jbm.select(arg, arg)
+
+    log.warning(f'Cannot return job slice from argument: {arg}')
+
+    return None
 # ----------------------------------
 def _get_slice(name : str) -> Union[JRSP,None]:
     '''
