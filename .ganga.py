@@ -189,7 +189,6 @@ def _save_xfns(d_xfn : dict[str,list[str]], kind : str, prefix : str, dirpath : 
 # ----------------------------------
 # ----------------------------------
 def _initialize():
-
     Data.gan_dir = os.environ['GANDBS']
     Data.jbm     = jobs
 # ----------------------------------
