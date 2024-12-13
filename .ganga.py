@@ -116,25 +116,10 @@ def _get_slice(name : str) -> Union[JRSP,None]:
 def _show_slices(load_statistics : bool = False) -> None:
     _load_slices()
 
-    for slcname, l_job in sorted(Data.d_grid_slc.items()):
+    for slcname in sorted(Data.d_grid_slc.items()):
         if not load_statistics:
-            print(slcname)
+            log.info(slcname)
             continue
-
-        if slcname not in Data.d_grid_sta:
-            Data.d_grid_sta[slcname] = {}
-            d_slice=Data.d_grid_sta[slcname]
-
-            for job_id in tqdm.tqdm(l_job_id):
-                job=jobs(job_id)
-                d_tmp = _get_job_status(job)
-                for stat, freq in d_tmp.items():
-                    if stat not in d_slice:
-                        d_slice[stat] = freq
-                    else:
-                        d_slice[stat]+= freq
-
-        log.info(f'{slcname:<30}{slc_stat:<30}')
 # ----------------------------------
 def _id_from_job(job) -> int:
     regex= r'(\d+)\.\d+\.\d'
@@ -227,3 +212,4 @@ def _initialize():
     Data.jbm     = jobs
 # ----------------------------------
 _initialize()
+
