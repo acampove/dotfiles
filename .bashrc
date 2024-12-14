@@ -264,5 +264,4 @@ call_machine_bash
 set_global_env
 set_global_alias
 set_java
-set_ganga_vars
 customize
