@@ -219,10 +219,14 @@ def _path_from_version(jobid : str, version : Union[str,None], kind : str) -> st
     if version is None:
         return f'./{file_name}'
 
-    file_dir = f'{Data.rx_path}/data/{version}'
+    file_dir  = f'{Data.rx_path}/rx_data/{version}'
+    file_path = f'{file_dir}/{file_name}'
+    if os.path.isfile(file_path):
+        raise ValueError(f'Directory {file_dir} already found, version {version} might be wrong')
+
     os.makedirs(file_dir, exist_ok=True)
 
-    return f'{file_dir}/{file_name}'
+    return file_path
 # ----------------------------------
 # ----------------------------------
 def _get_env_var(name : str) -> str:
@@ -235,7 +239,8 @@ def _get_env_var(name : str) -> str:
 # ----------------------------------
 def _initialize():
     Data.gan_dir = _get_env_var('GANDBS')
-    Data.rx_path = _get_env_var('RX_PATH')
+    sft_dir      = _get_env_var('SFTDIR')
+    Data.rx_path = f'{sft_dir}/rx_run3'
     Data.jbm     = jobs
 # ----------------------------------
 _initialize()
