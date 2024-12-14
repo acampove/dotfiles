@@ -212,11 +212,10 @@ def _save_xfns(d_xfn : dict[str,list[str]], kind : str, version : Union[str,None
             continue
 
         with open(file_path, 'w', encoding='utf-8') as ofile:
-            for xfn in l_xfn:
-                ofile.write(f'{xfn}\n')
+            json.dump(l_xfn, ofile, indend=4)
 # ----------------------------------
 def _path_from_version(jobid : str, version : Union[str,None], kind : str) -> str:
-    file_name = f'job_{jobid:03}.{kind}'
+    file_name = f'{kind}_{jobid:03}.json'
     if version is None:
         return f'./{file_name}'
 
