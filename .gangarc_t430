@@ -971,7 +971,7 @@ autostart = False
 
 #  Size of the thread pool. Each threads monitors a specific backaend at a given
 #  time. Minimum value is one, preferably set to the number_of_backends + 1
-#update_thread_pool_size = 5
+update_thread_pool_size = 12
 
 
 #=======================================================================
@@ -987,7 +987,7 @@ autostart = False
 [Queues]
 
 #  default number of worker threads in the queues system
-#NumWorkerThreads = 5
+NumWorkerThreads = 10
 
 #  timeout before looping again over queue to give shutdown a chance
 #ShutDownTimeout = 0.1
@@ -1757,7 +1757,7 @@ autostart = False
 
 #  Maximum number of Ganga Threads to use. Note that the number of simultaneous
 #  threads is controlled by the queue system (default is 10)
-#max_active_threads = 10
+max_active_threads = 14
 
 #  Name of the transform (cosmetic)
 #name = Simple Transform
@@ -2716,7 +2716,7 @@ autostart = False
 
 #  Maximum number of Ganga Threads to use. Note that the number of simultaneous
 #  threads is controlled by the queue system (default is 10)
-#max_active_threads = 10
+max_active_threads = 14
 
 #  No. of units to create for MC generation
 #mc_num_units = 0
