@@ -1,7 +1,7 @@
 '''
 File used to define code that needs to be ran before ganga starts
 '''
-# pylint: disable=line-too-long
+# pylint: disable=line-too-long, wrong-import-position, import-error
 
 import sys
 import os
