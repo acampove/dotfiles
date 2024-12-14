@@ -21,7 +21,7 @@ from dmu.logging.log_store import LogStore
 from GangaCore.GPI                             import DiracFile
 from GangaCore.GPIDev.Lib.Registry.JobRegistry import JobRegistrySliceProxy as JRSP
 
-log = LogStore.add_logger('_ganga_py')
+log = LogStore.add_logger('_ganga_py', exists_ok=True)
 # ----------------------------------
 @dataclass
 class Data:
