@@ -33,6 +33,7 @@ class Data:
     d_grid_sta : dict
     jbm        : JRSP
     gan_dir    : str
+    rx_path    : str
 # ----------------------------------
 def _load_slices(force=False):
     for jsonpath in glob.glob('Data.gan_dir/*.json'):
@@ -213,9 +214,28 @@ def _save_xfns(d_xfn : dict[str,list[str]], kind : str, prefix : str, dirpath : 
             for xfn in l_xfn:
                 ofile.write(f'{xfn}\n')
 # ----------------------------------
+def _path_from_version(jobid : str, version : Union[str,None], kind : str) -> str:
+    file_name = f'job_{jobid:03}.{kind}'
+    if version is None:
+        return f'./{file_name}'
+
+    file_dir = f'{Data.rx_path}/data/{version}'
+    os.makedirs(file_dir, exist_ok=True)
+
+    return f'{file_dir}/{file_name}'
+# ----------------------------------
+# ----------------------------------
+def _get_env_var(name : str) -> str:
+    if name not in os.environ:
+        log.warning(f'Cannot find {name} in environment')
+    else:
+        name = os.environ[name]
+
+    return name
 # ----------------------------------
 def _initialize():
-    Data.gan_dir = os.environ['GANDBS']
+    Data.gan_dir = _get_env_var('GANDBS')
+    Data.rx_path = _get_env_var('RX_PATH')
     Data.jbm     = jobs
 # ----------------------------------
 _initialize()
