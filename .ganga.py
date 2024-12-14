@@ -65,12 +65,13 @@ def monitor(identifier) -> JRSP:
     return sl_job
 # ----------------------------------
 # ----------------------------------
-def write_xfns(arg : Union[int,str,JRSP], kind : str, dirpath : str = '.', prefix : str ='job'):
+def write_xfns(arg : Union[int,str,JRSP], kind : str, version : Union[str,None]):
     '''
     Will take:
 
-    l_job: A list of jobs, name of a slice, or the index of a job
-    kind : lfn or pfn, defines what to save in text files
+    l_job:   A list of jobs, name of a slice, or the index of a job
+    kind :   lfn or pfn, defines what to save in text files
+    version: If passed, the files with the LFNs will be sent to $LFN_PATH/data/LFNs/{version}
 
     Will write a file with list of PFNs or LFNs
     '''
@@ -92,7 +93,7 @@ def write_xfns(arg : Union[int,str,JRSP], kind : str, dirpath : str = '.', prefi
 
         d_xfn[jobid] = _xfns_from_subjobs(l_sj, kind, job)
 
-    _save_xfns(d_xfn, kind, prefix, dirpath)
+    _save_xfns(d_xfn, kind, version)
 # ----------------------------------
 def _jobs_from_arg(arg : Union[int, str, JRSP]) -> Union[JRSP,None]:
     if isinstance(arg, str):
@@ -201,16 +202,16 @@ def _xfns_from_file(df : DiracFile, kind : str) -> Union[list,None]:
 
     return None
 # ----------------------------------
-def _save_xfns(d_xfn : dict[str,list[str]], kind : str, prefix : str, dirpath : str) -> None:
+def _save_xfns(d_xfn : dict[str,list[str]], kind : str, version : Union[str,None]) -> None:
     for jobid, l_xfn in d_xfn.items():
-        filename=f'{dirpath}/{prefix}_{jobid}.{kind}'
+        file_path = _path_from_version(jobid, version, kind)
 
-        log.info(f'Sending xFNs to: {filename}')
+        log.info(f'Sending xFNs to: {file_path}')
         if len(l_xfn) == 0:
             log.warning(f'Could not find {kind}s for job {jobid}')
             continue
 
-        with open(filename, 'w', encoding='utf-8') as ofile:
+        with open(file_path, 'w', encoding='utf-8') as ofile:
             for xfn in l_xfn:
                 ofile.write(f'{xfn}\n')
 # ----------------------------------
