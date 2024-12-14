@@ -18,7 +18,7 @@ sys.path.append('/cvmfs/lhcb.cern.ch/lib/var/lib/LbEnv/3386/stable/linux-64/lib/
 import tqdm
 from dmu.logging.log_store import LogStore
 
-from GangaCore.GPI                             import DiracFile 
+from GangaCore.GPI                             import DiracFile
 from GangaCore.GPIDev.Lib.Registry.JobRegistry import JobRegistrySliceProxy as JRSP
 
 log = LogStore.add_logger('_ganga_py')
