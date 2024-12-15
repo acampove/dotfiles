@@ -65,19 +65,15 @@ def monitor(identifier) -> JRSP:
     return sl_job
 # ----------------------------------
 # ----------------------------------
-def write_xfns(arg : Union[int,str,JRSP], kind : str, version : Union[str,None]):
+def write_lfns(arg : Union[int,str,JRSP], version : Union[str,None]):
     '''
     Will take:
 
     l_job:   A list of jobs, name of a slice, or the index of a job
-    kind :   lfn or pfn, defines what to save in text files
     version: If passed, the files with the LFNs will be sent to $LFN_PATH/data/LFNs/{version}
 
     Will write a file with list of PFNs or LFNs
     '''
-    if kind not in ['lfn', 'pfn']:
-        raise ValueError(f'Invalid kind: {kind}')
-
     l_job = _jobs_from_arg(arg)
     if l_job is None:
         return
@@ -91,9 +87,9 @@ def write_xfns(arg : Union[int,str,JRSP], kind : str, version : Union[str,None])
         if len(l_sj) == 0:
             l_sj = [job]
 
-        d_xfn[jobid] = _xfns_from_subjobs(l_sj, kind, job)
+        d_xfn[jobid] = _xfns_from_subjobs(l_sj, 'lfn', job)
 
-    _save_xfns(d_xfn, kind, version)
+    _save_xfns(d_xfn, 'lfn', version)
 # ----------------------------------
 def _jobs_from_arg(arg : Union[int, str, JRSP]) -> Union[JRSP,None]:
     if isinstance(arg, str):
