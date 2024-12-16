@@ -5,7 +5,7 @@ set_env()
 {
     export _CONDOR_IHEP_JOB_ID=local_job
     export ZFIT_DISABLE_TF_WARNINGS=1
-    export DOWNLOAD_NTUPPATH=/publicfs/lhcb/user/campoverde/Data/RK/.run3
+    export DOWNLOAD_NTUPPATH=/publicfs/ucas/user/campoverde/Data/RX_run3
     export VENVS=/publicfs/ucas/user/campoverde/venvs
     export SFTDIR=/publicfs/ucas/user/campoverde/Packages/RK
     export EFFDIR=/publicfs/lhcb/user/campoverde/checks/Efficiencies/output/efficiencies
