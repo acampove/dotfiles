@@ -1,6 +1,66 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+set_ganga_vars()
+{
+    # Variables needed to run ganga scripts, from
+    # https://twiki.cern.ch/twiki/bin/viewauth/LHCb/FAQ/GangaLHCbFAQ#How_to_use_Ganga_functionality_f
+
+    echo "Setting ganga environment"
+
+    export GANGA_CONFIG_PATH=GangaLHCb/LHCb.ini
+    export GANGA_SITE_CONFIG_AREA=/cvmfs/lhcb.cern.ch/lib/GangaConfig/config
+    export PYTHONPATH=$PYTHONPATH:/cvmfs/ganga.cern.ch/Ganga/install/LATEST/lib/python3.11/site-packages/
+}
+#------------------------------------------------------------------
+gng()
+{
+    # Start ganga, setup first the LHCb environment if not setup
+    which ganga > /dev/null 2>&1
+
+    if [[ $? -ne 0 ]];then
+        echo "Setting up LHCb environment"
+        . /cvmfs/lhcb.cern.ch/lib/LbEnv
+    else
+        echo "Not setting up LHCb environment"
+    fi
+
+    ganga --quiet --no-mon
+}
+#------------------------------------------------------------------
+lb_dirac()
+{
+    # Will create a shell with dirac and some basic environment specified by .bashrc_dirac
+    
+    which lb-dirac > /dev/null 2>&1
+
+    if [[ $? -ne 0 ]];then
+        echo "Cannot find lb-dirac, LHCb software not set, setting it"
+        setLbEnv
+    fi
+
+    if [[ ! -f $HOME/.bashrc_dirac ]];then
+        echo "Cannnot find ~/.bashrc_dirac"
+        exit 1
+    fi
+
+    lb-dirac bash -c "source ~/.bashrc_dirac && exec bash --norc"
+}
+#------------------------------------------------------------------
+setLbEnv()
+{
+    # This function will setup the LHCb environment
+
+    LBENV_PATH=/cvmfs/lhcb.cern.ch/lib/LbEnv
+
+    if [[ ! -f $LBENV_PATH ]]; then
+        echo "Cannot find $LBENV_PATH"
+        kill INT $$
+    fi
+
+    . $LBENV_PATH
+}
+#------------------------------------------------------------------
 set_global_env()
 {
     export EDITOR=nvim
@@ -8,15 +68,6 @@ set_global_env()
     export VISUAL=nvim
     export PYTHONWARNINGS=ignore
     export BAKDIR=/run/media/acampove/backup/$(hostname)
-}
-#------------------------------------------------------------------
-setLbEnv()
-{
-    SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
-
-    if [ -f $SCRIPT ]; then
-        . $SCRIPT
-    fi
 }
 #------------------------------------------------------------------
 backup()
@@ -77,7 +128,6 @@ set_global_alias()
     #------------------------------------------------------------------
     #Python
     #------------------------------------------------------------------
-    alias python='python3'
     alias ipython='ipython3'
     #------------------------------------------------------------------
     #Tmux

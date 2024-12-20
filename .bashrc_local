@@ -3,6 +3,7 @@
 #------------------------------------------------------------------
 set_alias()
 {
+    #------------------------------------------------------------------
     alias fzf='fzf -m --preview="batcat --color=always  {}"'
     alias sdiff='sdiff -bBWs'
     #------------------------------------------------------------------
@@ -68,7 +69,6 @@ set_vars()
     export EXTDIR=/publicfs/lhcb/user/campoverde/Data/rx_extractor
     export FINDIR=$PFSDIR/Test/sample_finder
     export FITDIR=$LHCB_PFSDIR/Data/model/fits
-    export GANDIR=$LHCB_PFSDIR/Data/ganga
     export HLTDIR=$HOME/local_tests/hlt
     export HQMDIR=/publicfs/ucas/user/qi/public/RK/high_q2_yield_study
     export JOBDIR=/publicfs/ucas/user/campoverde/Test/Jobdir
@@ -90,6 +90,7 @@ set_vars()
     export TRASH=$PFSDIR/.trash/
     export WGTDIR=/publicfs/lhcb/user/campoverde/weights
     export YLDDIR=$PFSDIR/yields
+    export LXNAME=acampove
 
     export ZFIT_DISABLE_TF_WARNINGS=1
 }
@@ -175,6 +176,18 @@ mountGRID()
 mountEOS()
 {
     MNT_DIR=/eos/home-a/acampove/
+
+    if [[ ! -d $MNT_DIR ]];then
+	echo "Cannot find $MNT_DIR"
+	kill -INT $$
+    fi
+
+    sshfs -o idmap=user acampove@lxplus.cern.ch:$MNT_DIR $MNT_DIR
+}
+#-----------------------------------------------------
+mountAPDIR()
+{
+    MNT_DIR=/eos/lhcb/wg/dpa/wp2/ci/
 
     if [[ ! -d $MNT_DIR ]];then
 	echo "Cannot find $MNT_DIR"

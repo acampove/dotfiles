@@ -21,3 +21,5 @@
     poh=push -u origin HEAD 
     cob=checkout -b
 
+[init]
+	defaultBranch = master
