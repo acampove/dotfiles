@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export DECPATH=/home/acampove/Packages/DecFiles
 export SFTDIR=/home/acampove/Packages
 export CONFPATH=/home/acampove/Packages/config_files
 export GANDBS=/home/acampove/gangadir/acampove_dbase
