@@ -73,7 +73,6 @@ set_alias()
     alias pwd='pwd -P'
     alias venv='source $PFSDIR/.venv/bin/activate'
     alias sdiff='sdiff -bBWs -w 250'
-    alias python=python3
     alias cpython='lb-conda default/2021-02-03 python'
     alias cbash='lb-conda default/2021-02-03 bash'
     alias clean='exec env -i /bin/bash'
