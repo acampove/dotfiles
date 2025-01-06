@@ -260,6 +260,7 @@ call_machine_bash()
     fi
 }
 #------------------------------------------------------------------
+export PATH="/usr/share/Modules/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
 call_machine_bash
 set_global_env
 set_global_alias
