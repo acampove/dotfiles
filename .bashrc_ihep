@@ -19,7 +19,6 @@ set_env()
     export YLDDIR=$PFSDIR/yields
     export MODDIR=$PFSDIR/models
     export SELDIR=$PFSDIR/selection
-    export DATDIR=$PFSDIR/Data/RK
     export MVADIR=$PFSDIR/Data/RK/MVA
     export MONDIR=$PFSDIR/monitor
     export CERNBOX=$PFSDIR/.cernbox/
