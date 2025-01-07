@@ -249,10 +249,10 @@ call_machine_bash()
         source ~/.bashrc_thinkbook
         source ~/.bashrc_local
     # --------------------------------------------------------------
-    elif [[ "$(hostname)" == "lxlogin"* ]];then
+    elif [[ "$(hostname)" == *".ihep.ac.cn" ]];then
         echo "Running .bashrc for IHEP"
         source ~/.bashrc_ihep
-    elif [[ "$(hostname)" == "lxplus"* ]];then
+    elif [[ "$(hostname)" == *".cern.ch"    ]];then
         echo "Running .bashrc for LXPLUS"
         source ~/.bashrc_lxplus
     else
