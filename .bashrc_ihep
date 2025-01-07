@@ -79,27 +79,6 @@ set_alias()
     alias clean='exec env -i /bin/bash'
 }
 #-----------------------------------------------------
-trash()
-{
-    if [[ -z $TRASH ]];then
-        echo "Undefined variable TRASH"
-        kill -INT $$
-    fi
-
-    DATEDIR=$(date | sed 's|\s|_|g' | sed 's|:|_|g')
-    TARGETDIR=$TRASH/$DATEDIR
-    mkdir -p $TARGETDIR
-    if [[ ! -d $TARGETDIR ]];then
-        echo "Cannot create $TARGETDIR"
-        kill -INT $$
-    fi
-
-    for OBJ in ${@};do
-        echo "Removing $OBJ"
-        mv $OBJ $TARGETDIR
-    done
-}
-#-----------------------------------------------------
 setPrompt() 
 {
     local GRAY="\[\033[1;30m\]"
