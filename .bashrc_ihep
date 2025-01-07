@@ -46,7 +46,7 @@ set_env()
     #--------------------
     export ROOTSYS=/cvmfs/sft.cern.ch/lcg/releases/ROOT/v6.22.06-1d426/x86_64-centos7-gcc8-opt/bin/root
     export JULIA_DEPOT_PATH=/publicfs/ucas/user/campoverde
-    export JOBDIR=/publicfs/ucas/user/campoverde/Test/Jobdir
+    export JOBDIR=/publicfs/ucas/user/campoverde/Jobs
     export LOCKPRG='/bin/true'
     export PATH=/cvmfs/common.ihep.ac.cn/software/hepjob/bin:$HOME/.local/bin:$PATH
     export HISTTIMEFORMAT="%d/%m/%y %T "
