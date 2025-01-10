@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export POSTAP_PATH=/home/acampove/micromamba/envs/run3/bin
 export DECPATH=/home/acampove/Packages/DecFiles
 export SFTDIR=/home/acampove/Packages
 export CONFPATH=/home/acampove/Packages/config_files
