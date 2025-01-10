@@ -1,5 +1,15 @@
 #!/usr/bin/env bash
 
+pid_calib()
+{
+    which lb-conda > /dev/null 2>&1
+    if [[ $? -ne 0 ]];then
+        echo "lb-conda not found, setting up LHCb software"
+        setLbEnv
+    fi
+
+    lb-conda pidcalib bash
+}
 #------------------------------------------------------------------
 set_alias()
 {
