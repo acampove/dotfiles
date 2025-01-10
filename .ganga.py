@@ -11,9 +11,7 @@ import json
 from dataclasses import dataclass
 from typing      import Union
 
-home_dir = os.environ['HOME']
-sys.path.append(f'{home_dir}/.local/lib/python3.12/site-packages')
-sys.path.append('/cvmfs/lhcb.cern.ch/lib/var/lib/LbEnv/3386/stable/linux-64/lib/python3.12/site-packages')
+sys.path.append('/home/acampove/micromamba/envs/post_ap/lib/python3.11/site-packages')
 
 import tqdm
 from dmu.logging.log_store import LogStore
