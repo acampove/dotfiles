@@ -192,8 +192,9 @@ def _xfns_from_file(df : DiracFile, kind : str) -> Union[list,None]:
             l_xfn=df.accessURL()
 
             return l_xfn
-        except Exception:
+        except Exception as exc:
             print(f'Cannot retrieve URL for: {df.lfn}')
+            print(exc)
 
     return None
 # ----------------------------------
