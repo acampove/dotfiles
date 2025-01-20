@@ -244,6 +244,10 @@ call_machine_bash()
         echo "Running .bashrc for $(hostname)"
         source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+    elif [[ "$(hostname)" == "thinkbook"         ]];then
+        echo "Running .bashrc for $(hostname)"
+        source ~/.bashrc_$(hostname)
+        source ~/.bashrc_local
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
         source ~/.bashrc_thinkbook
