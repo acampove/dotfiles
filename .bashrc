@@ -1,10 +1,95 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
-set_env()
+set_ganga_vars()
 {
-    export EDITOR=vim
-    export VISUAL=vim
+    # Variables needed to run ganga scripts, from
+    # https://twiki.cern.ch/twiki/bin/viewauth/LHCb/FAQ/GangaLHCbFAQ#How_to_use_Ganga_functionality_f
+
+    echo "Setting ganga environment"
+
+    export GANGA_CONFIG_PATH=GangaLHCb/LHCb.ini
+    export GANGA_SITE_CONFIG_AREA=/cvmfs/lhcb.cern.ch/lib/GangaConfig/config
+    export PYTHONPATH=$PYTHONPATH:/cvmfs/ganga.cern.ch/Ganga/install/LATEST/lib/python3.11/site-packages/
+}
+#------------------------------------------------------------------
+gng()
+{
+    # Start ganga, setup first the LHCb environment if not setup
+    which ganga > /dev/null 2>&1
+
+    if [[ $? -ne 0 ]];then
+        echo "Setting up LHCb environment"
+        . /cvmfs/lhcb.cern.ch/lib/LbEnv
+    else
+        echo "Not setting up LHCb environment"
+    fi
+
+    ganga --quiet --no-mon
+}
+#------------------------------------------------------------------
+lb_dirac()
+{
+    # Will create a shell with dirac and some basic environment specified by .bashrc_dirac
+    
+    which lb-dirac > /dev/null 2>&1
+
+    if [[ $? -ne 0 ]];then
+        echo "Cannot find lb-dirac, LHCb software not set, setting it"
+        setLbEnv
+    fi
+
+    if [[ ! -f $HOME/.bashrc_dirac ]];then
+        echo "Cannnot find ~/.bashrc_dirac"
+        exit 1
+    fi
+
+    lb-dirac bash -c "source ~/.bashrc_dirac && exec bash --norc"
+}
+#------------------------------------------------------------------
+setLbEnv()
+{
+    # This function will setup the LHCb environment
+
+    LBENV_PATH=/cvmfs/lhcb.cern.ch/lib/LbEnv
+
+    if [[ ! -f $LBENV_PATH ]]; then
+        echo "Cannot find $LBENV_PATH"
+        kill INT $$
+    fi
+
+    . $LBENV_PATH
+}
+#------------------------------------------------------------------
+set_global_env()
+{
+    export VENVS=$HOME/VENVS
+    export EDITOR=nvim
+    export VISUAL=nvim
+    export PYTHONWARNINGS=ignore
+    export BAKDIR=/run/media/acampove/backup/$(hostname)
+}
+#------------------------------------------------------------------
+backup()
+{
+    EXCLUDE=$HOME/.config/restic/excluded_files
+    if [[ ! -f $EXCLUDE ]];then
+        echo "No exclude files found: $EXCLUDE"
+        return
+    fi
+
+    which restic > /dev/null 2>&1
+    if [[ $? -ne 0 ]];then
+        echo "restic not found"
+        return
+    fi
+
+    if [[ ! -d $BAKDIR ]];then
+        echo "Backup directory not found: $BAKDIR"
+        return
+    fi
+
+    restic -r $BAKDIR backup $HOME --exclude-file $EXCLUDE
 }
 #------------------------------------------------------------------
 to_clipboard()
@@ -17,7 +102,8 @@ to_clipboard()
         exit 1
     fi
 
-    which xclip > /dev/null
+    which xclip > /dev/null 2>&1
+
     if [[ $? -ne 0 ]];then
         echo "xclip not found"
         exit 1
@@ -32,19 +118,29 @@ to_clipboard()
     echo "Copied \"$DATA\" to clipboard"
 }
 #------------------------------------------------------------------
-set_alias()
+set_global_alias()
 {
     echo "Setting common aliases"
+    #------------------------------------------------------------------
+    #Utilities
+    #------------------------------------------------------------------
+    alias rbash='source ~/.bashrc'
+    #------------------------------------------------------------------
+    #Python
+    #------------------------------------------------------------------
+    alias ipython='ipython3'
     #------------------------------------------------------------------
     #Tmux
     #------------------------------------------------------------------
     alias tmuxn="tmux new -s"
     alias tmuxa="tmux attach -t"
+    alias tmuxd="tmux detach-client"
+    alias tmuxc="tmux new-window"
     alias tmuxl="tmux list-sessions | column -t"
     #------------------------------------------------------------------
     #VIM
     #------------------------------------------------------------------
-    alias vim="nvim"
+    alias vim='nvim'
     #------------------------------------------------------------------
     #Mamba
     #------------------------------------------------------------------
@@ -126,6 +222,7 @@ set_java()
 #------------------------------------------------------------------
 customize()
 {
+    echo "Running commands to fix default behavior of system"
     # Prevent tab from escaping the $ to \$
     shopt -s direxpand
 
@@ -139,22 +236,27 @@ customize()
 #------------------------------------------------------------------
 call_machine_bash()
 {
-    if   [[ "$(hostname)" == "almalinux"*  ]];then
-        echo "Running .bashrc for almalinux"
-        source ~/.bashrc_almalinux
+    if   [[ "$(hostname)" == "thinkpad-x1carbon" ]];then
+        echo "Running .bashrc for $(hostname)"
+        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
-    elif [[ "$(hostname)" == "thinkpad"*   ]];then
-        echo "Running .bashrc for almalinux"
-        source ~/.bashrc_almalinux
+    elif [[ "$(hostname)" == "thinkpad-t430"     ]];then
+        echo "Running .bashrc for $(hostname)"
+        source ~/.bashrc_$(hostname)
+        source ~/.bashrc_local
+    elif [[ "$(hostname)" == "thinkbook"         ]];then
+        echo "Running .bashrc for $(hostname)"
+        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
-        source ~/.bashrc_laptop
+        source ~/.bashrc_thinkbook
         source ~/.bashrc_local
-    elif [[ "$(hostname)" == "lxlogin"* ]];then
+    # --------------------------------------------------------------
+    elif [[ "$(hostname)" == *".ihep.ac.cn" ]];then
         echo "Running .bashrc for IHEP"
         source ~/.bashrc_ihep
-    elif [[ "$(hostname)" == "lxplus"* ]];then
+    elif [[ "$(hostname)" == *".cern.ch"    ]];then
         echo "Running .bashrc for LXPLUS"
         source ~/.bashrc_lxplus
     else
@@ -162,8 +264,8 @@ call_machine_bash()
     fi
 }
 #------------------------------------------------------------------
-set_env
-set_java
-set_alias
-customize
 call_machine_bash
+set_global_env
+set_global_alias
+set_java
+customize

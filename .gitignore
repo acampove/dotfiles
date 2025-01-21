@@ -5,3 +5,5 @@ bashrc_ext.sh
 .config/ranger/bookmarks
 .config/ranger/history
 .config/ranger/tagged
+*.pem
+*.p12

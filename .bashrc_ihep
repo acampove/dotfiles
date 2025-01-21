@@ -1,10 +1,12 @@
 #!/usr/bin/env bash
 
 #-----------------------------------------------------
-export_vars()
+set_env()
 {
     export _CONDOR_IHEP_JOB_ID=local_job
     export ZFIT_DISABLE_TF_WARNINGS=1
+    export DATADIR=/publicfs/ucas/user/campoverde/Data
+    export DOWNLOAD_NTUPPATH=/publicfs/ucas/user/campoverde/Data/RX_run3
     export VENVS=/publicfs/ucas/user/campoverde/venvs
     export SFTDIR=/publicfs/ucas/user/campoverde/Packages/RK
     export EFFDIR=/publicfs/lhcb/user/campoverde/checks/Efficiencies/output/efficiencies
@@ -17,7 +19,6 @@ export_vars()
     export YLDDIR=$PFSDIR/yields
     export MODDIR=$PFSDIR/models
     export SELDIR=$PFSDIR/selection
-    export DATDIR=$PFSDIR/Data/RK
     export MVADIR=$PFSDIR/Data/RK/MVA
     export MONDIR=$PFSDIR/monitor
     export CERNBOX=$PFSDIR/.cernbox/
@@ -37,14 +38,14 @@ export_vars()
     export HQMDIR=/publicfs/ucas/user/qi/public/RK/high_q2_yield_study
     export CASDIR=$LHCB_PFSDIR/Data/cache
     export ASLDIR=$CASDIR/tools/apply_selection
-    export GANDIR=$LHCB_PFSDIR/Data/ganga
+    export GANDBS=$LHCB_PFSDIR/Data/ganga
     export PRCDIR=$LHCB_PFSDIR/Data/model/prec
     export FITDIR=$LHCB_PFSDIR/Data/model/fits
     export DBBDIR=$LHCB_PFSDIR/Data/databases
     #--------------------
     export ROOTSYS=/cvmfs/sft.cern.ch/lcg/releases/ROOT/v6.22.06-1d426/x86_64-centos7-gcc8-opt/bin/root
     export JULIA_DEPOT_PATH=/publicfs/ucas/user/campoverde
-    export JOBDIR=/publicfs/ucas/user/campoverde/Test/Jobdir
+    export JOBDIR=/publicfs/ucas/user/campoverde/Jobs
     export LOCKPRG='/bin/true'
     export PATH=/cvmfs/common.ihep.ac.cn/software/hepjob/bin:$HOME/.local/bin:$PATH
     export HISTTIMEFORMAT="%d/%m/%y %T "
@@ -72,31 +73,9 @@ set_alias()
     alias pwd='pwd -P'
     alias venv='source $PFSDIR/.venv/bin/activate'
     alias sdiff='sdiff -bBWs -w 250'
-    alias python=python3
     alias cpython='lb-conda default/2021-02-03 python'
     alias cbash='lb-conda default/2021-02-03 bash'
     alias clean='exec env -i /bin/bash'
-}
-#-----------------------------------------------------
-trash()
-{
-    if [[ -z $TRASH ]];then
-        echo "Undefined variable TRASH"
-        kill -INT $$
-    fi
-
-    DATEDIR=$(date | sed 's|\s|_|g' | sed 's|:|_|g')
-    TARGETDIR=$TRASH/$DATEDIR
-    mkdir -p $TARGETDIR
-    if [[ ! -d $TARGETDIR ]];then
-        echo "Cannot create $TARGETDIR"
-        kill -INT $$
-    fi
-
-    for OBJ in ${@};do
-        echo "Removing $OBJ"
-        mv $OBJ $TARGETDIR
-    done
 }
 #-----------------------------------------------------
 setPrompt() 
@@ -121,15 +100,6 @@ setPrompt()
     PS1=" \D{%H:%M:%S} \u@\h "
 }
 #-----------------------------------------------------
-setLbEnv()
-{
-    SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
-
-    if [ -f $SCRIPT ]; then
-        . $SCRIPT 
-    fi
-}
-#-----------------------------------------------------
 viewArchs()
 {
     ARCH=$1
@@ -152,25 +122,6 @@ diraclfnmetadata()
 {
     LFN=$1
     lb-run LHCbDIRAC dirac-dms-lfn-metadata $LFN
-}
-#-----------------------------------------------------
-mountCERNBOX()
-{
-    SRC_DIR=/eos/home-a/acampove/
-    TGT_DIR=/publicfs/ucas/user/campoverde/cernbox/
-
-    if [[ ! -d $TGT_DIR ]];then
-        echo "Cannot find $MNT_DIR"
-        kill -INT $$
-    fi
-
-    sshfs -o idmap=user acampove@lxplus.cern.ch:$SRC_DIR $TGT_DIR
-}
-#-----------------------------------------------------
-unmountPFS()
-{
-    TGT_DIR=/publicfs/ucas/user/campoverde/cernbox/
-    fusermount -u $TGT_DIR
 }
 #-----------------------------------------------------
 setView()
@@ -227,70 +178,16 @@ authenticate()
     fi
 }
 #-----------------------------------------------------
-#Git
-#-----------------------------------------------------
-git_rc()
-{
-    FILES="$1"
-    for FILE in ${FILES[@]};do
-        git add -A $FILE
-    done
-
-    git commit -m "$2"
-}
-
-git_ac()
-{
-    FILES="$1"
-    for FILE in ${FILES[@]};do
-        if [[ ! -e $FILE ]];then
-            echo "File/Directory $FILE not found"
-            kill -INT $$
-        else
-            echo "Adding $FILE"
-        fi
-        git add $FILE
-    done
-
-    git commit -m "$2"
-}
-
-git_acp()
-{
-    git_ac "$1" "$2"
-    git push origin master
-}
-#-----------------------------------------------------
-get_job_list()
-{
-
-    if [[ -z $1 ]];then
-        echo "Job ID argument needed"
-        return [1]
-    else
-        JOBID=$1
-    fi
-
-    INDIR=$GANDIR/$JOBID
-    if [[ ! -d $INDIR ]];then
-        echo "$INDIR not found"
-        return [1]
-    fi
-
-    OFILE=${2:-"job_$JOBID.txt"}
-
-    find $GANDIR/$JOBID -name "*.root" -type f | sort > $OFILE
-}
-#-----------------------------------------------------
 conda_init()
 {
-    echo "~/.bashrc: Initializing conda"
+    echo "~/.bashrc_ihep: Initializing conda"
+
     __conda_setup="$('/publicfs/ucas/user/campoverde/Packages/mambaforge/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
         eval "$__conda_setup"
     else
         if [ -f "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/conda.sh" ]; then
-            . "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/conda.sh"  # commented out by conda initialize  # commented out by conda initialize
+            . "/publicfs/ucas/user/campoverde/Packages/mambaforge/etc/profile.d/conda.sh"
         else
             export PATH="/publicfs/ucas/user/campoverde/Packages/mambaforge/bin:$PATH"
         fi
@@ -302,7 +199,7 @@ conda_init()
     fi
 }
 #-----------------------------------------------------
-export_vars
+set_env
 set_alias
 setPrompt
 conda_init
