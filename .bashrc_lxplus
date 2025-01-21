@@ -1,4 +1,4 @@
-# .bashrc
+#!/usr/bin/env bash
 
 #--------------------------------------------
 set_vars()
@@ -58,13 +58,6 @@ disk_usage()
     du -s *$PATTERN* | awk -F " " '{printf("%s %s\n",$1,$2)}'
 }
 #---------------------LHCb specific----------------
-setLHCb()
-{
-    if [ -f /cvmfs/lhcb.cern.ch/group_login.sh ]; then
-        . /cvmfs/lhcb.cern.ch/group_login.sh
-    fi  
-}
-#---------------------------------------------------
 setLbEnv()
 {
     SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv

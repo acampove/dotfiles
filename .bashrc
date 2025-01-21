@@ -7,15 +7,6 @@ set_env()
     export VISUAL=vim
 }
 #------------------------------------------------------------------
-setLbEnv()
-{
-    SCRIPT=/cvmfs/lhcb.cern.ch/lib/LbEnv
-
-    if [ -f $SCRIPT ]; then
-        . $SCRIPT
-    fi
-}
-#------------------------------------------------------------------
 to_clipboard()
 {
     # Function used to put argument in clipboard
