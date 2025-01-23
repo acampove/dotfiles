@@ -63,8 +63,8 @@ setLbEnv()
 #------------------------------------------------------------------
 set_global_env()
 {
-    export EDITOR=nvim
     export VENVS=$HOME/VENVS
+    export EDITOR=nvim
     export VISUAL=nvim
     export PYTHONWARNINGS=ignore
     export BAKDIR=/run/media/acampove/backup/$(hostname)
