@@ -63,8 +63,8 @@ setLbEnv()
 #------------------------------------------------------------------
 set_global_env()
 {
-    export EDITOR=nvim
     export VENVS=$HOME/VENVS
+    export EDITOR=nvim
     export VISUAL=nvim
     export PYTHONWARNINGS=ignore
     export BAKDIR=/run/media/acampove/backup/$(hostname)
@@ -241,6 +241,10 @@ call_machine_bash()
         source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
     elif [[ "$(hostname)" == "thinkpad-t430"     ]];then
+        echo "Running .bashrc for $(hostname)"
+        source ~/.bashrc_$(hostname)
+        source ~/.bashrc_local
+    elif [[ "$(hostname)" == "thinkbook"         ]];then
         echo "Running .bashrc for $(hostname)"
         source ~/.bashrc_$(hostname)
         source ~/.bashrc_local

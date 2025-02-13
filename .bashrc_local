@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+#------------------------------------------------------------------
 pid_calib()
 {
     which lb-conda > /dev/null 2>&1
@@ -47,6 +48,7 @@ set_vars()
 {
     set_home
 
+    export https_proxy="socks5://127.0.0.1:8080"
     export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
     export PATH+=:/usr/local/texlive/2024/bin/x86_64-linux
 

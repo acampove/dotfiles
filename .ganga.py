@@ -12,6 +12,7 @@ from dataclasses import dataclass
 from typing      import Union
 
 sys.path.append('/home/acampove/micromamba/envs/post_ap/lib/python3.11/site-packages')
+sys.path.append('/home/acampove/Packages/post_ap/src')
 
 import tqdm
 from dmu.logging.log_store import LogStore
@@ -191,8 +192,9 @@ def _xfns_from_file(df : DiracFile, kind : str) -> Union[list,None]:
             l_xfn=df.accessURL()
 
             return l_xfn
-        except Exception:
+        except Exception as exc:
             print(f'Cannot retrieve URL for: {df.lfn}')
+            print(exc)
 
     return None
 # ----------------------------------
