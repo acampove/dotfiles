@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export DATADIR=/home/acampove/external_ssd/Data
-export POSTAP_PATH=/home/acampove/micromamba/envs/run3/bin
+export POSTAP_PATH=/home/acampove/micromamba/envs/post_ap/bin
 export DECPATH=/home/acampove/Packages/DecFiles
 export SFTDIR=/home/acampove/Packages
 export CONFPATH=/home/acampove/Packages/config_files
