@@ -252,6 +252,10 @@ call_machine_bash()
         echo "Running .bashrc for laptop"
         source ~/.bashrc_thinkbook
         source ~/.bashrc_local
+    elif [[ "$(hostname)" == "lbbuildhack"*  ]];then
+        echo "Running .bashrc for HLT machines"
+        source ~/.bashrc_local
+        source ~/.bashrc_lxplus
     # --------------------------------------------------------------
     elif [[ "$(hostname)" == *".ihep.ac.cn" ]];then
         echo "Running .bashrc for IHEP"
