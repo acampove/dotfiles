@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+export SKDR=/home/acampove/Packages/stack
 export DATADIR=/home/acampove/external_ssd/Data
 export POSTAP_PATH=/home/acampove/micromamba/envs/post_ap/bin
 export DECPATH=/home/acampove/Packages/DecFiles
