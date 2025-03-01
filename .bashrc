@@ -264,20 +264,20 @@ call_machine_bash()
 {
     if   [[ "$(hostname)" == "thinkpad-x1carbon" ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "thinkpad-t430"     ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "thinkbook"         ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
-        source ~/.bashrc_thinkbook
         source ~/.bashrc_local
+        source ~/.bashrc_thinkbook
     # --------------------------------------------------------------
     elif [[ "$(hostname)" == *".ihep.ac.cn" ]];then
         echo "Running .bashrc for IHEP"
