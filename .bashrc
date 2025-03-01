@@ -1,6 +1,30 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+protect_tree()
+{
+    if [[ ! -d $DIR_PATH ]];then
+        echo "Cannot project \"$DIRPATH\", not found"
+        return
+    fi
+
+    echo "Protecting: \"$DIRPATH\""
+
+    sudo chattr -R +i $DIR_PATH 
+}
+#------------------------------------------------------------------
+unprotect_tree()
+{
+    if [[ ! -d $DIR_PATH ]];then
+        echo "Cannot unproject \"$DIRPATH\", not found"
+        return
+    fi
+
+    echo "Unprotecting: \"$DIRPATH\""
+
+    sudo chattr -R -i $DIR_PATH 
+}
+#------------------------------------------------------------------
 set_ganga_vars()
 {
     # Variables needed to run ganga scripts, from
