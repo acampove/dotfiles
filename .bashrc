@@ -3,24 +3,26 @@
 #------------------------------------------------------------------
 protect_tree()
 {
+    DIR_PATH=$1
     if [[ ! -d $DIR_PATH ]];then
-        echo "Cannot project \"$DIRPATH\", not found"
+        echo "Cannot project \"$DIR_PATH\", not found"
         return
     fi
 
-    echo "Protecting: \"$DIRPATH\""
+    echo "Protecting: \"$DIR_PATH\""
 
     sudo chattr -R +i $DIR_PATH 
 }
 #------------------------------------------------------------------
 unprotect_tree()
 {
+    DIR_PATH=$1
     if [[ ! -d $DIR_PATH ]];then
-        echo "Cannot unproject \"$DIRPATH\", not found"
+        echo "Cannot unproject \"$DIR_PATH\", not found"
         return
     fi
 
-    echo "Unprotecting: \"$DIRPATH\""
+    echo "Unprotecting: \"$DIR_PATH\""
 
     sudo chattr -R -i $DIR_PATH 
 }
