@@ -3,8 +3,6 @@
     name   = Angel Campoverde
 [pull]
     rebase = false
-
-#[url "git@github.com:"]
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
 [alias]
@@ -23,3 +21,7 @@
 
 [init]
 	defaultBranch = master
+[http]
+	proxy = socks5h://127.0.0.1:8080
+[https]
+	proxy = socks5h://127.0.0.1:8080
