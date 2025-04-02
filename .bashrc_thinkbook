@@ -1,14 +1,16 @@
 #!/usr/bin/env bash
 
-export FITDIR=/home/acampove/external_ssd/fits
-export SKDR=/home/acampove/Packages/stack
-export DATADIR=/home/acampove/external_ssd/Data
-export POSTAP_PATH=/home/acampove/micromamba/envs/post_ap/bin
-export DECPATH=/home/acampove/Packages/DecFiles
-export SFTDIR=/home/acampove/Packages
-export CONFPATH=/home/acampove/Packages/config_files
-export GANDBS=/home/acampove/gangadir/acampove_dbase
+export FITDIR=$HOME/external_ssd/fits
+export SKDR=$HOME/Packages/stack
+export DATADIR=$HOME/external_ssd/Data
+export POSTAP_PATH=$HOME/micromamba/envs/post_ap/bin
+export DECPATH=$HOME/Packages/DecFiles
+export SFTDIR=$HOME/Packages
+export CONFPATH=$HOME/Packages/config_files
+export GANDBS=$HOME/gangadir/acampove_dbase
 export RAPIDSIM_ROOT=$HOME/.local
+export RAPIDSIM_NTUPLES=$HOME/external_ssd/Rapidsim
+
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then
