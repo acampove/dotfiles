@@ -27,18 +27,6 @@ unprotect_tree()
     sudo chattr -R -i $DIR_PATH 
 }
 #------------------------------------------------------------------
-set_ganga_vars()
-{
-    # Variables needed to run ganga scripts, from
-    # https://twiki.cern.ch/twiki/bin/viewauth/LHCb/FAQ/GangaLHCbFAQ#How_to_use_Ganga_functionality_f
-
-    echo "Setting ganga environment"
-
-    export GANGA_CONFIG_PATH=GangaLHCb/LHCb.ini
-    export GANGA_SITE_CONFIG_AREA=/cvmfs/lhcb.cern.ch/lib/GangaConfig/config
-    export PYTHONPATH=$PYTHONPATH:/cvmfs/ganga.cern.ch/Ganga/install/LATEST/lib/python3.11/site-packages/
-}
-#------------------------------------------------------------------
 gng()
 {
     # Start ganga, setup first the LHCb environment if not setup
