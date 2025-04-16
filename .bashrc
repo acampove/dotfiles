@@ -1,16 +1,30 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
-set_ganga_vars()
+protect_tree()
 {
-    # Variables needed to run ganga scripts, from
-    # https://twiki.cern.ch/twiki/bin/viewauth/LHCb/FAQ/GangaLHCbFAQ#How_to_use_Ganga_functionality_f
+    DIR_PATH=$1
+    if [[ ! -d $DIR_PATH ]];then
+        echo "Cannot project \"$DIR_PATH\", not found"
+        return
+    fi
 
-    echo "Setting ganga environment"
+    echo "Protecting: \"$DIR_PATH\""
 
-    export GANGA_CONFIG_PATH=GangaLHCb/LHCb.ini
-    export GANGA_SITE_CONFIG_AREA=/cvmfs/lhcb.cern.ch/lib/GangaConfig/config
-    export PYTHONPATH=$PYTHONPATH:/cvmfs/ganga.cern.ch/Ganga/install/LATEST/lib/python3.11/site-packages/
+    sudo chattr -R +i $DIR_PATH 
+}
+#------------------------------------------------------------------
+unprotect_tree()
+{
+    DIR_PATH=$1
+    if [[ ! -d $DIR_PATH ]];then
+        echo "Cannot unproject \"$DIR_PATH\", not found"
+        return
+    fi
+
+    echo "Unprotecting: \"$DIR_PATH\""
+
+    sudo chattr -R -i $DIR_PATH 
 }
 #------------------------------------------------------------------
 gng()
@@ -238,20 +252,20 @@ call_machine_bash()
 {
     if   [[ "$(hostname)" == "thinkpad-x1carbon" ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "thinkpad-t430"     ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "thinkbook"         ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
-        source ~/.bashrc_thinkbook
         source ~/.bashrc_local
+        source ~/.bashrc_thinkbook
     elif [[ "$(hostname)" == "lbbuildhack"*  ]];then
         echo "Running .bashrc for HLT machines"
         source ~/.bashrc_local

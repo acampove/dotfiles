@@ -80,8 +80,6 @@ set_vars()
     export HQMDIR=/publicfs/ucas/user/qi/public/RK/high_q2_yield_study
     export JOBDIR=/publicfs/ucas/user/campoverde/Test/Jobdir
     export JOBSDB=$PFSDIR/dataset_manager/data/jobs.json
-    export KRBDIR=$ALT_HOME/.krbdir
-    export KRB5CCNAME=$KRBDIR/krb5cc_IHEP
     export MODDIR=$PFSDIR/models
     export MONDIR=$PFSDIR/monitor
     export MPLCONFIGDIR=$PFSDIR/.matplotlib
