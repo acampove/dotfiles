@@ -180,7 +180,7 @@ mountGRID()
 #-----------------------------------------------------
 mountEOS()
 {
-    MNT_DIR=/eos/home-a/acampove/
+    MNT_DIR=/eos/home-a/acampove
 
     if [[ ! -d $MNT_DIR ]];then
 	echo "Cannot find $MNT_DIR"
