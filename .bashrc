@@ -6,15 +6,15 @@ track_memory()
     if [[ -z $THIS_VENV ]];then
         echo "Could not find THIS_VENV in the environment"
         echo "This function has to be called from within a conda/mamba environment"
-        exit 1
+        return 1
     fi
 
-    mma $THIS_EVENV 
+    mma $THIS_VENV 
 
     which psrecord > /dev/null 2>&1
     if [[ $? -ne 0 ]];then
         echo "Cannot find psrecord, not tracking memory" 
-        exit 1
+        return 1
     fi
 
     $@ &
@@ -216,7 +216,7 @@ mma()
 
     $MAMBA activate $VENV
 
-    export THIS_EVENV=$VENV
+    export THIS_VENV=$VENV
 
     set_fzf
 }
