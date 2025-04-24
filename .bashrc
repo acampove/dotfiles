@@ -1,6 +1,30 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+track_memory()
+{
+    if [[ -z $THIS_VENV ]];then
+        echo "Could not find THIS_VENV in the environment"
+        echo "This function has to be called from within a conda/mamba environment"
+        exit 1
+    fi
+
+    mma $THIS_EVENV 
+
+    which psrecord > /dev/null 2>&1
+    if [[ $? -ne 0 ]];then
+        echo "Cannot find psrecord, not tracking memory" 
+        exit 1
+    fi
+
+    $@ &
+
+    # Get the PID of the last background process
+    PID=$!
+
+    psrecord "$PID" --interval 1 --plot memory.png
+}
+#------------------------------------------------------------------
 protect_tree()
 {
     DIR_PATH=$1
