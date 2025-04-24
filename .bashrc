@@ -192,6 +192,8 @@ mma()
 
     $MAMBA activate $VENV
 
+    export THIS_EVENV=$VENV
+
     set_fzf
 }
 #------------------------------------------------------------------
