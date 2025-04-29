@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 export FITDIR=$HOME/external_ssd/fits
+export MISIDDIR=$HOME/external_ssd/fits/misid
 export SKDR=$HOME/Packages/stack
 export DATADIR=$HOME/external_ssd/Data
 export POSTAP_PATH=$HOME/micromamba/envs/post_ap/bin
