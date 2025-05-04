@@ -1,17 +1,18 @@
 #!/usr/bin/env bash
 
-export FITDIR=$HOME/external_ssd/fits
-export MISIDDIR=$HOME/external_ssd/fits/misid
+export ANADIR=$HOME/external_ssd
+#export FITDIR=$ANADIR/fits
+#export MISIDDIR=$ANADIR/fits/misid
+#export DATADIR=$ANADIR/Data
+#export RAPIDSIM_NTUPLES=$ANADIR/Rapidsim
+
 export SKDR=$HOME/Packages/stack
-export DATADIR=$HOME/external_ssd/Data
 export POSTAP_PATH=$HOME/micromamba/envs/post_ap/bin
 export DECPATH=$HOME/Packages/DecFiles
 export SFTDIR=$HOME/Packages
 export CONFPATH=$HOME/Packages/config_files
 export GANDBS=$HOME/gangadir/acampove_dbase
 export RAPIDSIM_ROOT=$HOME/.local
-export RAPIDSIM_NTUPLES=$HOME/external_ssd/Rapidsim
-
 # -----------------------------------------------------------------
 # CUDA
 # -----------------------------------------------------------------
