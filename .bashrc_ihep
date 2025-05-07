@@ -4,6 +4,7 @@
 set_env()
 {
     export _CONDOR_IHEP_JOB_ID=local_job
+    export ANADIR=/publicfs/ucas/user/campoverde/Data/rx_output
     export ZFIT_DISABLE_TF_WARNINGS=1
     export DATADIR=/publicfs/ucas/user/campoverde/Data/data
     export DOWNLOAD_NTUPPATH=/publicfs/ucas/user/campoverde/Data/.rx_run3
