@@ -1,11 +1,25 @@
 #!/usr/bin/env bash
 
-export POSTAP_PATH=/home/acampove/micromamba/envs/run3/bin
-export DECPATH=/home/acampove/Packages/DecFiles
-export SFTDIR=/home/acampove/Packages
-export CONFPATH=/home/acampove/Packages/config_files
-export GANDBS=/home/acampove/gangadir/acampove_dbase
-export DOWNLOAD_NTUPPATH=/home/acampove/Data/rx_samples
+export FITDIR=$HOME/external_ssd/fits
+export MISIDDIR=$HOME/external_ssd/fits/misid
+export SKDR=$HOME/Packages/stack
+export DATADIR=$HOME/external_ssd/Data
+export POSTAP_PATH=$HOME/micromamba/envs/post_ap/bin
+export DECPATH=$HOME/Packages/DecFiles
+export SFTDIR=$HOME/Packages
+export CONFPATH=$HOME/Packages/config_files
+export GANDBS=$HOME/gangadir/acampove_dbase
+export RAPIDSIM_ROOT=$HOME/.local
+export RAPIDSIM_NTUPLES=$HOME/external_ssd/Rapidsim
+
+# -----------------------------------------------------------------
+# CUDA
+# -----------------------------------------------------------------
+export PATH=/usr/local/cuda/bin:$PATH
+export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+export CUDA_VISIBLE_DEVICES=0
+# -----------------------------------------------------------------
+
 
 # Source global definitions
 if [ -f /etc/bashrc ]; then

@@ -42,15 +42,6 @@ set_alias()
     alias condormont='watch condor_q'
     alias tmux_check='systemctl --user status tmux.service'
 }
-#--------------------------------------------
-mma()
-{
-    VENV=$1
-    conda activate $VENV
-    if [[ "$VENV" == "rk" ]];then
-        eval "$(fzf --bash)"
-    fi
-}
 #----------------#ZENITY NOTIFICATIONS--------------
 disk_usage()
 {

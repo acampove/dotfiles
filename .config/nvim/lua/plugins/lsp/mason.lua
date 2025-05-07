@@ -27,9 +27,7 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"lua_ls",
 				"clangd",
-				"ltex",
 				"bashls",
 				"jsonls",
 			},

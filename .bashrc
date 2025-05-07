@@ -1,16 +1,54 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
-set_ganga_vars()
+track_memory()
 {
-    # Variables needed to run ganga scripts, from
-    # https://twiki.cern.ch/twiki/bin/viewauth/LHCb/FAQ/GangaLHCbFAQ#How_to_use_Ganga_functionality_f
+    if [[ -z $THIS_VENV ]];then
+        echo "Could not find THIS_VENV in the environment"
+        echo "This function has to be called from within a conda/mamba environment"
+        return 1
+    fi
 
-    echo "Setting ganga environment"
+    mma $THIS_VENV 
 
-    export GANGA_CONFIG_PATH=GangaLHCb/LHCb.ini
-    export GANGA_SITE_CONFIG_AREA=/cvmfs/lhcb.cern.ch/lib/GangaConfig/config
-    export PYTHONPATH=$PYTHONPATH:/cvmfs/ganga.cern.ch/Ganga/install/LATEST/lib/python3.11/site-packages/
+    which psrecord > /dev/null 2>&1
+    if [[ $? -ne 0 ]];then
+        echo "Cannot find psrecord, not tracking memory" 
+        return 1
+    fi
+
+    $@ &
+
+    # Get the PID of the last background process
+    PID=$!
+
+    psrecord "$PID" --interval 1 --plot memory.png
+}
+#------------------------------------------------------------------
+protect_tree()
+{
+    DIR_PATH=$1
+    if [[ ! -d $DIR_PATH ]];then
+        echo "Cannot project \"$DIR_PATH\", not found"
+        return
+    fi
+
+    echo "Protecting: \"$DIR_PATH\""
+
+    sudo chattr -R +i $DIR_PATH 
+}
+#------------------------------------------------------------------
+unprotect_tree()
+{
+    DIR_PATH=$1
+    if [[ ! -d $DIR_PATH ]];then
+        echo "Cannot unproject \"$DIR_PATH\", not found"
+        return
+    fi
+
+    echo "Unprotecting: \"$DIR_PATH\""
+
+    sudo chattr -R -i $DIR_PATH 
 }
 #------------------------------------------------------------------
 gng()
@@ -178,6 +216,8 @@ mma()
 
     $MAMBA activate $VENV
 
+    export THIS_VENV=$VENV
+
     set_fzf
 }
 #------------------------------------------------------------------
@@ -238,20 +278,24 @@ call_machine_bash()
 {
     if   [[ "$(hostname)" == "thinkpad-x1carbon" ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "thinkpad-t430"     ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "thinkbook"         ]];then
         echo "Running .bashrc for $(hostname)"
-        source ~/.bashrc_$(hostname)
         source ~/.bashrc_local
+        source ~/.bashrc_$(hostname)
     elif [[ "$(hostname)" == "ubuntu"*  ]];then
         echo "Running .bashrc for laptop"
-        source ~/.bashrc_thinkbook
         source ~/.bashrc_local
+        source ~/.bashrc_thinkbook
+    elif [[ "$(hostname)" == "lbbuildhack"*  ]];then
+        echo "Running .bashrc for HLT machines"
+        source ~/.bashrc_local
+        source ~/.bashrc_lxplus
     # --------------------------------------------------------------
     elif [[ "$(hostname)" == *".ihep.ac.cn" ]];then
         echo "Running .bashrc for IHEP"
