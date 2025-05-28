@@ -106,6 +106,13 @@ set_global_env()
     export VISUAL=nvim
     export PYTHONWARNINGS=ignore
     export BAKDIR=/run/media/acampove/backup/$(hostname)
+
+    # This should allow use of Run1/2 code that needs input
+    # Ntuples.
+    #
+    # For Run3 this was replaced with ANADIR and it should
+    # vary from machine to machine
+    export DATDIR=/publicfs/ucas/user/campoverde/Data/RK
 }
 #------------------------------------------------------------------
 backup()
