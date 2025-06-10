@@ -191,11 +191,26 @@ set_global_alias()
     #------------------------------------------------------------------
     set_mamba_name
 
-    alias mmc='$MAMBA create -n'
     alias mmd='$MAMBA deactivate'
     alias mmi='$MAMBA install'
     alias mml='$MAMBA env list'
     alias mmr='$MAMBA env remove -n'
+}
+#-----------------------------------------------------
+mmc()
+{
+    if [ "$#" -lt 1 ]; then
+        echo "Error: At least one argument is required." >&2
+        return 1
+    fi
+
+    NAME=$1
+    shift
+    PACKAGES=("$@")
+
+    set_mamba_name
+
+    $MAMBA create -n $NAME $PACKAGES pysocks
 }
 #-----------------------------------------------------
 set_mamba_name()
