@@ -30,21 +30,7 @@ return {
                     end,
                 })
 
-
-    lspconfig.pylsp.setup({
-      settings = {
-        pylsp = {
-          plugins       = {
-            pylint      = { enabled = true  },
-            pyflakes    = { enabled = false },
-            pycodestyle = { enabled = false },
-          }
-        }
-      }
-    })
-
-    -- import cmp-nvim-lsp plugin
-    local cmp_nvim_lsp = require('cmp_nvim_lsp')
+    lspconfig.pyright.setup({})
 
     local keymap = vim.keymap -- for conciseness
 
