@@ -14,7 +14,6 @@ return {
         "bashls",
         "jsonls",
       },
-      automatic_installation = false,
       automatic_enable = true,
     })
 
