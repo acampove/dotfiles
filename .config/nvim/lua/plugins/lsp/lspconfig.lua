@@ -10,8 +10,21 @@ return {
     -- import lspconfig plugin
     local lspconfig = require("lspconfig")
 
-    -- import mason_lspconfig plugin
-    local mason_lspconfig = require("mason-lspconfig")
+    lspconfig.clang.setup({
+                    capabilities= capabilities,
+                    cmd         = { "clangd", "--background-index" },
+                    filetypes   = { "c", "cpp", "cxx", "objc", "objcpp" },
+                    root_dir    = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
+                    settings    = {
+                        clangd = {
+                            arguments   = {"--log=verbose", "--completion-style=detailed", "--header-insertion=iwyu"},
+                            diagnostics = { unused = false },
+                        }
+                    },
+                    on_attach = function(client, bufnr)
+                        client.server_capabilities.signatureHelpProvider=false
+                    end,
+                })
 
     -- import cmp-nvim-lsp plugin
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
