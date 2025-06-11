@@ -8,7 +8,11 @@ return {
   },
   config = function()
     -- import lspconfig plugin
-    local lspconfig = require('lspconfig')
+    local lspconfig    = require('lspconfig')
+
+    -- import cmp-nvim-lsp plugin
+    local cmp_nvim_lsp = require('cmp_nvim_lsp')
+    local capabilities = cmp_nvim_lsp.default_capabilities()
 
     lspconfig.clang.setup({
                     capabilities= capabilities,
