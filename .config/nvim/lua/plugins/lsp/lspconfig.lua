@@ -14,7 +14,7 @@ return {
     local cmp_nvim_lsp = require('cmp_nvim_lsp')
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
-    lspconfig.clang.setup({
+    lspconfig.clangd.setup({
                     capabilities= capabilities,
                     cmd         = { 'clangd', '--background-index' },
                     filetypes   = { 'c', 'cpp', 'cxx', 'objc', 'objcpp' },
