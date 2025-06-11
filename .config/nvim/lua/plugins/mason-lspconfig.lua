@@ -13,6 +13,7 @@ return {
         "clangd",
         "bashls",
         "jsonls",
+        'pyright',
       },
       automatic_enable = true,
     })
