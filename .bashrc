@@ -197,6 +197,19 @@ set_global_alias()
     alias mmr='$MAMBA env remove -n'
 }
 #-----------------------------------------------------
+# Remove packages
+mmu()
+{
+    PACKAGE=$1
+
+    if [[ -z $PACKAGE ]];then
+        echo "First argument, package is missing"
+    fi
+
+    $MAMBA remove $PACKAGE
+}
+#-----------------------------------------------------
+# Create environment
 mmc()
 {
     if [ "$#" -lt 1 ]; then
