@@ -212,6 +212,18 @@ mmc()
 
     $MAMBA create -n $NAME $PACKAGES pysocks
 }
+# Attach environment
+#-----------------------------------------------------
+mma()
+{
+    VENV=$1
+
+    $MAMBA activate $VENV
+
+    export THIS_VENV=$VENV
+
+    set_fzf
+}
 #-----------------------------------------------------
 set_mamba_name()
 {
@@ -230,17 +242,6 @@ set_mamba_name()
     fi
 
     echo "Neither mamba nor micromamba found"
-}
-#-----------------------------------------------------
-mma()
-{
-    VENV=$1
-
-    $MAMBA activate $VENV
-
-    export THIS_VENV=$VENV
-
-    set_fzf
 }
 #------------------------------------------------------------------
 lxplus()
