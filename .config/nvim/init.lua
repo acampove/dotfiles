@@ -15,3 +15,10 @@ vim.diagnostic.config({
   underline        = true,
   update_in_insert = false,
 })
+
+vim.api.nvim_create_autocmd({"BufRead", "BufNewFile"}, {
+  pattern = "Snakefile",
+  callback = function()
+    vim.bo.filetype = "python"
+  end
+})
