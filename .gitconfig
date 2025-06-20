@@ -8,17 +8,18 @@
 [alias]
     ac=add .
     br=branch
-    cl=clone
     cm=commit
-    co=checkout
-    po=push origin
-    rs=reset
+    dn=diff --name-only
+    cl=clone
     st=status
-
+    rs=reset
+    # ------------------
+    po =push    origin
     pom=push    origin master
     poh=push -u origin HEAD 
+    # ------------------
+    co =checkout
     cob=checkout -b
-
 [init]
 	defaultBranch = master
 [http]
