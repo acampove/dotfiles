@@ -69,7 +69,6 @@ gng()
 lb_dirac()
 {
     # Will create a shell with dirac and some basic environment specified by .bashrc_dirac
-    
     which lb-dirac > /dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
@@ -88,7 +87,6 @@ lb_dirac()
 setLbEnv()
 {
     # This function will setup the LHCb environment
-
     LBENV_PATH=/cvmfs/lhcb.cern.ch/lib/LbEnv
 
     if [[ ! -f $LBENV_PATH ]]; then
@@ -328,11 +326,10 @@ call_machine_bash()
         echo "Running .bashrc for laptop"
         source ~/.bashrc_local
         source ~/.bashrc_thinkbook
+    # --------------------------------------------------------------
     elif [[ "$(hostname)" == "lbbuildhack"*  ]];then
         echo "Running .bashrc for HLT machines"
-        source ~/.bashrc_local
         source ~/.bashrc_lxplus
-    # --------------------------------------------------------------
     elif [[ "$(hostname)" == *".ihep.ac.cn" ]];then
         echo "Running .bashrc for IHEP"
         source ~/.bashrc_ihep
