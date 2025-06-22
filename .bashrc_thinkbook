@@ -9,10 +9,24 @@ export ANADIR=$HOME/external_ssd
 export SKDR=$HOME/Packages/stack
 export POSTAP_PATH=$HOME/micromamba/envs/post_ap/bin
 export DECPATH=$HOME/Packages/DecFiles
-export SFTDIR=$HOME/Packages
+export SFTDIR=$HOME/Packages/run3
 export CONFPATH=$HOME/Packages/config_files
 export GANDBS=$HOME/gangadir/acampove_dbase
 export RAPIDSIM_ROOT=$HOME/.local
+
+# TODO: This should be removed once ROOT be available through conda
+# see: https://github.com/conda-forge/root-feedstock/issues/295
+setup_root()
+{
+    ROOT_PATH=$HOME/Packages/root_6p36/bin/thisroot.sh
+    if [[ ! -f $ROOT_PATH ]];then
+        echo "Cannnot find $ROOT_PATH"
+        exit 1
+    fi
+
+    echo "Sourcing $ROOT_PATH"
+    source $ROOT_PATH
+}
 # -----------------------------------------------------------------
 # CUDA
 # -----------------------------------------------------------------

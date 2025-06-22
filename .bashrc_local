@@ -48,7 +48,9 @@ set_vars()
 {
     set_home
 
-    export https_proxy="socks5://127.0.0.1:8080"
+    export PIP_CONFIG_FILE=$HOME/.pip/pip_china.conf
+    export HTTP_PROXY=http://127.0.0.1:8888
+    export HTTPS_PROXY=http://127.0.0.1:8888
     export FZF_DEFAULT_COMMAND='fdfind --type f --strip-cwd-prefix'
     export PATH+=:/usr/local/texlive/2024/bin/x86_64-linux
 

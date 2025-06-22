@@ -69,7 +69,6 @@ gng()
 lb_dirac()
 {
     # Will create a shell with dirac and some basic environment specified by .bashrc_dirac
-    
     which lb-dirac > /dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
@@ -88,7 +87,6 @@ lb_dirac()
 setLbEnv()
 {
     # This function will setup the LHCb environment
-
     LBENV_PATH=/cvmfs/lhcb.cern.ch/lib/LbEnv
 
     if [[ ! -f $LBENV_PATH ]]; then
@@ -191,11 +189,51 @@ set_global_alias()
     #------------------------------------------------------------------
     set_mamba_name
 
-    alias mmc='$MAMBA create -n'
     alias mmd='$MAMBA deactivate'
     alias mmi='$MAMBA install'
     alias mml='$MAMBA env list'
     alias mmr='$MAMBA env remove -n'
+}
+#-----------------------------------------------------
+# Remove packages
+mmu()
+{
+    PACKAGE=$1
+
+    if [[ -z $PACKAGE ]];then
+        echo "First argument, package is missing"
+    fi
+
+    $MAMBA remove $PACKAGE
+}
+#-----------------------------------------------------
+# Create environment
+mmc()
+{
+    if [ "$#" -lt 1 ]; then
+        echo "Error: At least one argument is required." >&2
+        return 1
+    fi
+
+    NAME=$1
+    shift
+    PACKAGES=("$@")
+
+    set_mamba_name
+
+    $MAMBA create -n $NAME $PACKAGES pysocks
+}
+# Attach environment
+#-----------------------------------------------------
+mma()
+{
+    VENV=$1
+
+    $MAMBA activate $VENV
+
+    export THIS_VENV=$VENV
+
+    set_fzf
 }
 #-----------------------------------------------------
 set_mamba_name()
@@ -215,17 +253,6 @@ set_mamba_name()
     fi
 
     echo "Neither mamba nor micromamba found"
-}
-#-----------------------------------------------------
-mma()
-{
-    VENV=$1
-
-    $MAMBA activate $VENV
-
-    export THIS_VENV=$VENV
-
-    set_fzf
 }
 #------------------------------------------------------------------
 lxplus()
@@ -299,11 +326,10 @@ call_machine_bash()
         echo "Running .bashrc for laptop"
         source ~/.bashrc_local
         source ~/.bashrc_thinkbook
+    # --------------------------------------------------------------
     elif [[ "$(hostname)" == "lbbuildhack"*  ]];then
         echo "Running .bashrc for HLT machines"
-        source ~/.bashrc_local
         source ~/.bashrc_lxplus
-    # --------------------------------------------------------------
     elif [[ "$(hostname)" == *".ihep.ac.cn" ]];then
         echo "Running .bashrc for IHEP"
         source ~/.bashrc_ihep
