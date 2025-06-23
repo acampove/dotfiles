@@ -3,16 +3,12 @@ File used to define code that needs to be ran before ganga starts
 '''
 # pylint: disable=line-too-long, wrong-import-position, import-error
 
-import sys
 import os
 import re
 import glob
 import json
 from dataclasses import dataclass
 from typing      import Union
-
-sys.path.append('/home/acampove/micromamba/envs/post_ap/lib/python3.11/site-packages')
-sys.path.append('/home/acampove/Packages/post_ap/src')
 
 import tqdm
 from dmu.logging.log_store import LogStore
