@@ -234,5 +234,8 @@ def _initialize():
     sft_dir      = _get_env_var('SFTDIR')
     Data.rx_path = f'{sft_dir}/rx_data'
     Data.jbm     = jobs
+    log.info(40 * '-')
+    log.info(f'Running {__file__} script')
+    log.info(40 * '-')
 # ----------------------------------
 _initialize()
