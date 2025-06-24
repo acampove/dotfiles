@@ -11,12 +11,16 @@ from dataclasses import dataclass
 from typing      import Union
 
 import tqdm
-from dmu.logging.log_store import LogStore
+import logging as log
 
 from GangaCore.GPI                             import DiracFile
 from GangaCore.GPIDev.Lib.Registry.JobRegistry import JobRegistrySliceProxy as JRSP
 
-log = LogStore.add_logger('_ganga_py', exists_ok=True)
+log.basicConfig(
+    level=log.INFO,                      # Set logging level
+    format='[%(asctime)s] %(levelname)s: %(message)s',  # Log format
+    datefmt='%H:%M:%S'                       # Time format
+)
 # ----------------------------------
 @dataclass
 class Data:
