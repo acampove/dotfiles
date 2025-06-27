@@ -2,7 +2,6 @@
 
 showdeps()
 {
-    set -e
     local MODULEDIR=$1
     local START=$2
 
