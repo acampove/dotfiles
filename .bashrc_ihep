@@ -4,6 +4,7 @@
 set_env()
 {
     export _CONDOR_IHEP_JOB_ID=local_job
+    export PIP_CONFIG_FILE=$HOME/.pip/pip_china.conf
     export ANADIR=/publicfs/ucas/user/campoverde/Data
     export ZFIT_DISABLE_TF_WARNINGS=1
     export DOWNLOAD_NTUPPATH=/publicfs/ucas/user/campoverde/Data/.rx_run3
