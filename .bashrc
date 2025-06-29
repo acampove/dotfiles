@@ -24,7 +24,7 @@ showdeps()
 
     local EXCLUDED=$(pip list --format=freeze | cut -d= -f1 | grep -v "$START" | tr '\n' ' ')
 
-    pydeps "$MODULEDIR" --exclude $EXCLUDED ROOT yaml boost_histogram
+    pydeps "$MODULEDIR" --max-bacon 10 --exclude $EXCLUDED ROOT yaml boost_histogram
 }
 #------------------------------------------------------------------
 track_memory()
