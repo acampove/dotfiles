@@ -1,31 +1,5 @@
 #!/usr/bin/env bash
 
-showdeps()
-{
-    local MODULEDIR=$1
-    local START=$2
-
-    if ! command -v pydeps > /dev/null 2>&1;then
-        echo "pydeps not available, install it with:"
-        echo ""
-        echo "pip install pydeps"
-        return 1
-    fi
-
-    if [[ ! -d $MODULEDIR ]];then
-        echo "Need as first arg directory with mudules and __init__.py, found: $MODULEDIR"
-        return 1
-    fi
-
-    if [[ -z $START ]];then
-        echo "Need as second arg substring associated to packages to search, e.g. rx, found: $START"
-        return 1
-    fi
-
-    local EXCLUDED=$(pip list --format=freeze | cut -d= -f1 | grep -v "$START" | tr '\n' ' ')
-
-    pydeps "$MODULEDIR" --max-bacon 10 --exclude $EXCLUDED ROOT yaml boost_histogram
-}
 #------------------------------------------------------------------
 track_memory()
 {
