@@ -4,7 +4,7 @@
 set_vars()
 {
     export ANADIR=/eos/lhcb/wg/RD/RX_run3
-    export SFTDIR=/afs/cern.ch/work/a/acampove/Packages/RK
+    export SFTDIR=/afs/cern.ch/work/a/acampove/Packages/RX
     export PATH+=:$HOME/.local/bin
     export STKDIR=/afs/cern.ch/work/a/acampove/stack
     export PROMPT_COMMAND=''
