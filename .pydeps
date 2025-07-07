@@ -1,6 +1,7 @@
 [pydeps]
 max_bacon = 10
 exclude   =
+    omegaconf
     os
     re
     sys
