@@ -3,14 +3,15 @@
 #------------------------------------------------------------------
 check_internet()
 {
-    curl -x http://127.0.0.1:8888 https://www.google.com -I >&2 /dev/null
+    curl -x http://127.0.0.1:8888 https://www.google.com -I >/dev/null 2>&1
 
     if [[ $? -ne 0 ]];then
         echo "No internet"
-        return
+        return 1
     fi
 
     echo "Proxy is working"
+    return 0
 }
 #------------------------------------------------------------------
 pid_calib()
