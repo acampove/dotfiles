@@ -1,6 +1,18 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+check_internet()
+{
+    curl -x http://127.0.0.1:8888 https://www.google.com -I >&2 /dev/null
+
+    if [[ $? -ne 0 ]];then
+        echo "No internet"
+        return
+    fi
+
+    echo "Proxy is working"
+}
+#------------------------------------------------------------------
 pid_calib()
 {
     which lb-conda > /dev/null 2>&1
