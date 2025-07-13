@@ -2,6 +2,7 @@
 max_bacon = 10
 exclude   =
     omegaconf
+    slugify
     os
     re
     sys
