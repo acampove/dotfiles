@@ -23,6 +23,6 @@
 [init]
 	defaultBranch = master
 [http]
-	proxy = socks5h://127.0.0.1:8080
+	proxy = http://127.0.0.1:8888
 [https]
-	proxy = socks5h://127.0.0.1:8080
+	proxy = https://127.0.0.1:8888
