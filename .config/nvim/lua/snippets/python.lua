@@ -7,17 +7,21 @@ local snipf = utils.snippetf
 
 ----------------------------------------------------
 s_data=snipf('data_class', [[
+# ----------------------------------
 class Data:
     '''
     Class meant to be used to share attributes
     '''
     {1}
+# ----------------------------------
 ]])
 ----------------------------------------------------
 s_logger=snipf('logger', [[
 from dmu.logging.log_store import LogStore
 
 log=LogStore.add_logger('{1}')
+# ----------------------------------
+{2}
 ]])
 ----------------------------------------------------
 s_main=snipf('main', [[
@@ -35,27 +39,17 @@ if __name__ == '__main__':
 ----------------------------------------------------
 s_deftd=snipf('deftd', [[
 # ----------------------
-def {1}() -> None:
+def {1}({2}) -> {3}:
     '''
     Parameters
     -------------
+    {4}
 
     Returns
     -------------
-
+    {5}
     '''
-]])
-----------------------------------------------------
-s_defstd=snipf('defstd', [[
-def {1}(self) -> None:
-    '''
-    Parameters
-    -------------
-
-    Returns
-    -------------
-
-    '''
+    {6}
 ]])
 ----------------------------------------------------
 return {
@@ -63,5 +57,4 @@ return {
     s_logger,
     s_data,
     s_deftd,
-    s_defstd,
 }
