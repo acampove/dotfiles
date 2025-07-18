@@ -22,7 +22,7 @@ km.set("n", "<leader>q", ":q<cr>")
 km.set("n", "<leader>r", ":so $MYVIMRC<cr>")
 km.set("n", "<leader>w", ":w<cr>")
 
--- Map arrow keys to switch panels 
+-- Map arrow keys to switch panels
 km.set("n", "<Up>"   , "<C-W>k")
 km.set("n", "<Down>" , "<C-W>j")
 km.set("n", "<Right>", "<C-W>l")
@@ -41,6 +41,6 @@ km.set("n", "<leader>fg", ":Telescope live_grep<cr>" , {})
 km.set("n", "<leader>fb", ":Telescope buffers<cr>"   , {})
 km.set("n", "<leader>fh", ":Telescope help_tags<cr>" , {})
 
--- Neogit 
+-- Neogit
 km.set("n", "<leader>g" , ":Neogit kind=split_below<cr>" , {})
 
