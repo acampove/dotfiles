@@ -16,7 +16,7 @@ vim.diagnostic.config({
   update_in_insert = false,
 })
 
-vim.api.nvim_create_user_command('A', function(opts)
+vim.api.nvim_create_user_command('Align', function(opts)
   local col = opts.args
   vim.cmd('normal! 0f=100i ')
   vim.cmd('normal! ' .. col .. '|dw')
