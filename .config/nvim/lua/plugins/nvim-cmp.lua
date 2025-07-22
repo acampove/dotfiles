@@ -40,7 +40,7 @@ return {
         ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
         ["<C-e>"] = cmp.mapping.abort(), -- close completion window
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<C-j>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             if require("luasnip").expand_or_jumpable() then
               cmp.close()  -- 👈 close menu so Tab jumps in snippet
@@ -55,7 +55,7 @@ return {
           end
         end, { "i", "s" }),
 
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<C-k>"] = cmp.mapping(function(fallback)
           if cmp.visible() then
             cmp.select_prev_item()
           elseif luasnip.jumpable(-1) then
