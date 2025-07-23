@@ -339,10 +339,14 @@ call_machine_bash()
         echo "Running .bashrc for HLT machines"
         source ~/.bashrc_lxplus
     elif [[ "$(hostname)" == *".ihep.ac.cn" ]];then
-        echo "Running .bashrc for IHEP"
+        if [[ $- == *i* ]];then
+            echo "Running .bashrc for IHEP"
+        fi
         source ~/.bashrc_ihep
     elif [[ "$(hostname)" == *".cern.ch"    ]];then
-        echo "Running .bashrc for LXPLUS"
+        if [[ $- == *i* ]];then
+            echo "Running .bashrc for LXPLUS"
+        fi
         source ~/.bashrc_lxplus
     else
         echo "Unrecognized host $(hostname), not using .bashrc file"
