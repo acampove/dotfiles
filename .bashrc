@@ -163,7 +163,9 @@ to_clipboard()
 #------------------------------------------------------------------
 set_global_alias()
 {
-    echo "Setting common aliases"
+    if [[ $- == *i* ]];then
+        echo "Setting common aliases"
+    fi
     #------------------------------------------------------------------
     #Utilities
     #------------------------------------------------------------------
@@ -241,7 +243,9 @@ set_mamba_name()
     which mamba > /dev/null 2>&1
     if [[ $? -eq 0 ]];then
         export MAMBA=mamba
-        echo "Using $MAMBA"
+        if [[ $- == *i* ]];then
+            echo "Using $MAMBA"
+        fi
         return
     fi
 
@@ -291,12 +295,16 @@ set_java()
     fi
 
     export JAVA_HOME=$(readlink -f $(which java) | sed 's|/bin/java||g')
-    echo "JAVA run time found, JAVA_HOME=$JAVA_HOME"
+    if [[ $- == *i* ]];then
+        echo "JAVA run time found, JAVA_HOME=$JAVA_HOME"
+    fi
 }
 #------------------------------------------------------------------
 customize()
 {
-    echo "Running commands to fix default behavior of system"
+    if [[ $- == *i* ]];then
+        echo "Running commands to fix default behavior of system"
+    fi
     # Prevent tab from escaping the $ to \$
     shopt -s direxpand
 
