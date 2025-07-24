@@ -10,13 +10,11 @@ s_2subfigs = snipf("subfig2", [[
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{1}}
         \caption{{2}}
     \end{subfigure}
     \hfill
     \begin{subfigure}[b]{0.45\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{3}}
         \caption{{4}}
     \end{subfigure}
@@ -28,17 +26,14 @@ s_3subfigs = snipf("subfig3", [[
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.32\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{1}}
         \caption{{2}}
     \end{subfigure}
     \begin{subfigure}[b]{0.32\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{3}}
         \caption{{4}}
     \end{subfigure}
     \begin{subfigure}[b]{0.32\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{5}}
         \caption{{6}}
     \end{subfigure}
@@ -50,22 +45,18 @@ s_4subfigs = snipf("subfig4", [[
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{1}}
         \caption{{2}}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{3}}
         \caption{{4}}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{5}}
         \caption{{6}}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
-        \centering
         \includegraphics[width=\textwidth]{{7}}
         \caption{{8}}
     \end{subfigure}
