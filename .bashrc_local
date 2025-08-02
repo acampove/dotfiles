@@ -195,11 +195,19 @@ mountGRID()
 #-----------------------------------------------------
 mountEOS()
 {
-    MNT_DIR=/eos/home-a/acampove
+    KIND=$1
+    if   [[ "$KIND" == "USER" ]];then
+        MNT_DIR=/eos/home-a/acampove
+    elif [[ "$KIND" == "RD"   ]];then
+        MNT_DIR=/eos/lhcb/wg/RD/RX_run3
+    else
+        echo "Invalid kind of EOS directory, choose: USER, RD"
+        return 1
+    fi
 
     if [[ ! -d $MNT_DIR ]];then
-	echo "Cannot find $MNT_DIR"
-	kill -INT $$
+        echo "Cannot find $MNT_DIR"
+        return 1
     fi
 
     sshfs -o idmap=user acampove@lxplus.cern.ch:$MNT_DIR $MNT_DIR
