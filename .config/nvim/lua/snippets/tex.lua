@@ -63,9 +63,42 @@ s_4subfigs = snipf("subfig4", [[
     \caption{{9}}
 \end{figure}
 ]])
+
+s_6subfigs = snipf("subfig6", [[
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{{1}}
+        \caption{{2}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{{3}}
+        \caption{{4}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{{5}}
+        \caption{{6}}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{{7}}
+        \caption{{8}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{{9}}
+        \caption{{10}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.32\textwidth}
+        \includegraphics[width=\textwidth]{{11}}
+        \caption{{12}}
+    \end{subfigure}
+    \caption{{13}}
+\end{figure}
+]])
 -----------------------------------------------------
 return {
     s_2subfigs,
     s_3subfigs,
     s_4subfigs,
+    s_6subfigs,
 }
