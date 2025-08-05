@@ -59,10 +59,18 @@ def {1}({2}) -> {3}:
     {6}
 ]])
 ----------------------------------------------------
+s_test_initializer=snipf('test_initializer', [[
+# ----------------------
+@pytest.fixture(scope='session', autouse=True)
+def _initialize():
+    {1}
+]])
+----------------------------------------------------
 return {
     s_main,
     s_logger,
     s_data,
     s_deftd,
     s_args,
+    s_test_initializer,
 }
