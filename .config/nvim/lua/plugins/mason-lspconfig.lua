@@ -15,7 +15,7 @@ return {
         'prettier', -- prettier formatter
         'stylua',   -- lua formatter
         'isort',    -- python formatter
-        'pylint',
+        'ruff',     -- linter
       },
     })
   end,
