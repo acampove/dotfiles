@@ -5,6 +5,20 @@ local text  = ls.text_node
 local utils = require("snippets.utils")
 local snipf = utils.snippetf
 
+----------------------------------------------------
+s_deftt=snipf('deftt', [[
+# ----------------------
+def {1}({2}) -> {3}:
+    '''
+    {4}
+
+    Parameters 
+    -------------
+    {5}
+    '''
+    {6}
+]])
+----------------------------------------------------
 s_args=snipf('pargs', [[
 import argparse
 
@@ -71,6 +85,7 @@ return {
     s_logger,
     s_data,
     s_deftd,
+    s_deftt,
     s_args,
     s_test_initializer,
 }
