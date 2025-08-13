@@ -6,6 +6,22 @@ local utils = require("snippets.utils")
 local snipf = utils.snippetf
 
 ----------------------------------------------------
+s_classd=snipf('classd', [[
+# ----------------------
+class {1}:
+    '''
+    {2}
+    '''
+    # ----------------------
+    def __init__(self, {3}):
+        '''
+        Parameters
+        -------------
+        {4}
+        '''
+        {5}
+]])
+----------------------------------------------------
 s_deftt=snipf('deftt', [[
 # ----------------------
 def {1}({2}) -> {3}:
@@ -86,6 +102,7 @@ def initialize():
 return {
     s_main,
     s_logger,
+    s_classd,
     s_data,
     s_deftd,
     s_deftt,
