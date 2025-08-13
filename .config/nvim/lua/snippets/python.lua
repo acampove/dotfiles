@@ -76,7 +76,10 @@ def {1}({2}) -> {3}:
 s_test_initializer=snipf('test_initializer', [[
 # ----------------------
 @pytest.fixture(scope='session', autouse=True)
-def _initialize():
+def initialize():
+    '''
+    This will run before any test
+    '''
     {1}
 ]])
 ----------------------------------------------------
