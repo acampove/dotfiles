@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+check_wificard()
+{
+    # These lines should check for crashes of wifi firmware
+    dmesg | tail -n 200 | grep -i 'iwl\|wifi\|firmware\|microcode'
+    # Ping should be about 2-5 ms.
+    # Anything in the hundreds is a problem
+    ping -c 4 192.168.43.1
+}
+#------------------------------------------------------------------
 check_internet()
 {
     curl -x http://127.0.0.1:8888 https://www.google.com -I >/dev/null 2>&1
