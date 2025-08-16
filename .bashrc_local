@@ -1,6 +1,17 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+synchronize()
+{
+    PROXY="http://127.0.0.1:8888"
+    SERVER="https://www.google.com"
+    TIME_STR=$(curl -x $PROXY -sI $SERVER | grep -i '^Date:' | cut -d' ' -f3-)
+    TIME_FMT=$(date -d "$TIME_STR" +"%Y-%m-%d %H:%M:%S")
+
+    echo "Setting time to: $TIME_FMT"
+    sudo timedatectl set-time "$TIME_FMT"
+}
+#------------------------------------------------------------------
 check_wificard()
 {
     # These lines should check for crashes of wifi firmware

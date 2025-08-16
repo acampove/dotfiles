@@ -40,3 +40,23 @@ which will:
 - Stop recording on `q`
 
 Then you can repeat this `N` times by running the macro with `N@q`
+
+### Python
+
+```bash
+# Alias to ease the use of `py-spy`:
+alias pyspy_json='py-spy record -o profile.json --format speedscope --'
+```
+
+### System
+
+```bash
+# Check if http proxy is working
+check_internet
+```
+
+```bash
+# Used to synchronize system clock
+# This needs http proxy in port 8888
+synchronize
+```
