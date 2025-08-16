@@ -195,6 +195,8 @@ set_global_alias()
     alias mmi='$MAMBA install'
     alias mml='$MAMBA env list'
     alias mmr='$MAMBA env remove -n'
+    #------------------------------------------------------------------
+    alias pyspy_json='py-spy record -o profile.json --format speedscope --'
 }
 #-----------------------------------------------------
 # Remove packages
