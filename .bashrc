@@ -240,6 +240,38 @@ mma()
     set_fzf
 }
 #-----------------------------------------------------
+# This function will clone a (micro)mamba environment
+mml()
+{
+    if [[ $# -ne 2 ]];then
+        echo "Need two arguments:"
+        echo ""
+        echo "- Old environment name"
+        echo "- New environment name"
+        return 1
+    fi
+
+    OLD_ENV=$1
+    NEW_ENV=$2
+
+    set_mamba_name
+
+    ENV_LIST_PKG="tmp_clone_env.yaml"
+
+    if ! "$MAMBA" env export -n "$OLD_ENV" > "$ENV_LIST_PKG"; then
+        echo "Failed to export environment $OLD_ENV"
+        return 1
+    fi
+    
+    if ! "$MAMBA" create -n "$NEW_ENV" -f "$ENV_LIST_PKG"; then
+        echo "Failed to create environment $NEW_ENV"
+        rm -f "$ENV_LIST_PKG"
+        return 1
+    fi
+
+    rm "$ENV_LIST_PKG"
+}
+#-----------------------------------------------------
 set_mamba_name()
 {
     if command -v mamba > /dev/null 2>&1;then
