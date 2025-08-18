@@ -242,23 +242,25 @@ mma()
 #-----------------------------------------------------
 set_mamba_name()
 {
-    which mamba > /dev/null 2>&1
-    if [[ $? -eq 0 ]];then
+    if command -v mamba > /dev/null 2>&1;then
         export MAMBA=mamba
         if [[ $- == *i* ]];then
             echo "Using $MAMBA"
         fi
-        return
+        return 0
     fi
 
-    which micromamba > /dev/null 2>&1
-    if [[ $? -eq 0 ]];then
+    if command -v micromamba > /dev/null 2>&1;then
         export MAMBA=micromamba
-        echo "Using $MAMBA"
-        return
+        if [[ $- == *i* ]];then
+            echo "Using $MAMBA"
+        fi
+        return 0
     fi
 
     echo "Neither mamba nor micromamba found"
+
+    return 1
 }
 #------------------------------------------------------------------
 lxplus()
