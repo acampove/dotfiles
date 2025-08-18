@@ -60,3 +60,18 @@ check_internet
 # This needs http proxy in port 8888
 synchronize
 ```
+
+## (Micro)mamba
+
+In order to deal with micromamba more easily use:
+
+| Command | Description             | Example                    |
+| ------- | ----------------------- | -------------------------- |
+| `mmn`   | Creates environment     | `mmn env_name python=3.12` |
+| `mma`   | Activates environment   | `mma env_name`             |
+| `mmd`   | Deactivates environment | `mmd env_name`             |
+| `mmu`   | Uninstalls package      | `mmu root`                 |
+| `mmc`   | Clones environment      | `mmc old_env new_env`      |
+| `mmr`   | Removes environment     | `mmr env_name`             |
+| `mmi`   | Installs package        | `mmi python=3.12`          |
+| `mml`   | Lists environments      | `mml`                      |
