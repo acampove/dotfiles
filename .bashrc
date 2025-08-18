@@ -212,7 +212,7 @@ mmu()
 }
 #-----------------------------------------------------
 # Create environment
-mmc()
+mmn()
 {
     if [ "$#" -lt 1 ]; then
         echo "Error: At least one argument is required." >&2
@@ -241,7 +241,7 @@ mma()
 }
 #-----------------------------------------------------
 # This function will clone a (micro)mamba environment
-mml()
+mmc()
 {
     if [[ $# -ne 2 ]];then
         echo "Need two arguments:"
