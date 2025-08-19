@@ -304,7 +304,7 @@ lxplus()
 ihep()
 {
     MACHNE=$1
-    ssh -4 -X campoverde@lxlogin$MACHNE.ihep.ac.cn
+    ssh -X campoverde@lxlogin$MACHNE.ihep.ac.cn
 }
 #------------------------------------------------------------------
 set_fzf()
