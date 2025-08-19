@@ -36,11 +36,7 @@ local handle = io.popen("hostname")
 local hostname = handle:read("*l")
 handle:close()
 
-if string.match(hostname, "ihep.ac.cn$") then
-  print("Not using system clipboard for IHEP")
-else
-  opt.clipboard:append("unnamedplus") -- use system clipboard as default register
-end
+opt.clipboard:append("unnamedplus") -- use system clipboard as default register
 
 -- split windows
 opt.splitright = true -- split vertical window to the right
