@@ -17,8 +17,8 @@ This will keep the number pad always on.
 
 ### Snippets
 
+#### classd
 ```python
-# classd
 # ----------------------
 class {1}:
     '''
@@ -32,8 +32,10 @@ class {1}:
         {4}
         '''
         {5}
+```
 
-# deftt
+#### deftt
+```python
 # ----------------------
 def {1}({2}) -> {3}:
     '''
@@ -44,8 +46,10 @@ def {1}({2}) -> {3}:
     {5}
     '''
     {6}
+```
 
-# pargs
+#### pargs
+```python
 import argparse
 
 # ----------------------
@@ -53,23 +57,29 @@ def _parse_args() -> None:
     parser = argparse.ArgumentParser(description='{1}')
     parser.add_argument('{2}', '{3}' , type=str, help='{4}')
     args = parser.parse_args()
+```
 
-# data_class
+#### data_class
+```python
 # ----------------------
 class Data:
     '''
     Class meant to be used to share attributes
     '''
     {1}
+```
 
-# logger
+#### logger
+```python
 from dmu.logging.log_store import LogStore
 
 log=LogStore.add_logger('{1}')
 # ----------------------
 {2}
+```
 
-# main
+#### main
+```python
 # ----------------------
 def main():
     '''
@@ -79,8 +89,10 @@ def main():
 # ----------------------
 if __name__ == '__main__':
     main()
+```
 
-# deftd
+#### deftd
+```python
 # ----------------------
 def {1}({2}) -> {3}:
     '''
@@ -93,8 +105,10 @@ def {1}({2}) -> {3}:
     {5}
     '''
     {6}
+```
 
-# test_initializer
+#### test_initializer
+```python
 # ----------------------
 @pytest.fixture(scope='session', autouse=True)
 def initialize():
