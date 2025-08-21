@@ -45,6 +45,25 @@ which will:
 
 Then you can repeat this `N` times by running the macro with `N@q`
 
+### Key bindings 
+
+
+| Mode       | Key           | Action / Command                                      | Description                               |
+|------------|---------------|------------------------------------------------------|-------------------------------------------|
+| n          | gR            | `<cmd>Telescope lsp_references<CR>`                  | Show LSP references                        |
+| n          | gD            | `vim.lsp.buf.declaration`                            | Go to declaration                          |
+| n          | gd            | `<cmd>Telescope lsp_definitions<CR>`                 | Show LSP definitions                        |
+| n          | gi            | `<cmd>Telescope lsp_implementations<CR>`            | Show LSP implementations                   |
+| n          | gt            | `<cmd>Telescope lsp_type_definitions<CR>`           | Show LSP type definitions                  |
+| n, v       | <leader>ca    | `vim.lsp.buf.code_action`                            | See available code actions                 |
+| n          | <leader>rn    | `vim.lsp.buf.rename`                                 | Smart rename                               |
+| n          | <leader>D     | `<cmd>Telescope diagnostics bufnr=0<CR>`            | Show buffer diagnostics                     |
+| n          | <leader>d     | `vim.diagnostic.open_float`                          | Show line diagnostics                       |
+| n          | [d            | `vim.diagnostic.goto_prev`                           | Go to previous diagnostic                   |
+| n          | ]d            | `vim.diagnostic.goto_next`                           | Go to next diagnostic                       |
+| n          | K             | `vim.lsp.buf.hover`                                  | Show documentation for what is under cursor|
+| n          | <leader>rs    | `:LspRestart<CR>`                                    | Restart LSP                                 |
+
 
 ## Python
 
