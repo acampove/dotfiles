@@ -111,4 +111,15 @@ In order to deal with micromamba more easily use:
 | `mmi`   | Installs package        | `mmi python=3.12`          |
 | `mml`   | Lists environments      | `mml`                      |
 
+## Terminal utilities
 
+### Tarballs
+
+In order to tar a directory structure with only certain files do:
+
+```bash
+tartree -d dir_to_be_tarred -f file.txt -f file.png -o file.tar
+```
+
+where the whole directory structure is tarred, but only the `file.txt` and `file.png`
+are saved
