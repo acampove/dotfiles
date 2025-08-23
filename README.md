@@ -13,6 +13,15 @@ sudo dnf install numlockx
 
 This will keep the number pad always on.
 
+## Ranger-fm
+
+Once in ranger, the following key combinations can be used:
+
+| Command | Use |
+|---------|-----|
+|`E` on tar file | List contents|
+| `l` on tar file | Extract contents |
+
 ## Neovim
 
 ### Snippets
