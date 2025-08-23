@@ -57,8 +57,8 @@ set_alias()
     #------------------------------------------------------------------
     #Browsers
     #------------------------------------------------------------------
-    alias chrome='chromium --proxy-server="socks://localhost:8080"'
-    alias opera='opera     --proxy-server="socks://localhost:8080"'
+    alias chrome='google-chrome --proxy-server="socks://localhost:8080"'
+    alias opera='opera          --proxy-server="socks://localhost:8080"'
 }
 #------------------------------------------------------------------
 set_home()
