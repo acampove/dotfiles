@@ -1,6 +1,81 @@
 #!/usr/bin/env bash
 
 #------------------------------------------------------------------
+display_help() 
+{
+cat <<-EOF
+tartree - create a tarball of files matching patterns inside a directory tree
+
+Usage:
+tartree -d <root_dir> -f <file_pattern> [-f <file_pattern> ...] -o <tarball_name>
+tartree -h | --help
+
+Options:
+-d    Root directory to search
+-f    File pattern to match (can specify multiple times)
+-o    Output tarball name (mandatory)
+-h    Display this help message 
+EOF
+}
+
+tartree() 
+{
+    local root=""
+    local tarname=""
+    local patterns=()
+
+    if [[ $# -eq 0 ]]; then
+        display_help
+        return 0
+    fi
+
+    while [[ $# -gt 0 ]]; do
+        case $1 in
+            -d)
+                root="$2"
+                shift 2
+                ;;
+            -f)
+                patterns+=("$2")
+                shift 2
+                ;;
+            -o)
+                tarname="$2"
+                shift 2
+                ;;
+            -h|--help)
+                display_help
+                return 0
+                ;;
+            *)
+                echo "Unknown argument: $1"
+                display_help
+                return 1
+                ;;
+        esac
+    done
+
+    # Check mandatory arguments
+    if [[ -z "$root" || ${#patterns[@]} -eq 0 || -z "$tarname" ]]; then
+        echo "Error: Missing mandatory arguments."
+        display_help
+        return 1
+    fi
+
+    # Build find command for all patterns
+    local find_expr=""
+    for p in "${patterns[@]}"; do
+        if [[ -z "$find_expr" ]]; then
+            find_expr="-name '$p'"
+        else
+            find_expr="$find_expr -o -name '$p'"
+        fi
+    done
+
+    # Execute find and create tarball
+    eval "find \"$root\" \( $find_expr \) | tar -czvf \"$tarname\" -T -"
+}
+#------------------------------------------------------------------
 track_memory()
 {
     if [[ -z $THIS_VENV ]];then
