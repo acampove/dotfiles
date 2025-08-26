@@ -95,10 +95,61 @@ s_6subfigs = snipf("subfig6", [[
     \caption{{13}}
 \end{figure}
 ]])
+
+s_8subfigs = snipf("subfig8", [[
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{{1}}
+        \caption{{2}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{{3}}
+        \caption{{4}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{{5}}
+        \caption{{6}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{{7}}
+        \caption{{8}}
+    \end{subfigure}
+
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{{9}}
+        \caption{{10}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{{11}}
+        \caption{{12}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{{13}}
+        \caption{{14}}
+    \end{subfigure}
+    \begin{subfigure}[b]{0.23\textwidth}
+        \includegraphics[width=\textwidth]{{15}}
+        \caption{{16}}
+    \end{subfigure}
+    \caption{{17}}
+\end{figure}
+]])
+
+s_left_margin = snipf("left_margin", [[
+    \begin{textblock}{10}(-1, +7) 
+        \textred{{2}}
+    \end{textblock}
+    \begin{textblock}{10}(-1, +2) 
+        \textred{{1}}
+    \end{textblock}
+]])
 -----------------------------------------------------
 return {
     s_2subfigs,
     s_3subfigs,
     s_4subfigs,
     s_6subfigs,
+    s_8subfigs,
+    s_left_margin,
 }
