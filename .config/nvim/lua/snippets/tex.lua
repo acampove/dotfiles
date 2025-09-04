@@ -10,12 +10,12 @@ local snipf = utils.snippetf
 -----------------------------------------------------
 intro = snipf("intro", [[
 \begin{frame}[plain]
-  \centering
-  \vspace*{0.3\textheight}
-  {\Huge \bfseries {1}}
-  
-  \vspace{1cm}
-  {\Large {2}}
+    \centering
+    \vspace*{0.3\textheight}
+    {\Huge \bfseries {1}}
+    
+    \vspace{1cm}
+    {\Large {2}}
 \end{frame}
 ]])
 -----------------------------------------------------
