@@ -152,12 +152,12 @@ s_8subfigs = snipf("subfig8", [[
 ]])
 
 s_left_margin = snipf("left_margin", [[
-    \begin{textblock}{10}(-1, +7) 
-        \textred{{2}}
-    \end{textblock}
-    \begin{textblock}{10}(-1, +2) 
-        \textred{{1}}
-    \end{textblock}
+\begin{textblock}\{10\}(-1, +7) 
+    \textred{{2}}
+\end{textblock}
+\begin{textblock}\{10\}(-1, +2) 
+    \textred{{1}}
+\end{textblock}
 ]])
 -----------------------------------------------------
 return {
