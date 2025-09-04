@@ -10,6 +10,7 @@ local function split_lines(str)
   local lines = {}
   for line in str:gmatch("([^\n]*)\n?") do
     if line ~= nil then
+      line = line:gsub("\\{", "{"):gsub("\\}", "}")
       table.insert(lines, line)
     end
   end
@@ -17,6 +18,7 @@ local function split_lines(str)
   if lines[#lines] == "" then
     table.remove(lines)
   end
+
   return lines
 end
 ----------------------------------------------------------
