@@ -6,6 +6,21 @@ local utils = require("snippets.utils")
 local snipf = utils.snippetf
 
 -----------------------------------------------------
+--- Slides
+-----------------------------------------------------
+intro = snipf("intro", [[
+\begin{frame}[plain]
+  \centering
+  \vspace*{0.3\textheight}
+  {\Huge \bfseries {1}}
+  
+  \vspace{1cm}
+  {\Large {2}}
+\end{frame}
+]])
+-----------------------------------------------------
+--- Tables
+-----------------------------------------------------
 s_2subfigs = snipf("subfig2", [[
 \begin{figure}[htbp]
     \centering
@@ -146,6 +161,7 @@ s_left_margin = snipf("left_margin", [[
 ]])
 -----------------------------------------------------
 return {
+    intro,
     s_2subfigs,
     s_3subfigs,
     s_4subfigs,
