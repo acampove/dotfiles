@@ -6,6 +6,30 @@ local utils = require("snippets.utils")
 local snipf = utils.snippetf
 
 ----------------------------------------------------
+s_getter=snipf('getter', [[
+# ----------------------
+@property
+def {1}(self) -> {2}:
+    '''
+    Returns 
+    --------------
+    {3}
+    '''
+    {4}
+]])
+----------------------------------------------------
+s_setter=snipf('setter', [[
+# ----------------------
+@{1}.setter
+def {2}(self, value : {3}) -> None:
+    '''
+    Parameters
+    --------------
+    value: {4}
+    '''
+    {5}
+]])
+----------------------------------------------------
 s_classd=snipf('classd', [[
 # ----------------------
 class {1}:
@@ -100,6 +124,8 @@ def initialize():
 ]])
 ----------------------------------------------------
 return {
+    s_setter,
+    s_getter,
     s_main,
     s_logger,
     s_classd,
