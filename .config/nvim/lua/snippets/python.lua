@@ -69,7 +69,7 @@ def _parse_args() -> None:
     args = parser.parse_args()
 ]])
 ----------------------------------------------------
-s_data=snipf('data_class', [[
+s_dclass=snipf('dclass', [[
 # ----------------------
 @dataclass
 class {1}:
@@ -130,7 +130,7 @@ return {
     s_main,
     s_logger,
     s_classd,
-    s_data,
+    s_dclass,
     s_deftd,
     s_deftt,
     s_args,
