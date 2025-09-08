@@ -71,11 +71,12 @@ def _parse_args() -> None:
 ----------------------------------------------------
 s_data=snipf('data_class', [[
 # ----------------------
-class Data:
+@dataclass
+class {1}:
     '''
-    Class meant to be used to share attributes
+    {2}
     '''
-    {1}
+    {3}
 ]])
 ----------------------------------------------------
 s_logger=snipf('logger', [[
