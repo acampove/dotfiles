@@ -230,7 +230,7 @@ mountEOS()
         return 1
     fi
 
-    sshfs -o idmap=user acampove@lxplus.cern.ch:$MNT_DIR $MNT_DIR
+    sshfs -o idmap=user acampovecieos@lxplus.cern.ch:$MNT_DIR $MNT_DIR
 }
 #-----------------------------------------------------
 mountAPDIR()
