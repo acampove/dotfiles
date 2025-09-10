@@ -16,6 +16,12 @@ import logging as log
 from GangaCore.GPI                             import DiracFile
 from GangaCore.GPIDev.Lib.Registry.JobRegistry import JobRegistrySliceProxy as JRSP
 
+
+import sys
+
+# Or the proper place where the environment is installed in your system
+sys.path.append('/home/acampove/micromamba/envs/post_ap/lib/python3.12/site-packages')
+
 log.basicConfig(
     level=log.INFO,                      # Set logging level
     format='[%(asctime)s] %(levelname)s: %(message)s',  # Log format
